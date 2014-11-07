@@ -1,0 +1,49 @@
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\2_BUL\bin\Debug\2_BUL.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\2_BUL\bin\Debug\2_BUL.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\2_BUL\obj\Debug\2_BUL.csprojResolveAssemblyReference.cache
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\2_BUL\obj\Debug\2_BUL.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\2_BUL\obj\Debug\2_BUL.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\2_BUL\bin\Debug\3_DAL.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\2_BUL\bin\Debug\3_DAL.pdb
+C:\Users\SDCStudent\Desktop\Đồ Án QLNS\Source code\QLNS\2_BUL\bin\Debug\2_BUL.dll
+C:\Users\SDCStudent\Desktop\Đồ Án QLNS\Source code\QLNS\2_BUL\bin\Debug\2_BUL.pdb
+C:\Users\SDCStudent\Desktop\Đồ Án QLNS\Source code\QLNS\2_BUL\bin\Debug\3_DAL.dll
+C:\Users\SDCStudent\Desktop\Đồ Án QLNS\Source code\QLNS\2_BUL\bin\Debug\3_DAL.pdb
+C:\Users\SDCStudent\Desktop\Đồ Án QLNS\Source code\QLNS\2_BUL\obj\Debug\2_BUL.csprojResolveAssemblyReference.cache
+C:\Users\SDCStudent\Desktop\Đồ Án QLNS\Source code\QLNS\2_BUL\obj\Debug\2_BUL.dll
+C:\Users\SDCStudent\Desktop\Đồ Án QLNS\Source code\QLNS\2_BUL\obj\Debug\2_BUL.pdb
+D:\Đồ Án QLNS\Source code\QLNS\2_BUL\bin\Debug\2_BUL.dll
+D:\Đồ Án QLNS\Source code\QLNS\2_BUL\bin\Debug\2_BUL.pdb
+D:\Đồ Án QLNS\Source code\QLNS\2_BUL\bin\Debug\3_DAL.dll
+D:\Đồ Án QLNS\Source code\QLNS\2_BUL\bin\Debug\3_DAL.pdb
+D:\Đồ Án QLNS\Source code\QLNS\2_BUL\obj\Debug\2_BUL.csprojResolveAssemblyReference.cache
+D:\Đồ Án QLNS\Source code\QLNS\2_BUL\obj\Debug\2_BUL.dll
+D:\Đồ Án QLNS\Source code\QLNS\2_BUL\obj\Debug\2_BUL.pdb
+F:\NgheSDC\ProjectStudy\2_BUL\bin\Debug\2_BUL.dll
+F:\NgheSDC\ProjectStudy\2_BUL\bin\Debug\2_BUL.pdb
+F:\NgheSDC\ProjectStudy\2_BUL\bin\Debug\3_DAL.dll
+F:\NgheSDC\ProjectStudy\2_BUL\bin\Debug\3_DAL.pdb
+F:\NgheSDC\ProjectStudy\2_BUL\obj\Debug\2_BUL.csprojResolveAssemblyReference.cache
+F:\NgheSDC\ProjectStudy\2_BUL\obj\Debug\2_BUL.dll
+F:\NgheSDC\ProjectStudy\2_BUL\obj\Debug\2_BUL.pdb
+D:\ProjectStudy\2_BUL\bin\Debug\2_BUL.dll
+D:\ProjectStudy\2_BUL\bin\Debug\2_BUL.pdb
+D:\ProjectStudy\2_BUL\bin\Debug\3_DAL.dll
+D:\ProjectStudy\2_BUL\bin\Debug\3_DAL.pdb
+D:\ProjectStudy\2_BUL\obj\Debug\2_BUL.csprojResolveAssemblyReference.cache
+D:\ProjectStudy\2_BUL\obj\Debug\2_BUL.dll
+D:\ProjectStudy\2_BUL\obj\Debug\2_BUL.pdb
+F:\NgheSDC\QLNS\2_BUL\bin\Debug\2_BUL.dll
+F:\NgheSDC\QLNS\2_BUL\bin\Debug\2_BUL.pdb
+F:\NgheSDC\QLNS\2_BUL\bin\Debug\3_DAL.dll
+F:\NgheSDC\QLNS\2_BUL\bin\Debug\3_DAL.pdb
+F:\NgheSDC\QLNS\2_BUL\obj\Debug\2_BUL.csprojResolveAssemblyReference.cache
+F:\NgheSDC\QLNS\2_BUL\obj\Debug\2_BUL.dll
+F:\NgheSDC\QLNS\2_BUL\obj\Debug\2_BUL.pdb
+F:\Nghe SDC\QLNS\2_BUL\bin\Debug\2_BUL.dll
+F:\Nghe SDC\QLNS\2_BUL\bin\Debug\2_BUL.pdb
+F:\Nghe SDC\QLNS\2_BUL\bin\Debug\3_DAL.dll
+F:\Nghe SDC\QLNS\2_BUL\bin\Debug\3_DAL.pdb
+F:\Nghe SDC\QLNS\2_BUL\obj\Debug\2_BUL.csprojResolveAssemblyReference.cache
+F:\Nghe SDC\QLNS\2_BUL\obj\Debug\2_BUL.dll
+F:\Nghe SDC\QLNS\2_BUL\obj\Debug\2_BUL.pdb
