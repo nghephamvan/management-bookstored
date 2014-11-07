@@ -47,3 +47,10 @@ F:\Nghe SDC\QLNS\2_BUL\bin\Debug\3_DAL.pdb
 F:\Nghe SDC\QLNS\2_BUL\obj\Debug\2_BUL.csprojResolveAssemblyReference.cache
 F:\Nghe SDC\QLNS\2_BUL\obj\Debug\2_BUL.dll
 F:\Nghe SDC\QLNS\2_BUL\obj\Debug\2_BUL.pdb
+F:\Nghe SDC\NMCNPM\09520184\2_BUL\bin\Debug\2_BUL.dll
+F:\Nghe SDC\NMCNPM\09520184\2_BUL\bin\Debug\2_BUL.pdb
+F:\Nghe SDC\NMCNPM\09520184\2_BUL\bin\Debug\3_DAL.dll
+F:\Nghe SDC\NMCNPM\09520184\2_BUL\bin\Debug\3_DAL.pdb
+F:\Nghe SDC\NMCNPM\09520184\2_BUL\obj\Debug\2_BUL.csprojResolveAssemblyReference.cache
+F:\Nghe SDC\NMCNPM\09520184\2_BUL\obj\Debug\2_BUL.dll
+F:\Nghe SDC\NMCNPM\09520184\2_BUL\obj\Debug\2_BUL.pdb
