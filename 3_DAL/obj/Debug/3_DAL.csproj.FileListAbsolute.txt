@@ -46,9 +46,3 @@ F:\Nghe SDC\NMCNPM\09520184\3_DAL\bin\Debug\3_DAL.pdb
 F:\Nghe SDC\NMCNPM\09520184\3_DAL\obj\Debug\3_DAL.csprojResolveAssemblyReference.cache
 F:\Nghe SDC\NMCNPM\09520184\3_DAL\obj\Debug\3_DAL.dll
 F:\Nghe SDC\NMCNPM\09520184\3_DAL\obj\Debug\3_DAL.pdb
-F:\Nghe SDC\NMCNPM\11520295\3_DAL\bin\Debug\3_DAL.dll.config
-F:\Nghe SDC\NMCNPM\11520295\3_DAL\bin\Debug\3_DAL.dll
-F:\Nghe SDC\NMCNPM\11520295\3_DAL\bin\Debug\3_DAL.pdb
-F:\Nghe SDC\NMCNPM\11520295\3_DAL\obj\Debug\3_DAL.csprojResolveAssemblyReference.cache
-F:\Nghe SDC\NMCNPM\11520295\3_DAL\obj\Debug\3_DAL.dll
-F:\Nghe SDC\NMCNPM\11520295\3_DAL\obj\Debug\3_DAL.pdb

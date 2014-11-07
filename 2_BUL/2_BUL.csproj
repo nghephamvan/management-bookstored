@@ -42,6 +42,7 @@
     <Compile Include="CongNoBUL.cs" />
     <Compile Include="CTHDBUL.cs" />
     <Compile Include="CTPNBUL.cs" />
+    <Compile Include="HoaDonBUL.cs" />
     <Compile Include="KhachHangBUL.cs" />
     <Compile Include="PhieuNhapBUL.cs" />
     <Compile Include="SachBUL.cs" />

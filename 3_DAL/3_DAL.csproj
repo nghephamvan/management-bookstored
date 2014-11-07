@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="CTHDDAL.cs" />
     <Compile Include="CTPNDAL.cs" />
+    <Compile Include="HoaDonDAL.cs" />
     <Compile Include="KhachHangDAL.cs" />
     <Compile Include="PhieuNhapDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
