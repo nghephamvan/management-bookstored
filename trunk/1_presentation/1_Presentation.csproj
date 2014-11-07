@@ -52,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Excelutlity.cs" />
+    <Compile Include="frmHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHD.Designer.cs">
+      <DependentUpon>frmHD.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCTPN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmHD.resx">
+      <DependentUpon>frmHD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCTPN.resx">
       <DependentUpon>frmCTPN.cs</DependentUpon>
     </EmbeddedResource>
