@@ -28,6 +28,7 @@ namespace _1_Presentation
 
         private void Reload()
         {
+            //comment
             cmbMAPN.DataSource = PhieuNhapBUL.SelectAllPhieuNhapsBUL();
             cmbMAPN.DisplayMember = "Ngày nhập";
             cmbMAPN.ValueMember = "Mã phiếu nhập";
