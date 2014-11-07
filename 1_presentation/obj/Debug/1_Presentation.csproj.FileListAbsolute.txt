@@ -1,0 +1,51 @@
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\obj\Debug\1_Presentation.csprojResolveAssemblyReference.cache
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\bin\Debug\1_Presentation.exe.config
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\bin\Debug\1_Presentation.exe
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\bin\Debug\1_Presentation.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\bin\Debug\2_BUL.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\bin\Debug\3_DAL.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\bin\Debug\2_BUL.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\bin\Debug\3_DAL.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmMain.resources
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmPhieuNhap.resources
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmKhachHang.resources
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\obj\Debug\_1_Presentation.Properties.Resources.resources
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\obj\Debug\1_Presentation.csproj.GenerateResource.Cache
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\obj\Debug\1_Presentation.exe
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\obj\Debug\1_Presentation.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmSach.resources
+F:\NgheSDC\QLNS\1_Presentation\bin\Debug\1_Presentation.exe.config
+F:\NgheSDC\QLNS\1_Presentation\obj\Debug\1_Presentation.exe
+F:\NgheSDC\QLNS\1_Presentation\obj\Debug\1_Presentation.pdb
+F:\NgheSDC\QLNS\1_Presentation\bin\Debug\1_Presentation.exe
+F:\NgheSDC\QLNS\1_Presentation\bin\Debug\1_Presentation.pdb
+F:\NgheSDC\QLNS\1_Presentation\bin\Debug\2_BUL.dll
+F:\NgheSDC\QLNS\1_Presentation\bin\Debug\3_DAL.dll
+F:\NgheSDC\QLNS\1_Presentation\bin\Debug\2_BUL.pdb
+F:\NgheSDC\QLNS\1_Presentation\bin\Debug\3_DAL.pdb
+F:\NgheSDC\QLNS\1_Presentation\obj\Debug\1_Presentation.csprojResolveAssemblyReference.cache
+F:\NgheSDC\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmKhachHang.resources
+F:\NgheSDC\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmMain.resources
+F:\NgheSDC\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmPhieuNhap.resources
+F:\NgheSDC\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmSach.resources
+F:\NgheSDC\QLNS\1_Presentation\obj\Debug\_1_Presentation.Properties.Resources.resources
+F:\NgheSDC\QLNS\1_Presentation\obj\Debug\1_Presentation.csproj.GenerateResource.Cache
+F:\NgheSDC\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmCTPN.resources
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmCTPN.resources
+F:\Nghe SDC\QLNS\1_Presentation\bin\Debug\1_Presentation.exe.config
+F:\Nghe SDC\QLNS\1_Presentation\obj\Debug\1_Presentation.exe
+F:\Nghe SDC\QLNS\1_Presentation\obj\Debug\1_Presentation.pdb
+F:\Nghe SDC\QLNS\1_Presentation\bin\Debug\1_Presentation.exe
+F:\Nghe SDC\QLNS\1_Presentation\bin\Debug\1_Presentation.pdb
+F:\Nghe SDC\QLNS\1_Presentation\bin\Debug\2_BUL.dll
+F:\Nghe SDC\QLNS\1_Presentation\bin\Debug\3_DAL.dll
+F:\Nghe SDC\QLNS\1_Presentation\bin\Debug\2_BUL.pdb
+F:\Nghe SDC\QLNS\1_Presentation\bin\Debug\3_DAL.pdb
+F:\Nghe SDC\QLNS\1_Presentation\obj\Debug\1_Presentation.csprojResolveAssemblyReference.cache
+F:\Nghe SDC\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmCTPN.resources
+F:\Nghe SDC\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmKhachHang.resources
+F:\Nghe SDC\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmMain.resources
+F:\Nghe SDC\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmPhieuNhap.resources
+F:\Nghe SDC\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmSach.resources
+F:\Nghe SDC\QLNS\1_Presentation\obj\Debug\_1_Presentation.Properties.Resources.resources
+F:\Nghe SDC\QLNS\1_Presentation\obj\Debug\1_Presentation.csproj.GenerateResource.Cache
