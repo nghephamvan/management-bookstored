@@ -212,8 +212,8 @@ namespace _1_Presentation
                 {
                     CTPN item = new CTPN();
                     item.MACTPN = txtMaCTPN.Text;
-                    item.MAPN = cmbMAPN.ValueMember;
-                    item.MASACH = cmbSach.ValueMember;
+                    item.MAPN = cmbMAPN.SelectedValue.ToString();
+                    item.MASACH = cmbSach.SelectedValue.ToString();
                     item.SL_NHAP = Convert.ToInt16(txtSL_Nhap.Text);
 
                     //insert into database

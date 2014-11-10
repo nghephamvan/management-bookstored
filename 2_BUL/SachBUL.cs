@@ -30,7 +30,7 @@ namespace _2_BUL
             SachDAL.InsertBookDAL(temp);
         }
 
-        public static bool checkMaSachDAL(string masach)
+        public static bool checkMaSachBUL(string masach)
         {
             return SachDAL.checkMaSachDAL(masach);
         }
@@ -40,7 +40,7 @@ namespace _2_BUL
             SachDAL.UpdateSachDAL(temp);
         }
 
-        public static DataTable SearchBooksDAL(string temp)
+        public static DataTable SearchBooksBUL(string temp)
         {
             return SachDAL.SearchBooksDAL(temp);
         }

@@ -85,6 +85,5 @@ F:\Nghe SDC\NMCNPM\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmPhieuNhap.re
 F:\Nghe SDC\NMCNPM\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmSach.resources
 F:\Nghe SDC\NMCNPM\QLNS\1_Presentation\obj\Debug\_1_Presentation.Properties.Resources.resources
 F:\Nghe SDC\NMCNPM\QLNS\1_Presentation\obj\Debug\1_Presentation.csproj.GenerateResource.Cache
-F:\Nghe SDC\NMCNPM\management-bookstored\1_Presentation\bin\Debug\1_Presentation.exe.config
-F:\Nghe SDC\NMCNPM\management-bookstored\1_Presentation\obj\Debug\1_Presentation.exe
-F:\Nghe SDC\NMCNPM\management-bookstored\1_Presentation\obj\Debug\1_Presentation.pdb
+F:\Nghe SDC\NMCNPM\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmCTHD.resources
+F:\Nghe SDC\NMCNPM\QLNS\1_Presentation\obj\Debug\_1_Presentation.frmThuTien.resources
