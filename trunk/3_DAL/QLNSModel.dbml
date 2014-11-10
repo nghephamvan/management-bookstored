@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_BOOKSTORE" Class="QLNSModelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=QL_BOOKSTORE;Integrated Security=True" SettingsObjectName="_3_DAL.Properties.Settings" SettingsPropertyName="QL_BOOKSTOREConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.KHACHHANG" Member="KHACHHANGs">
+    <Type Name="KHACHHANG">
+      <Column Name="MAKH" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HOTEN" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DIENTHOAI" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SOTIENNO" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="KHACHHANG_CONGNO" Member="CONGNOs" ThisKey="MAKH" OtherKey="MAKH" Type="CONGNO" />
+      <Association Name="KHACHHANG_HOADON" Member="HOADONs" ThisKey="MAKH" OtherKey="MAKH" Type="HOADON" />
+      <Association Name="KHACHHANG_THUTIEN" Member="THUTIENs" ThisKey="MAKH" OtherKey="MAKH" Type="THUTIEN" />
+      <Association Name="KHACHHANG_TON" Member="TONs" ThisKey="MAKH" OtherKey="MAKH" Type="TON" />
+    </Type>
+  </Table>
   <Table Name="dbo.CONGNO" Member="CONGNOs">
     <Type Name="CONGNO">
       <Column Name="MACONGNO" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -38,20 +52,6 @@
       <Column Name="NGAYHD" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Association Name="HOADON_CTHD" Member="CTHDs" ThisKey="MAHD" OtherKey="MAHD" Type="CTHD" />
       <Association Name="KHACHHANG_HOADON" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.KHACHHANG" Member="KHACHHANGs">
-    <Type Name="KHACHHANG">
-      <Column Name="MAKH" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="HOTEN" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="DIENTHOAI" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="EMAIL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="SOTIENNO" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Association Name="KHACHHANG_CONGNO" Member="CONGNOs" ThisKey="MAKH" OtherKey="MAKH" Type="CONGNO" />
-      <Association Name="KHACHHANG_HOADON" Member="HOADONs" ThisKey="MAKH" OtherKey="MAKH" Type="HOADON" />
-      <Association Name="KHACHHANG_THUTIEN" Member="THUTIENs" ThisKey="MAKH" OtherKey="MAKH" Type="THUTIEN" />
-      <Association Name="KHACHHANG_TON" Member="TONs" ThisKey="MAKH" OtherKey="MAKH" Type="TON" />
     </Type>
   </Table>
   <Table Name="dbo.NHAP" Member="NHAPs">

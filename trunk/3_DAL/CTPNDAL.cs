@@ -17,6 +17,7 @@ namespace _3_DAL
 
             db.SubmitChanges();
         }
+
         public static DataTable SellectAllCTPNDAL()
         {
             DataTable dt = new DataTable();
@@ -27,19 +28,26 @@ namespace _3_DAL
                         select new
                         {
                             item.MACTPN,
-                            item2.NGAYNHAP,
                             item3.TENSACH,
-                            item.SL_NHAP
+                            item3.THELOAI,
+                            item3.TACGIA,
+                            item.SL_NHAP,
+                            item2.NGAYNHAP,
+                            item3.DONGIA
                         };
             dt.Columns.Add("STT", typeof(int));
             dt.Columns.Add("Mã CTPN", typeof(string));
-            dt.Columns.Add("Ngày Nhập", typeof(DateTime));
             dt.Columns.Add("Tên Sách", typeof(string));
-            dt.Columns.Add("Số lượng nhập", typeof(int));
+            dt.Columns.Add("Thể Loại", typeof(string));
+            dt.Columns.Add("Tác Giả", typeof(string));
+            dt.Columns.Add("Số lượng", typeof(int));
+            dt.Columns.Add("Ngày Nhập", typeof(DateTime));
+            dt.Columns.Add("Đơn Giá Nhập", typeof(decimal));
+            
             int stt = 1;
             foreach (var item in query)
             {
-                dt.Rows.Add(stt, item.MACTPN, item.NGAYNHAP, item.TENSACH, item.SL_NHAP);
+                dt.Rows.Add(stt, item.MACTPN, item.TENSACH, item.THELOAI, item.TACGIA, item.SL_NHAP, item.NGAYNHAP, item.DONGIA);
                 stt++;
             }
 
@@ -68,6 +76,7 @@ namespace _3_DAL
             }
             return ctpn;
         }
+
         public static void DeleteCTPNDAL(List<string> ctpns)
         {
             //Take ctpns in CTPNs which have mactpn
@@ -83,6 +92,7 @@ namespace _3_DAL
             db.SubmitChanges();
 
         }
+
         public static bool checkMaCTPNDAL(string mactpn)
         {
             var query = from item in db.CTPNs
@@ -97,6 +107,26 @@ namespace _3_DAL
             {
                 return false;
             }
+        }
+
+        public static bool checkCTPN_SachSLTonDAL(string key)
+        {
+            var query = from item in db.SACHes
+                        where item.MASACH == key
+                        select new
+                        {
+                            item.SL_TON
+                        };
+
+            foreach (var item in query)
+            {
+                if (item.SL_TON > 300)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
         //kiểm tra lại
         public static void UpdateCTPNDAL(CTPN item)
@@ -119,45 +149,59 @@ namespace _3_DAL
                            item.MACTPN.StartsWith(temp) ||
                            item.MACTPN.EndsWith(temp) ||
                            item.MACTPN.Contains(temp) ||
-                           item2.NGAYNHAP.ToString().StartsWith(temp) ||
-                           item2.NGAYNHAP.ToString().EndsWith(temp) ||
-                           item2.NGAYNHAP.ToString().Contains(temp) ||
-                           item.MAPN.StartsWith(temp) ||
-                           item.MAPN.EndsWith(temp) ||
-                           item.MAPN.Contains(temp) ||
                            item3.TENSACH.StartsWith(temp) ||
                            item3.TENSACH.EndsWith(temp) ||
                            item3.TENSACH.Contains(temp) ||
-                           item.MASACH.StartsWith(temp) ||
-                           item.MASACH.EndsWith(temp) ||
-                           item.MASACH.Contains(temp) ||
+                           item3.THELOAI.StartsWith(temp) ||
+                           item3.THELOAI.EndsWith(temp) ||
+                           item3.THELOAI.Contains(temp) ||
+                           item3.TACGIA.StartsWith(temp) ||
+                           item3.TACGIA.EndsWith(temp) ||
+                           item3.TACGIA.Contains(temp) ||
+                           item2.NGAYNHAP.ToString().StartsWith(temp) ||
+                           item2.NGAYNHAP.ToString().EndsWith(temp) ||
+                           item2.NGAYNHAP.ToString().Contains(temp) ||
                            item.SL_NHAP.ToString().Contains(temp) ||
                            item.SL_NHAP.ToString().StartsWith(temp) ||
-                           item.SL_NHAP.ToString().EndsWith(temp)
+                           item.SL_NHAP.ToString().EndsWith(temp)||
+                           item2.NGAYNHAP.ToString().StartsWith(temp) ||
+                           item2.NGAYNHAP.ToString().EndsWith(temp) ||
+                           item2.NGAYNHAP.ToString().Contains(temp) ||
+                           item3.DONGIA.ToString().StartsWith(temp) ||
+                           item3.DONGIA.ToString().EndsWith(temp) ||
+                           item3.DONGIA.ToString().Contains(temp)
                         )
                         select new
                         {
                             item.MACTPN,
-                            item2.NGAYNHAP,
                             item3.TENSACH,
+                            item3.THELOAI,
+                            item3.TACGIA,
                             item.SL_NHAP,
+                            item2.NGAYNHAP,
+                            item3.DONGIA
                         };
 
 
             DataTable dt = new DataTable();
             dt.Columns.Add("STT", typeof(int));
             dt.Columns.Add("Mã CTPN", typeof(string));
-            dt.Columns.Add("Ngày Nhập", typeof(DateTime));
             dt.Columns.Add("Tên Sách", typeof(string));
-            dt.Columns.Add("Số lượng nhập", typeof(int));
+            dt.Columns.Add("Thể Loại", typeof(string));
+            dt.Columns.Add("Tác Giả", typeof(string));
+            dt.Columns.Add("Số lượng", typeof(int));
+            dt.Columns.Add("Ngày Nhập", typeof(DateTime));
+            dt.Columns.Add("Đơn Giá Nhập", typeof(decimal));
+
             int stt = 1;
             foreach (var item in query)
             {
-                dt.Rows.Add(stt, item.MACTPN, item.NGAYNHAP, item.TENSACH, item.SL_NHAP);
+                dt.Rows.Add(stt, item.MACTPN, item.TENSACH, item.THELOAI, item.TACGIA, item.SL_NHAP, item.NGAYNHAP, item.DONGIA);
                 stt++;
             }
 
             return dt;
         }
+
     }
 }

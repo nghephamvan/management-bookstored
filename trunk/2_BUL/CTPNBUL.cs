@@ -57,7 +57,7 @@ namespace _2_BUL
 
         public static bool checkSachSLTonBUL(string key)
         {
-            return CTHDDAL.checkSachSLTonDAL(key);
+            return CTPNDAL.checkCTPN_SachSLTonDAL(key);
         }
     }
 }

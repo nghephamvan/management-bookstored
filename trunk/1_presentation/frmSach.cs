@@ -12,10 +12,12 @@ namespace _1_Presentation
     public partial class frmSach : Form
     {
         bool _chkAdd = false;
+
         public frmSach()
         {
             InitializeComponent();
         }
+
         private void frmSach_Load(object sender, EventArgs e)
         {
             Reload();
@@ -179,7 +181,7 @@ namespace _1_Presentation
                 }
                 else
                 {
-                    if (SachBUL.checkMaSachDAL(txtMaSach.Text.Trim()))
+                    if (SachBUL.checkMaSachBUL(txtMaSach.Text.Trim()))
                     {
                         SACH sach = new SACH();
                         sach.MASACH = txtMaSach.Text;
@@ -279,7 +281,7 @@ namespace _1_Presentation
             else
             {
                 //Tìm sách và đổ vào DataGridView
-                DGV_Result.DataSource = SachBUL.SearchBooksDAL(txtSearch.Text);
+                DGV_Result.DataSource = SachBUL.SearchBooksBUL(txtSearch.Text);
                 txtSearch.BackColor = Color.LightGreen;
             }
         }
