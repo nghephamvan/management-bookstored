@@ -88,3 +88,12 @@ F:\Nghe SDC\QLNS vs 1.0\2_BUL\bin\Debug\4_DTO.pdb
 F:\Nghe SDC\QLNS vs 1.0\2_BUL\obj\Debug\2_BUL.csprojResolveAssemblyReference.cache
 F:\Nghe SDC\QLNS vs 1.0\2_BUL\obj\Debug\2_BUL.dll
 F:\Nghe SDC\QLNS vs 1.0\2_BUL\obj\Debug\2_BUL.pdb
+F:\Nghe SDC\management-bookstored\2_BUL\bin\Debug\2_BUL.dll
+F:\Nghe SDC\management-bookstored\2_BUL\bin\Debug\2_BUL.pdb
+F:\Nghe SDC\management-bookstored\2_BUL\bin\Debug\3_DAL.dll
+F:\Nghe SDC\management-bookstored\2_BUL\bin\Debug\4_DTO.dll
+F:\Nghe SDC\management-bookstored\2_BUL\bin\Debug\3_DAL.pdb
+F:\Nghe SDC\management-bookstored\2_BUL\bin\Debug\4_DTO.pdb
+F:\Nghe SDC\management-bookstored\2_BUL\obj\Debug\2_BUL.csprojResolveAssemblyReference.cache
+F:\Nghe SDC\management-bookstored\2_BUL\obj\Debug\2_BUL.dll
+F:\Nghe SDC\management-bookstored\2_BUL\obj\Debug\2_BUL.pdb

@@ -10,3 +10,9 @@ F:\Nghe SDC\QLNS vs 1.0\4_DTO\bin\Debug\4_DTO.pdb
 F:\Nghe SDC\QLNS vs 1.0\4_DTO\obj\Debug\4_DTO.csprojResolveAssemblyReference.cache
 F:\Nghe SDC\QLNS vs 1.0\4_DTO\obj\Debug\4_DTO.dll
 F:\Nghe SDC\QLNS vs 1.0\4_DTO\obj\Debug\4_DTO.pdb
+F:\Nghe SDC\management-bookstored\4_DTO\bin\Debug\4_DTO.dll.config
+F:\Nghe SDC\management-bookstored\4_DTO\bin\Debug\4_DTO.dll
+F:\Nghe SDC\management-bookstored\4_DTO\bin\Debug\4_DTO.pdb
+F:\Nghe SDC\management-bookstored\4_DTO\obj\Debug\4_DTO.csprojResolveAssemblyReference.cache
+F:\Nghe SDC\management-bookstored\4_DTO\obj\Debug\4_DTO.dll
+F:\Nghe SDC\management-bookstored\4_DTO\obj\Debug\4_DTO.pdb
