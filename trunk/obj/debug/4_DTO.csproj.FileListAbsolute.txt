@@ -1,0 +1,6 @@
+C:\Users\ilove_000\Desktop\QLNS\4_DTO\bin\Debug\4_DTO.dll.config
+C:\Users\ilove_000\Desktop\QLNS\4_DTO\bin\Debug\4_DTO.dll
+C:\Users\ilove_000\Desktop\QLNS\4_DTO\bin\Debug\4_DTO.pdb
+C:\Users\ilove_000\Desktop\QLNS\4_DTO\obj\Debug\4_DTO.csprojResolveAssemblyReference.cache
+C:\Users\ilove_000\Desktop\QLNS\4_DTO\obj\Debug\4_DTO.dll
+C:\Users\ilove_000\Desktop\QLNS\4_DTO\obj\Debug\4_DTO.pdb
