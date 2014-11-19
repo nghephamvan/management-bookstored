@@ -8,14 +8,15 @@ namespace _3_DAL
     public class SachController
     {
 
-         static QLNSModel db = new QLNSModel();
+        static QLNSModelDataContext db = new QLNSModelDataContext();
 
-         public static void InsertBookDAL(SACH temp) 
+         public static void InsertBookDAL(SACH item) 
          {
-             db.SACHes.InsertOnSubmit(temp);
+             db.SACHes.InsertOnSubmit(item);
 
              db.SubmitChanges();
          }
+
          public static DataTable SellectAllBooksDAL()
          {
              DataTable dt = new DataTable();
@@ -48,53 +49,39 @@ namespace _3_DAL
          }
 
          //DataGridview select Sach by MaSach
-         public static SACH SelectBookDAL(string MaSach)
+         public static SACH SelectBookDAL(string key)
          {
-             var query = from b in db.SACHes
-                         where b.MASACH == MaSach
-                         select new
-                         {
-                             b.MASACH,
-                             b.TENSACH,
-                             b.THELOAI,
-                             b.TACGIA,
-                             b.SL_TON,
-                             b.DONGIA
-                         };
-             SACH sc = new SACH();
-             foreach (var s in query)
-             {
-                 sc.MASACH = s.MASACH;
-                 sc.TENSACH = s.TENSACH;
-                 sc.THELOAI = s.THELOAI;
-                 sc.TACGIA = s.TACGIA;
-                 sc.SL_TON = s.SL_TON;
-                 sc.DONGIA = s.DONGIA;
-             }
-             return sc;
+             SACH query = db.SACHes.Single(i => i.MASACH.Equals(key));
+             return query;
          }
-         public static void DeleteBooksDAL(List<string> books)
+
+         public static void DeleteBooksDAL(List<string> keys)
          {
              //Take books in Saches which have Masach equal listbooks
 
-             var lstbooks = from b in db.SACHes
-                            where books.Contains(b.MASACH)
-                            select b;
-             var lstctpns = from b in db.CTPNs
-                            join lb in lstbooks on b.MASACH equals lb.MASACH
-                            select b;
+             var lstbooks = from item in db.SACHes
+                            where keys.Contains(item.MASACH)
+                            select item;
+             var lstctpns = from item in db.CTPNs
+                            where keys.Contains(item.MASACH)
+                            select item;
 
-             var lstcthds = from b in db.CTHDs
-                            join lb in lstbooks on b.MASACH equals lb.MASACH
-                            select b;
+             var lstcthds = from item in db.CTHDs
+                            where keys.Contains(item.MASACH)
+                            select item;
+             //Delete MAKH in TON
+             var lsttons = from item in db.TONs
+                           where keys.Contains(item.MASACH)
+                           select item;
 
              //Delete
              db.CTHDs.DeleteAllOnSubmit(lstcthds);
 
              //Delete
              db.CTPNs.DeleteAllOnSubmit(lstctpns);
-             //Delete
 
+             //Delete
+             db.TONs.DeleteAllOnSubmit(lsttons);
 
              db.SACHes.DeleteAllOnSubmit(lstbooks);
 
@@ -102,10 +89,11 @@ namespace _3_DAL
              db.SubmitChanges();
 
          }
-         public static bool checkMaSachDAL(string masach)
+
+         public static bool checkMaSachDAL(string key)
          {
              var query = from sc in db.SACHes
-                         where sc.MASACH.Equals(masach)
+                         where sc.MASACH.Equals(key)
                          select sc;
 
              if (query.Count() <= 0)
@@ -117,42 +105,43 @@ namespace _3_DAL
                  return false;
              }
          }
+
          //kiểm tra lại
-         public static void UpdateSachDAL(SACH temp)
+         public static void UpdateSachDAL(SACH item)
          {
-             var query = db.SACHes.Single(sa=>sa.MASACH==temp.MASACH);
-             query.TENSACH = temp.TENSACH;
-             query.THELOAI = temp.THELOAI;
-             query.TACGIA = temp.TACGIA;
-             query.SL_TON = temp.SL_TON;
-             query.DONGIA = temp.DONGIA;
+             var query = db.SACHes.Single(sa=>sa.MASACH==item.MASACH);
+             query.TENSACH = item.TENSACH;
+             query.THELOAI = item.THELOAI;
+             query.TACGIA = item.TACGIA;
+             query.SL_TON = item.SL_TON;
+             query.DONGIA = item.DONGIA;
 
              db.SubmitChanges();
          }
 
-         public static DataTable SearchBooksDAL(string temp)
+         public static DataTable SearchBooksDAL(string key)
          {
              var query = from sc in db.SACHes
                          where
                          (
-                            sc.MASACH.StartsWith(temp) ||
-                            sc.MASACH.EndsWith(temp) ||
-                            sc.MASACH.Contains(temp) ||
-                            sc.TENSACH.StartsWith(temp) ||
-                            sc.TENSACH.EndsWith(temp) ||
-                            sc.TENSACH.Contains(temp) ||
-                            sc.THELOAI.StartsWith(temp) ||
-                            sc.THELOAI.EndsWith(temp) ||
-                            sc.THELOAI.Contains(temp) ||
-                            sc.TACGIA.StartsWith(temp) ||
-                            sc.TACGIA.EndsWith(temp) ||
-                            sc.TACGIA.Contains(temp) ||
-                            sc.SL_TON.ToString().Contains(temp) ||
-                            sc.SL_TON.ToString().StartsWith(temp) ||
-                            sc.SL_TON.ToString().EndsWith(temp) ||
-                            sc.DONGIA.ToString().Contains(temp) ||
-                            sc.DONGIA.ToString().StartsWith(temp) ||
-                            sc.DONGIA.ToString().EndsWith(temp)
+                            sc.MASACH.StartsWith(key) ||
+                            sc.MASACH.EndsWith(key) ||
+                            sc.MASACH.Contains(key) ||
+                            sc.TENSACH.StartsWith(key) ||
+                            sc.TENSACH.EndsWith(key) ||
+                            sc.TENSACH.Contains(key) ||
+                            sc.THELOAI.StartsWith(key) ||
+                            sc.THELOAI.EndsWith(key) ||
+                            sc.THELOAI.Contains(key) ||
+                            sc.TACGIA.StartsWith(key) ||
+                            sc.TACGIA.EndsWith(key) ||
+                            sc.TACGIA.Contains(key) ||
+                            sc.SL_TON.ToString().Contains(key) ||
+                            sc.SL_TON.ToString().StartsWith(key) ||
+                            sc.SL_TON.ToString().EndsWith(key) ||
+                            sc.DONGIA.ToString().Contains(key) ||
+                            sc.DONGIA.ToString().StartsWith(key) ||
+                            sc.DONGIA.ToString().EndsWith(key)
                          )
                          select new
                          {

@@ -181,13 +181,26 @@ namespace _1_Presentation
                         //insert into database
                         //check /*Chỉ nhập các đầu sách có sl_tồn<300*/
                         //SL_NHAP >= 150
-                        if(!CTPNBUL.checkSachSLTonBUL(item.MASACH))
+                        if (ThamSoBUL.SelectThamSoBUL() != null && ThamSoBUL.SelectThamSoBUL().SUDUNGQUYDINH == true)
                         {
-                            MessageBox.Show("Chỉ nhập sách có số lượng tồn nhỏ hơn hoặc bằng 300", "Thông Báo");
-                        }
-                        else if (item.SL_NHAP < 150)
-                        {
-                            MessageBox.Show("Số lượng nhập phải lớn hơn 150!", "Thông Báo");
+                            if (!CTPNBUL.checkSachSLTonBUL(item.MASACH))
+                            {
+                                MessageBox.Show("Chỉ nhập sách có số lượng tồn nhỏ hơn hoặc bằng 300", "Thông Báo");
+                            }
+                            else if (!CTPNBUL.checkSL_NhapItNhat(item.SL_NHAP))
+                            {
+                                MessageBox.Show("Số lượng nhập phải lớn hơn 150!", "Thông Báo");
+                            }
+                            else
+                            {
+                                CTPNBUL.InsertCTPNBUL(item);
+                                MessageBox.Show("Bạn đã thêm chi tiết phiếu nhập [" + txtMaCTPN.Text + "] thành công", "Thông báo");
+
+                                txtMaCTPN.Text = String.Empty;
+                                cmbMAPN.SelectedIndex = -1;
+                                cmbSach.SelectedIndex = -1;
+                                txtSL_Nhap.Text = String.Empty;
+                            }
                         }
                         else
                         {
@@ -219,13 +232,21 @@ namespace _1_Presentation
                     //insert into database
                     //check /*Chỉ nhập các đầu sách có sl_tồn<300*/
                     //SL_NHAP >= 150
-                    if (!CTPNBUL.checkSachSLTonBUL(item.MASACH))
+                    if (ThamSoBUL.SelectThamSoBUL() != null && ThamSoBUL.SelectThamSoBUL().SUDUNGQUYDINH == true)
                     {
-                        MessageBox.Show("Chỉ nhập sách có số lượng tồn nhỏ hơn hoặc bằng 300", "Thông Báo");
-                    }
-                    else if (item.SL_NHAP < 150)
-                    {
-                        MessageBox.Show("Số lượng nhập phải lớn hơn 150!", "Thông Báo");
+                        if (!CTPNBUL.checkSachSLTonBUL(item.MASACH))
+                        {
+                            MessageBox.Show("Chỉ nhập sách có số lượng tồn nhỏ hơn hoặc bằng 300", "Thông Báo");
+                        }
+                        else if (!CTPNBUL.checkSL_NhapItNhat(item.SL_NHAP))
+                        {
+                            MessageBox.Show("Số lượng nhập phải lớn hơn 150!", "Thông Báo");
+                        }
+                        else
+                        {
+                            CTPNBUL.UpdateCTPNBUL(item);
+                            MessageBox.Show("Bạn đã sửa chi tiết phiếu nhập [" + txtMaCTPN.Text + "] thành công", "Thông báo");
+                        }
                     }
                     else
                     {

@@ -51,7 +51,6 @@
             this.picB_PNhap = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.quảnLyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýPhiếuNhậpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýChiTiếtPhiếuNhậpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýSáchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +61,7 @@
             this.quảnLýTồnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýCôngNợToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thamSốToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picB_ThamSo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_CongNo)).BeginInit();
@@ -104,7 +104,7 @@
             this.panelMenu.Controls.Add(this.picB_PNhap);
             this.panelMenu.Location = new System.Drawing.Point(12, 27);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(286, 622);
+            this.panelMenu.Size = new System.Drawing.Size(286, 690);
             this.panelMenu.TabIndex = 0;
             // 
             // label10
@@ -113,9 +113,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(117, 1195);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(73, 20);
+            this.label10.Size = new System.Drawing.Size(137, 20);
             this.label10.TabIndex = 1;
-            this.label10.Text = "Tham Số";
+            this.label10.Text = "Quản Lý Quy Định";
             // 
             // label9
             // 
@@ -325,12 +325,6 @@
             this.quảnLyToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.quảnLyToolStripMenuItem.Text = "Quản lý";
             // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.aboutToolStripMenuItem.Text = "Hỗ Trợ";
-            // 
             // quảnLýPhiếuNhậpToolStripMenuItem
             // 
             this.quảnLýPhiếuNhậpToolStripMenuItem.Name = "quảnLýPhiếuNhậpToolStripMenuItem";
@@ -401,12 +395,20 @@
             this.thamSốToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.thamSốToolStripMenuItem.Text = "Tham Số";
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.aboutToolStripMenuItem.Text = "Hỗ Trợ";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1008, 661);
+            this.BackgroundImage = global::_1_Presentation.Properties.Resources.Vintage_Twitter_Backgrounds_Photo;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.menuStrip1);
             this.Name = "frmMain";

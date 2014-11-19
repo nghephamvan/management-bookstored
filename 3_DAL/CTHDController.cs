@@ -8,7 +8,7 @@ namespace _3_DAL
 {
     public class CTHDController
     {
-        static QLNSModel db = new QLNSModel();
+        static QLNSModelDataContext db = new QLNSModelDataContext();
 
         public static void InsertCTHDDAL(CTHD item)
         {
@@ -57,24 +57,8 @@ namespace _3_DAL
 
         public static CTHD SelectCTHDDAL(string key)
         {
-            var query = from item in db.CTHDs
-                        where item.MACTHD == key
-                        select new
-                        {
-                            item.MACTHD,
-                            item.MASACH,
-                            item.MAHD,
-                            item.SL_BAN
-                        };
-            CTHD cthd = new CTHD();
-            foreach (var item in query)
-            {
-                cthd.MACTHD = item.MACTHD;
-                cthd.MASACH = item.MASACH;
-                cthd.MAHD = item.MAHD;
-                cthd.SL_BAN = item.SL_BAN;
-            }
-            return cthd;
+            CTHD query = db.CTHDs.Single(i => i.MACTHD.Equals(key));
+            return query;
         }
 
         public static void DeleteCTHDsDAL(List<string> keys)
@@ -188,7 +172,7 @@ namespace _3_DAL
 
             var queryKH = db.KHACHHANGs.Single(item => item.MAKH == query.MAKH);
 
-            if (queryKH.SOTIENNO > 20000)
+            if (queryKH.SOTIENNO > ThamSoController.SelectThamSoDAL().SOTIENNOTOIDA)
             {
                 return false;
             }

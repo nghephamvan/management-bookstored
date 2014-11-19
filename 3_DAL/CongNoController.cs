@@ -8,7 +8,7 @@ namespace _3_DAL
 {
     public class CongNoController
     {
-        static QLNSModel db = new QLNSModel();
+        static QLNSModelDataContext db = new QLNSModelDataContext();
 
         public static void InsertCongNoDAL(CONGNO item)
         {

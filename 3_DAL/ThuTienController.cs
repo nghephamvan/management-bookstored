@@ -8,7 +8,7 @@ namespace _3_DAL
 {
     public class ThuTienController
     {
-        static QLNSModel db = new QLNSModel();
+        static QLNSModelDataContext db = new QLNSModelDataContext();
         
         public static void InsertThuTienDAL(THUTIEN item)
         {
@@ -52,24 +52,8 @@ namespace _3_DAL
 
         public static THUTIEN SelectThuTienDAL(string key)
         {
-            var query = from item in db.THUTIENs
-                        where item.MATHU == key
-                        select new
-                        {
-                            item.MATHU,
-                            item.MAKH,
-                            item.NGAYTHU,
-                            item.SOTIENTHU
-                        };
-            THUTIEN thu = new THUTIEN();
-            foreach (var item in query)
-            {
-                thu.MATHU = item.MATHU;
-                thu.MAKH = item.MAKH;
-                thu.NGAYTHU = item.NGAYTHU;
-                thu.SOTIENTHU = item.SOTIENTHU;
-            }
-            return thu;
+            THUTIEN query = db.THUTIENs.Single(i => i.MATHU.Equals(key));
+            return query;
         }
 
         public static void DeleteThuTiensDAL(List<string> keys)

@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_BOOKSTORE" Class="QLNSModelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=QL_BOOKSTORE;Integrated Security=True" SettingsObjectName="_4_DTO.Properties.Settings" SettingsPropertyName="QL_BOOKSTOREConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TON" Member="TONs">
+    <Type Name="TON">
+      <Column Name="MATON" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="THANG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TONDAU" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TONPHATSINH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TONCUOI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MASACH" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Association Name="SACH_TON" Member="SACH" ThisKey="MASACH" OtherKey="MASACH" Type="SACH" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.CONGNO" Member="CONGNOs">
     <Type Name="CONGNO">
       <Column Name="MACONGNO" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -51,7 +62,6 @@
       <Association Name="KHACHHANG_CONGNO" Member="CONGNOs" ThisKey="MAKH" OtherKey="MAKH" Type="CONGNO" />
       <Association Name="KHACHHANG_HOADON" Member="HOADONs" ThisKey="MAKH" OtherKey="MAKH" Type="HOADON" />
       <Association Name="KHACHHANG_THUTIEN" Member="THUTIENs" ThisKey="MAKH" OtherKey="MAKH" Type="THUTIEN" />
-      <Association Name="KHACHHANG_TON" Member="TONs" ThisKey="MAKH" OtherKey="MAKH" Type="TON" />
     </Type>
   </Table>
   <Table Name="dbo.NHAP" Member="NHAPs">
@@ -69,6 +79,7 @@
       <Column Name="TACGIA" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="SL_TON" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DONGIA" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="SACH_TON" Member="TONs" ThisKey="MASACH" OtherKey="MASACH" Type="TON" />
       <Association Name="SACH_CTHD" Member="CTHDs" ThisKey="MASACH" OtherKey="MASACH" Type="CTHD" />
       <Association Name="SACH_CTPN" Member="CTPNs" ThisKey="MASACH" OtherKey="MASACH" Type="CTPN" />
     </Type>
@@ -90,17 +101,6 @@
       <Column Name="NGAYTHU" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="SOTIENTHU" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Association Name="KHACHHANG_THUTIEN" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TON" Member="TONs">
-    <Type Name="TON">
-      <Column Name="MATON" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MAKH" Type="System.String" DbType="Char(10)" CanBeNull="true" />
-      <Column Name="THANG" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TONDAU" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TONPHATSINH" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TONCUOI" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="KHACHHANG_TON" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

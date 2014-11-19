@@ -22,6 +22,20 @@ namespace _1_Presentation
             InitializeComponent();
         }
 
+        private void frmCongNo_Load(object sender, EventArgs e)
+        {
+            Reload();
+        }
+
+        private void Reload()
+        {
+            cmbKH.DataSource = KhachHangBUL.SellectAllCustomerBUL();
+            cmbKH.DisplayMember = "Tên KH";
+            cmbKH.ValueMember = "Mã KH";
+
+            DGV_Result.DataSource = CongNoBUL.SellectAllCongNosBUL();
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (btnAdd.Text.Equals("Thêm"))
@@ -280,20 +294,6 @@ namespace _1_Presentation
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void frmCongNo_Load(object sender, EventArgs e)
-        {
-            Reload();
-        }
-
-        private void Reload()
-        {
-            cmbKH.DataSource = KhachHangBUL.SellectAllCustomerBUL();
-            cmbKH.DisplayMember = "Tên KH";
-            cmbKH.ValueMember = "Mã KH";
-
-            DGV_Result.DataSource = CongNoBUL.SellectAllCongNosBUL();
         }
 
         private void txtNoDau_TextChanged(object sender, EventArgs e)

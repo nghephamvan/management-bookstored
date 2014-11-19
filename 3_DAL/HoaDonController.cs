@@ -8,7 +8,8 @@ namespace _3_DAL
 {
     public class HoaDonController
     {
-        static QLNSModel db = new QLNSModel();
+        static QLNSModelDataContext db = new QLNSModelDataContext();
+
         public static void InsertHoaDonDAL(HOADON item)
         {
             db.HOADONs.InsertOnSubmit(item);
@@ -44,22 +45,8 @@ namespace _3_DAL
 
         public static HOADON SelectHoaDonDAL(string key)
         {
-            var query = from item in db.HOADONs
-                        where item.MAHD == key
-                        select new
-                        {
-                            item.MAHD,
-                            item.MAKH,
-                            item.NGAYHD
-                        };
-            HOADON hd = new HOADON();
-            foreach (var item in query)
-            {
-                hd.MAHD = item.MAHD;
-                hd.MAKH = item.MAKH;
-                hd.NGAYHD = item.NGAYHD;
-            }
-            return hd;
+            HOADON query = db.HOADONs.Single(i => i.MAHD.Equals(key));
+            return query;
         }
 
         public static void DeleteHoaDonsDAL(List<string> keys)

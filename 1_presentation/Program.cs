@@ -16,7 +16,7 @@ namespace _1_Presentation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCongNo());
+            Application.Run(new frmMain());
         }
     }
 }
