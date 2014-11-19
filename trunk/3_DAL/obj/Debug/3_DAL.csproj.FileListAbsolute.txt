@@ -52,3 +52,19 @@ F:\Nghe SDC\NMCNPM\QLNS\3_DAL\bin\Debug\3_DAL.pdb
 F:\Nghe SDC\NMCNPM\QLNS\3_DAL\obj\Debug\3_DAL.csprojResolveAssemblyReference.cache
 F:\Nghe SDC\NMCNPM\QLNS\3_DAL\obj\Debug\3_DAL.dll
 F:\Nghe SDC\NMCNPM\QLNS\3_DAL\obj\Debug\3_DAL.pdb
+C:\Users\ilove_000\Desktop\QLNS\3_DAL\obj\Debug\3_DAL.csprojResolveAssemblyReference.cache
+C:\Users\ilove_000\Desktop\QLNS\3_DAL\obj\Debug\3_DAL.dll
+C:\Users\ilove_000\Desktop\QLNS\3_DAL\obj\Debug\3_DAL.pdb
+C:\Users\ilove_000\Desktop\QLNS\3_DAL\bin\Debug\3_DAL.dll.config
+C:\Users\ilove_000\Desktop\QLNS\3_DAL\bin\Debug\3_DAL.dll
+C:\Users\ilove_000\Desktop\QLNS\3_DAL\bin\Debug\3_DAL.pdb
+C:\Users\ilove_000\Desktop\QLNS\3_DAL\bin\Debug\4_DTO.dll
+C:\Users\ilove_000\Desktop\QLNS\3_DAL\bin\Debug\4_DTO.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\3_DAL\bin\Debug\3_DAL.dll.config
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\3_DAL\bin\Debug\3_DAL.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\3_DAL\bin\Debug\3_DAL.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\3_DAL\bin\Debug\4_DTO.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\3_DAL\bin\Debug\4_DTO.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\3_DAL\obj\Debug\3_DAL.csprojResolveAssemblyReference.cache
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\3_DAL\obj\Debug\3_DAL.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\3_DAL\obj\Debug\3_DAL.pdb

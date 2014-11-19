@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _3_DAL;
+using _4_DTO;
 using System.Data;
 
 namespace _2_BUL
@@ -12,47 +13,47 @@ namespace _2_BUL
     {
         public static DataTable SellectAllCTHDsBUL()
         {
-            return CTHDDAL.SellectAllCTHDsDAL();
+            return CTHDController.SellectAllCTHDsDAL();
         }
 
         public static void DeleteCTHDsBUL(List<string> keys)
         {
-            CTHDDAL.DeleteCTHDsDAL(keys);
+            CTHDController.DeleteCTHDsDAL(keys);
         }
 
         public static CTHD SelectCTHDBUL(string key)
         {
-            return CTHDDAL.SelectCTHDDAL(key);
+            return CTHDController.SelectCTHDDAL(key);
         }
 
         public static void InsertCTHDBUL(CTHD item)
         {
-            CTHDDAL.InsertCTHDDAL(item);
+            CTHDController.InsertCTHDDAL(item);
         }
 
         public static bool checkMaCTHDBUL(string key)
         {
-            return CTHDDAL.checkMaCTHDDAL(key);
+            return CTHDController.checkMaCTHDDAL(key);
         }
 
         public static void UpdateCTHDBUL(CTHD item)
         {
-            CTHDDAL.UpdateCTHDDAL(item);
+            CTHDController.UpdateCTHDDAL(item);
         }
 
         public static DataTable SearchCTHDsBUL(string key)
         {
-            return CTHDDAL.SearchCTHDsDAL(key);
+            return CTHDController.SearchCTHDsDAL(key);
         }
 
         public static bool checkKH_CTHDBUL(string key)
         {
-            return CTHDDAL.checkKH_CTHDDAL(key);
+            return CTHDController.checkKH_CTHDDAL(key);
         }
 
         public static int? TakeSach_SL_TonBUL(string key)
         {
-            return CTHDDAL.TakeSach_SL_TonDAL(key);
+            return CTHDController.TakeSach_SL_TonDAL(key);
         }
     }
 }

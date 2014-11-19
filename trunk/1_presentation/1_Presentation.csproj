@@ -52,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Excelutlity.cs" />
+    <Compile Include="frmCongNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCongNo.Designer.cs">
+      <DependentUpon>frmCongNo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCTHD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmCongNo.resx">
+      <DependentUpon>frmCongNo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCTHD.resx">
       <DependentUpon>frmCTHD.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +166,10 @@
     <ProjectReference Include="..\3_DAL\3_DAL.csproj">
       <Project>{8531eecf-60e0-4f65-9e22-47dc0cb4932d}</Project>
       <Name>3_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\4_DTO\4_DTO.csproj">
+      <Project>{09b69a8a-07bd-493e-838b-b902de588eb3}</Project>
+      <Name>4_DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

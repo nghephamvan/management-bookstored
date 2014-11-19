@@ -43,23 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CTHDDAL.cs" />
-    <Compile Include="CTPNDAL.cs" />
-    <Compile Include="HoaDonDAL.cs" />
-    <Compile Include="KhachHangDAL.cs" />
-    <Compile Include="PhieuNhapDAL.cs" />
+    <Compile Include="CongNoController.cs" />
+    <Compile Include="CTHDController.cs" />
+    <Compile Include="CTPNController.cs" />
+    <Compile Include="HoaDonController.cs" />
+    <Compile Include="KhachHangController.cs" />
+    <Compile Include="PhieuNhapController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="QLNSModel.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLNSModel.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="SachDAL.cs" />
+    <Compile Include="SachController.cs" />
+    <Compile Include="ThuTienController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -67,19 +64,15 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="QLNSModel.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>QLNSModel.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="QLNSModel.dbml.layout">
-      <DependentUpon>QLNSModel.dbml</DependentUpon>
-    </None>
+    <ProjectReference Include="..\4_DTO\4_DTO.csproj">
+      <Project>{09b69a8a-07bd-493e-838b-b902de588eb3}</Project>
+      <Name>4_DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

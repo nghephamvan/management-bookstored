@@ -48,11 +48,16 @@
     <Compile Include="SachBUL.cs" />
     <Compile Include="ThamSoBUL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThuTienBUL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\3_DAL\3_DAL.csproj">
       <Project>{8531eecf-60e0-4f65-9e22-47dc0cb4932d}</Project>
       <Name>3_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\4_DTO\4_DTO.csproj">
+      <Project>{09b69a8a-07bd-493e-838b-b902de588eb3}</Project>
+      <Name>4_DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

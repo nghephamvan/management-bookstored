@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _3_DAL;
+using _4_DTO;
 
 namespace _2_BUL
 {
@@ -12,37 +13,37 @@ namespace _2_BUL
     {
         public static DataTable SelectAllBooksBUL()
         {
-            return SachDAL.SellectAllBooksDAL();
+            return SachController.SellectAllBooksDAL();
         }
 
         public static void DeleteBooksBUL(List<string> books)
         {
-            SachDAL.DeleteBooksDAL(books);
+            SachController.DeleteBooksDAL(books);
         }
 
         public static SACH SelectBookBUL(string MaSach)
         {
-            return SachDAL.SelectBookDAL(MaSach);
+            return SachController.SelectBookDAL(MaSach);
         }
 
         public static void InsertBookBUL(SACH temp)
         {
-            SachDAL.InsertBookDAL(temp);
+            SachController.InsertBookDAL(temp);
         }
 
         public static bool checkMaSachBUL(string masach)
         {
-            return SachDAL.checkMaSachDAL(masach);
+            return SachController.checkMaSachDAL(masach);
         }
 
         public static void UpdateSachBUL(SACH temp)
         {
-            SachDAL.UpdateSachDAL(temp);
+            SachController.UpdateSachDAL(temp);
         }
 
         public static DataTable SearchBooksBUL(string temp)
         {
-            return SachDAL.SearchBooksDAL(temp);
+            return SachController.SearchBooksDAL(temp);
         }
     }
 }
