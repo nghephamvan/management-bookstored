@@ -168,8 +168,6 @@ namespace _1_Presentation
                         item.NGAYHD = dtpNgayHD.Value.Date;
 
                         //insert into database
-                        //check /*Chỉ nhập các đầu sách có sl_tồn<300*/
-                        //SL_NHAP >= 150
                         HoaDonBUL.InsertHoaDonBUL(item);
                         MessageBox.Show("Bạn đã thêm hóa đơn [" + txtKey.Text + "] thành công", "Thông báo");
 

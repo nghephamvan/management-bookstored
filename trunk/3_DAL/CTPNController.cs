@@ -8,7 +8,7 @@ namespace _3_DAL
 {
     public class CTPNController
     {
-        static QLNSModel db = new QLNSModel();
+        static QLNSModelDataContext db = new QLNSModelDataContext();
 
         public static void InsertCTPNDAL(CTPN temp)
         {
@@ -54,26 +54,10 @@ namespace _3_DAL
         }
 
         //DataGridview select KH by MaKH
-        public static CTPN SelectCTPNDAL(string MaCTPN)
+        public static CTPN SelectCTPNDAL(string key)
         {
-            var query = from item in db.CTPNs
-                        where item.MACTPN == MaCTPN
-                        select new
-                        {
-                            item.MACTPN,
-                            item.MAPN,
-                            item.MASACH,
-                            item.SL_NHAP
-                        };
-            CTPN ctpn = new CTPN();
-            foreach (var item in query)
-            {
-                ctpn.MACTPN = item.MACTPN;
-                ctpn.MAPN = item.MAPN;
-                ctpn.MASACH = item.MASACH;
-                ctpn.SL_NHAP = item.SL_NHAP;
-            }
-            return ctpn;
+            CTPN query = db.CTPNs.Single(i => i.MACTPN.Equals(key));
+            return query;
         }
 
         public static void DeleteCTPNDAL(List<string> ctpns)
@@ -110,20 +94,27 @@ namespace _3_DAL
 
         public static bool checkCTPN_SachSLTonDAL(string key)
         {
-            var query = from item in db.SACHes
-                        where item.MASACH == key
-                        select new
-                        {
-                            item.SL_TON
-                        };
+            //var query = from item in db.SACHes
+            //            where item.MASACH == key
+            //            select new
+            //            {
+            //                item.SL_TON
+            //            };
 
-            foreach (var item in query)
+            SACH query = db.SACHes.Single(i => i.MASACH.Equals(key));
+
+            if (query.SL_TON > ThamSoController.SelectThamSoDAL().SL_TONTOIDATRUOCNHAP)
             {
-                if (item.SL_TON > 300)
-                {
-                    return false;
-                }
+                return false;
             }
+
+            //foreach (var item in query)
+            //{
+            //    if (item.SL_TON > 300)
+            //    {
+            //        return false;
+            //    }
+            //}
 
             return true;
         }
@@ -202,5 +193,14 @@ namespace _3_DAL
             return dt;
         }
 
+        public static bool checkSL_NhapItNhat(int? key)
+        {
+            if (key < ThamSoController.SelectThamSoDAL().SL_NHAPITNHAT)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

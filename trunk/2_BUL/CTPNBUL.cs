@@ -60,5 +60,10 @@ namespace _2_BUL
         {
             return CTPNController.checkCTPN_SachSLTonDAL(key);
         }
+
+        public static bool checkSL_NhapItNhat(int? key)
+        {
+            return CTPNController.checkSL_NhapItNhat(key);
+        }
     }
 }

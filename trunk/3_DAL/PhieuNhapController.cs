@@ -8,13 +8,15 @@ namespace _3_DAL
 {
     public class PhieuNhapController
     {
-        static QLNSModel db = new QLNSModel();
-        public static void InsertPNDAL(NHAP temp)
+        static QLNSModelDataContext db = new QLNSModelDataContext();
+
+        public static void InsertPNDAL(NHAP item)
         {
-            db.NHAPs.InsertOnSubmit(temp);
+            db.NHAPs.InsertOnSubmit(item);
 
             db.SubmitChanges();
         }
+
         public static DataTable SellectAllPhieuNhaps_DAL()
         {
             DataTable dt = new DataTable();
@@ -39,28 +41,17 @@ namespace _3_DAL
         }
 
         //Lay Phiếu nhập từ DataGridView
-        public static NHAP SelectPhieuNhapDAL(string MaPN)
+        public static NHAP SelectPhieuNhapDAL(string key)
         {
-            var query = from n in db.NHAPs
-                        where n.MAPN == MaPN
-                        select new
-                        {
-                            n.MAPN,
-                            n.NGAYNHAP,
-                        };
-            NHAP pn = new NHAP();
-            foreach (var s in query)
-            {
-                pn.MAPN = s.MAPN;
-                pn.NGAYNHAP = s.NGAYNHAP;
-            }
-            return pn;
+            NHAP query = db.NHAPs.Single(i => i.MAPN.Equals(key));
+            return query;
         }
-        public static void DeletePNsDAL(List<string> PNs)
+
+        public static void DeletePNsDAL(List<string> keys)
         {
             //Take PNs in Nhaps which have maPN equal listPN
             var lstPNs = from b in db.NHAPs
-                           where PNs.Contains(b.MAPN)
+                           where keys.Contains(b.MAPN)
                            select b;
             //Take PNs in CTPN which have maPN equal lstPNs.MAPN
             var lstctpns = from b in db.CTPNs
@@ -78,10 +69,11 @@ namespace _3_DAL
             db.SubmitChanges();
 
         }
-        public static bool checkMaPNDAL(string mapn)
+
+        public static bool checkMaPNDAL(string key)
         {
             var query = from sc in db.NHAPs
-                        where sc.MAPN.Equals(mapn)
+                        where sc.MAPN.Equals(key)
                         select sc;
 
             if (query.Count() <= 0)
@@ -93,25 +85,26 @@ namespace _3_DAL
                 return false;
             }
         }
+
         //kiểm tra lại
-        public static void UpdatePNDAL(NHAP temp)
+        public static void UpdatePNDAL(NHAP item)
         {
-            var query = db.NHAPs.Single(sa => sa.MAPN == temp.MAPN);
-            query.NGAYNHAP = temp.NGAYNHAP;
+            var query = db.NHAPs.Single(sa => sa.MAPN == item.MAPN);
+            query.NGAYNHAP = item.NGAYNHAP;
             db.SubmitChanges();
         }
 
-        public static DataTable SearchPNsDAL(string temp)
+        public static DataTable SearchPNsDAL(string key)
         {
             var query = from pn in db.NHAPs
                         where
                         (
-                           pn.MAPN.StartsWith(temp) ||
-                           pn.MAPN.EndsWith(temp) ||
-                           pn.MAPN.Contains(temp) ||
-                           pn.NGAYNHAP.ToString().StartsWith(temp) ||
-                           pn.NGAYNHAP.ToString().EndsWith(temp) ||
-                           pn.NGAYNHAP.ToString().Contains(temp)
+                           pn.MAPN.StartsWith(key) ||
+                           pn.MAPN.EndsWith(key) ||
+                           pn.MAPN.Contains(key) ||
+                           pn.NGAYNHAP.ToString().StartsWith(key) ||
+                           pn.NGAYNHAP.ToString().EndsWith(key) ||
+                           pn.NGAYNHAP.ToString().Contains(key)
                         )
                         select new
                         {

@@ -7,7 +7,7 @@ namespace _3_DAL
 {
     public class KhachHangController
     {
-        static QLNSModel db = new QLNSModel();
+        static QLNSModelDataContext db = new QLNSModelDataContext();
 
         public static void InsertCustomerDAL(KHACHHANG temp)
         {
@@ -15,6 +15,7 @@ namespace _3_DAL
 
             db.SubmitChanges();
         }
+
         public static DataTable SellectAllCustomerDAL()
         {
             DataTable dt = new DataTable();
@@ -47,31 +48,12 @@ namespace _3_DAL
         }
 
         //DataGridview select KH by MaKH
-        public static KHACHHANG SelectCustomerDAL(string MaKH)
+        public static KHACHHANG SelectCustomerDAL(string key)
         {
-            var query = from item in db.KHACHHANGs
-                        where item.MAKH == MaKH
-                        select new
-                        {
-                            item.MAKH,
-                            item.HOTEN,
-                            item.DIACHI,
-                            item.DIENTHOAI,
-                            item.EMAIL,
-                            item.SOTIENNO
-                        };
-            KHACHHANG cus = new KHACHHANG();
-            foreach (var item in query)
-            {
-                cus.MAKH=  item.MAKH;
-                cus.HOTEN = item.HOTEN;
-                cus.DIACHI = item.DIACHI;
-                cus.DIENTHOAI= item.DIENTHOAI;
-                cus.EMAIL= item.EMAIL;
-                cus.SOTIENNO = item.SOTIENNO;
-            }
-            return cus;
+            KHACHHANG query = db.KHACHHANGs.Single(i => i.MAKH.Equals(key));
+            return query;
         }
+
         public static void DeleteCustomersDAL(List<string> customers)
         {
             //Take custoners in KHACHHANGs which have MAKH
@@ -83,10 +65,6 @@ namespace _3_DAL
             var queryCN = from item in db.CONGNOs
                           where customers.Contains(item.MAKH)
                           select item;
-            //Delete MAKH in TON
-            var queryTON = from item in db.TONs
-                           where customers.Contains(item.MAKH)
-                           select item;
             //Delete MAKH in HOADON 
             var queryHD = from item in db.HOADONs
                           where customers.Contains(item.MAKH)
@@ -100,7 +78,6 @@ namespace _3_DAL
             //Detele
             db.CTHDs.DeleteAllOnSubmit(queryCTHD);
             db.HOADONs.DeleteAllOnSubmit(queryHD);
-            db.TONs.DeleteAllOnSubmit(queryTON);
             db.CONGNOs.DeleteAllOnSubmit(queryCN);
             db.KHACHHANGs.DeleteAllOnSubmit(query);
 
@@ -108,6 +85,7 @@ namespace _3_DAL
             db.SubmitChanges();
 
         }
+
         public static bool checkMaKHDAL(string makh)
         {
             var query = from item in db.KHACHHANGs
@@ -123,6 +101,7 @@ namespace _3_DAL
                 return false;
             }
         }
+
         //kiểm tra lại
         public static void UpdateCustomerDAL(KHACHHANG item)
         {
@@ -135,6 +114,7 @@ namespace _3_DAL
 
             db.SubmitChanges();
         }
+
         public static DataTable SearchCustomersDAL(string temp)
         {
             var query = from item in db.KHACHHANGs

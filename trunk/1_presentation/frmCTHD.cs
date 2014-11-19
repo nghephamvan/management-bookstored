@@ -195,13 +195,27 @@ namespace _1_Presentation
                         //insert into database
                         //Chỉ bán cho khách có số nợ dưới 20000
                         //SL_Ton sau >= 20
-                        if (!CTHDBUL.checkKH_CTHDBUL(item.MAHD))
+                        if (ThamSoBUL.SelectThamSoBUL() != null && ThamSoBUL.SelectThamSoBUL().SUDUNGQUYDINH == true)
                         {
-                            MessageBox.Show("Do khách hàng có số nợ lớn hơn 20000\nNên không thể thực hiện giao dịch này", "Thông Báo");
-                        }
-                        else if ((CTHDBUL.TakeSach_SL_TonBUL(item.MASACH) - item.SL_BAN) < 20)
-                        {
-                            MessageBox.Show("Số lượng tồn sau khi bán nhỏ hơn 20\n Nên không thể thực hiện giao dịch này ", "Thông Báo");
+
+                            if (!CTHDBUL.checkKH_CTHDBUL(item.MAHD))
+                            {
+                                MessageBox.Show("Do khách hàng có số nợ lớn hơn 20000\nNên không thể thực hiện giao dịch này", "Thông Báo");
+                            }
+                            else if ((CTHDBUL.TakeSach_SL_TonBUL(item.MASACH) - item.SL_BAN) < ThamSoBUL.SelectThamSoBUL().SL_TONSAUTOITHIEU)
+                            {
+                                MessageBox.Show("Số lượng tồn sau khi bán nhỏ hơn 20\n Nên không thể thực hiện giao dịch này ", "Thông Báo");
+                            }
+                            else
+                            {
+                                CTHDBUL.InsertCTHDBUL(item);
+                                MessageBox.Show("Bạn đã thêm chi tiết hóa đơn [" + txtKey.Text + "] thành công", "Thông báo");
+
+                                txtKey.Text = String.Empty;
+                                cmbNgayHD.SelectedIndex = -1;
+                                cmbSach.SelectedIndex = -1;
+                                txtSL_Ban.Text = String.Empty;
+                            }
                         }
                         else
                         {
@@ -233,13 +247,21 @@ namespace _1_Presentation
                     //insert into database
                     //Chỉ bán cho khách có số nợ dưới 20000
                     //SL_Ton sau >= 20
-                    if (!CTHDBUL.checkKH_CTHDBUL(item.MAHD))
+                    if (ThamSoBUL.SelectThamSoBUL() != null && ThamSoBUL.SelectThamSoBUL().SUDUNGQUYDINH == true)
                     {
-                        MessageBox.Show("Do khách hàng có số nợ lớn hơn 20000\nNên không thể thực hiện giao dịch này", "Thông Báo");
-                    }
-                    else if ((CTHDBUL.TakeSach_SL_TonBUL(item.MASACH) - item.SL_BAN) < 20)
-                    {
-                        MessageBox.Show("Số lượng tồn sau khi bán nhỏ hơn 20\n Nên không thể thực hiện giao dịch này ", "Thông Báo");
+                        if (!CTHDBUL.checkKH_CTHDBUL(item.MAHD))
+                        {
+                            MessageBox.Show("Do khách hàng có số nợ lớn hơn 20000\nNên không thể thực hiện giao dịch này", "Thông Báo");
+                        }
+                        else if ((CTHDBUL.TakeSach_SL_TonBUL(item.MASACH) - item.SL_BAN) < ThamSoBUL.SelectThamSoBUL().SL_TONSAUTOITHIEU)
+                        {
+                            MessageBox.Show("Số lượng tồn sau khi bán nhỏ hơn 20\n Nên không thể thực hiện giao dịch này ", "Thông Báo");
+                        }
+                        else
+                        {
+                            CTHDBUL.UpdateCTHDBUL(item);
+                            MessageBox.Show("Bạn đã sửa chi tiết hóa đơn [" + txtKey.Text + "] thành công", "Thông báo");
+                        }
                     }
                     else
                     {
