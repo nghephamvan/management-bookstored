@@ -137,3 +137,26 @@ F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\1_Pr
 F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\1_Presentation\obj\Debug\_1_Presentation.frmThuTien.resources
 F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\1_Presentation\obj\Debug\_1_Presentation.Properties.Resources.resources
 F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\1_Presentation\obj\Debug\1_Presentation.csproj.GenerateResource.Cache
+F:\Nghe SDC\NMCNPM\1_Presentation\bin\Debug\1_Presentation.exe.config
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\1_Presentation.exe
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\1_Presentation.pdb
+F:\Nghe SDC\NMCNPM\1_Presentation\bin\Debug\1_Presentation.exe
+F:\Nghe SDC\NMCNPM\1_Presentation\bin\Debug\1_Presentation.pdb
+F:\Nghe SDC\NMCNPM\1_Presentation\bin\Debug\2_BUL.dll
+F:\Nghe SDC\NMCNPM\1_Presentation\bin\Debug\3_DAL.dll
+F:\Nghe SDC\NMCNPM\1_Presentation\bin\Debug\4_DTO.dll
+F:\Nghe SDC\NMCNPM\1_Presentation\bin\Debug\2_BUL.pdb
+F:\Nghe SDC\NMCNPM\1_Presentation\bin\Debug\3_DAL.pdb
+F:\Nghe SDC\NMCNPM\1_Presentation\bin\Debug\4_DTO.pdb
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\1_Presentation.csprojResolveAssemblyReference.cache
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\_1_Presentation.frmCongNo.resources
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\_1_Presentation.frmCTHD.resources
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\_1_Presentation.frmHD.resources
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\_1_Presentation.frmCTPN.resources
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\_1_Presentation.frmKhachHang.resources
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\_1_Presentation.frmMain.resources
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\_1_Presentation.frmPhieuNhap.resources
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\_1_Presentation.frmSach.resources
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\_1_Presentation.frmThuTien.resources
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\_1_Presentation.Properties.Resources.resources
+F:\Nghe SDC\NMCNPM\1_Presentation\obj\Debug\1_Presentation.csproj.GenerateResource.Cache
