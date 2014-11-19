@@ -61,3 +61,21 @@ F:\Nghe SDC\NMCNPM\QLNS\2_BUL\bin\Debug\2_BUL.pdb
 F:\Nghe SDC\NMCNPM\QLNS\2_BUL\bin\Debug\3_DAL.dll
 F:\Nghe SDC\NMCNPM\QLNS\2_BUL\bin\Debug\3_DAL.pdb
 F:\Nghe SDC\NMCNPM\QLNS\2_BUL\obj\Debug\2_BUL.pdb
+C:\Users\ilove_000\Desktop\QLNS\2_BUL\bin\Debug\2_BUL.dll
+C:\Users\ilove_000\Desktop\QLNS\2_BUL\bin\Debug\2_BUL.pdb
+C:\Users\ilove_000\Desktop\QLNS\2_BUL\bin\Debug\3_DAL.dll
+C:\Users\ilove_000\Desktop\QLNS\2_BUL\bin\Debug\4_DTO.dll
+C:\Users\ilove_000\Desktop\QLNS\2_BUL\bin\Debug\3_DAL.pdb
+C:\Users\ilove_000\Desktop\QLNS\2_BUL\bin\Debug\4_DTO.pdb
+C:\Users\ilove_000\Desktop\QLNS\2_BUL\obj\Debug\2_BUL.csprojResolveAssemblyReference.cache
+C:\Users\ilove_000\Desktop\QLNS\2_BUL\obj\Debug\2_BUL.dll
+C:\Users\ilove_000\Desktop\QLNS\2_BUL\obj\Debug\2_BUL.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\2_BUL\bin\Debug\2_BUL.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\2_BUL\bin\Debug\2_BUL.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\2_BUL\bin\Debug\3_DAL.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\2_BUL\bin\Debug\4_DTO.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\2_BUL\bin\Debug\3_DAL.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\2_BUL\bin\Debug\4_DTO.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\2_BUL\obj\Debug\2_BUL.csprojResolveAssemblyReference.cache
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\2_BUL\obj\Debug\2_BUL.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\2_BUL\obj\Debug\2_BUL.pdb

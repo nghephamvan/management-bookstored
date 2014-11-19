@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _3_DAL;
+using _4_DTO;
 
 namespace _2_BUL
 {
@@ -12,37 +13,37 @@ namespace _2_BUL
     {
         public static DataTable SelectAllPhieuNhapsBUL()
         {
-            return PhieuNhapDAL.SellectAllPhieuNhaps_DAL();
+            return PhieuNhapController.SellectAllPhieuNhaps_DAL();
         }
 
         public static void DeletePNsBUL(List<string> PNs)
         {
-            PhieuNhapDAL.DeletePNsDAL(PNs);
+            PhieuNhapController.DeletePNsDAL(PNs);
         }
 
         public static NHAP SelectPhieuNhapBUL(string MaPN)
         {
-            return PhieuNhapDAL.SelectPhieuNhapDAL(MaPN);
+            return PhieuNhapController.SelectPhieuNhapDAL(MaPN);
         }
 
         public static void InsertPNBUL(NHAP temp)
         {
-            PhieuNhapDAL.InsertPNDAL(temp);
+            PhieuNhapController.InsertPNDAL(temp);
         }
 
         public static bool checkMaPNBUL(string mapn)
         {
-            return PhieuNhapDAL.checkMaPNDAL(mapn);
+            return PhieuNhapController.checkMaPNDAL(mapn);
         }
 
         public static void UpdatePNBUL(NHAP temp)
         {
-            PhieuNhapDAL.UpdatePNDAL(temp);
+            PhieuNhapController.UpdatePNDAL(temp);
         }
 
         public static DataTable SearchPNsBUL(string temp)
         {
-            return PhieuNhapDAL.SearchPNsDAL(temp);
+            return PhieuNhapController.SearchPNsDAL(temp);
         }
     }
 }
