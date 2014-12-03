@@ -12,6 +12,14 @@ namespace _3_DAL
 
         public static void InsertCTHDDAL(CTHD item)
         {
+            var queryHD = db.HOADONs.Single(i => i.MaHD == item.MaHD);
+            var queryS = db.SACHes.Single(i => i.MaSach == item.MaSach);
+            var query = db.KHACHHANGs.Single(i => i.MaKH == queryHD.MaKH);
+            query.SoTienNo = query.SoTienNo + item.SL_BAN * queryS.DonGia * Convert.ToDecimal(1.05);
+
+            queryS.SL_Ton = queryS.SL_Ton - item.SL_BAN;
+
+
             db.CTHDs.InsertOnSubmit(item);
 
             db.SubmitChanges();
@@ -64,6 +72,29 @@ namespace _3_DAL
 
         public static void DeleteCTHDsDAL(List<string> keys)
         {
+            var query = db.CTHDs
+                .Join(db.SACHes,
+                    ct => ct.MaSach,
+                    sc => sc.MaSach,
+                    (ct, sc) => new { ct.MACTHD, ct.MaSach, ct.MaHD, ct.SL_BAN, sc.DonGia})
+                .Join(db.HOADONs,
+                    ct => ct.MaHD,
+                    hd => hd.MaHD,
+                    (ct, hd) => new { hd.MaHD, hd.MaKH, ct.MACTHD, ct.MaSach, ct.SL_BAN, ct.DonGia})
+                .Where(i => keys.Contains(i.MACTHD))
+                .Select(i => new { i.MaKH, i.MaHD, i.MaSach, i.SL_BAN, i.DonGia});
+            //Detele
+            foreach (var i in query)
+            {
+                var temp = db.SACHes.Single(item => item.MaSach == i.MaSach);
+                temp.SL_Ton = temp.SL_Ton + i.SL_BAN;
+
+                var temp2 = db.KHACHHANGs.Single(item => item.MaKH == i.MaKH);
+                temp2.SoTienNo = temp2.SoTienNo - i.SL_BAN * i.DonGia * Convert.ToDecimal(1.05);
+
+                db.SubmitChanges();
+            }
+
 
             db.CTHDs
                 .Where(i => keys.Contains(i.MACTHD))
@@ -93,6 +124,19 @@ namespace _3_DAL
 
         public static void UpdateCTHDDAL(CTHD item)
         {
+            var queryCTHD_Cu = db.CTHDs.Single(i => i.MACTHD == item.MACTHD);
+            var queryS = db.SACHes.Single(i=>i.MaSach == item.MaSach);
+            var queryHD = db.HOADONs.Single(i=>i.MaHD == item.MaHD);
+
+            var queryKH = db.KHACHHANGs.Single(i => i.MaKH == queryHD.MaKH);
+
+            //Thay đổi tồn sách
+            queryS.SL_Ton = queryS.SL_Ton - queryCTHD_Cu.SL_BAN + item.SL_BAN;
+
+            //thay đổi số tiền nợ khách hàng
+            queryKH.SoTienNo = queryKH.SoTienNo - queryCTHD_Cu.SL_BAN * queryS.DonGia * Convert.ToDecimal(1.05) + item.SL_BAN * queryS.DonGia * Convert.ToDecimal(1.05);
+
+            //Thay đổi CTHD
             var query = db.CTHDs.Single(i => i.MACTHD == item.MACTHD);
             query.MaSach = item.MaSach;
             query.MaHD = item.MaHD;
