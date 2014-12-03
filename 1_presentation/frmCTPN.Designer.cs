@@ -403,6 +403,7 @@
             this.Controls.Add(this.txtMaCTPN);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuS);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCTPN";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chương Trình Quản Lý Nhà Sách - [Quản Lý Chi Tiết Phiếu Nhập]";

@@ -15,16 +15,16 @@ namespace _3_DAL
             var query = from item in db.THAMSOs
                         select new
                         {
-                            item.ID,
-                            item.SL_NHAPITNHAT,
-                            item.SL_TONTOIDATRUOCNHAP,
-                            item.SL_TONSAUTOITHIEU,
-                            item.SOTIENNOTOIDA,
-                            item.SUDUNGQUYDINH
+                            item.Id,
+                            item.SL_NhapItNhat,
+                            item.SL_TonToiDaTruocNhap,
+                            item.SL_TonSauToiThieu,
+                            item.SoTienNoToiDa,
+                            item.SuDungQuyDinh
                         };
             dt.Columns.Add("STT", typeof(int));
             dt.Columns.Add("ID", typeof(string));
-            dt.Columns.Add("SL_NHAPITNHAT", typeof(string));
+            dt.Columns.Add("Nhập Ít Nhất", typeof(string));
             dt.Columns.Add("SL_Tồn Tối Đa Trước Nhập", typeof(int));
             dt.Columns.Add("SL_Tồn Sau Tối Thiểu", typeof(int));
             dt.Columns.Add("Số Tiền Nợ Tối Đa", typeof(int));
@@ -32,7 +32,7 @@ namespace _3_DAL
             int stt = 1;
             foreach (var item in query)
             {
-                dt.Rows.Add(stt, item.ID, item.SL_NHAPITNHAT, item.SL_TONTOIDATRUOCNHAP, item.SL_TONSAUTOITHIEU, item.SOTIENNOTOIDA, item.SUDUNGQUYDINH);
+                dt.Rows.Add(stt, item.Id, item.SL_NhapItNhat, item.SL_TonToiDaTruocNhap, item.SL_TonSauToiThieu, item.SoTienNoToiDa, item.SuDungQuyDinh);
                 stt++;
             }
 
@@ -41,18 +41,18 @@ namespace _3_DAL
 
         public static THAMSO SelectThamSoDAL(string key)
         {
-            THAMSO query = db.THAMSOs.Single(i => i.ID.Equals(key));
+            THAMSO query = db.THAMSOs.Single(i => i.Id.Equals(key));
             return query;
         }
 
         public static void UpdateThamSoDAL(THAMSO item)
         {
-            var query = db.THAMSOs.Single(i => i.ID == item.ID);
-            query.SL_NHAPITNHAT = item.SL_NHAPITNHAT;
-            query.SL_TONTOIDATRUOCNHAP = item.SL_TONTOIDATRUOCNHAP;
-            query.SL_TONSAUTOITHIEU = item.SL_TONSAUTOITHIEU;
-            query.SOTIENNOTOIDA = item.SOTIENNOTOIDA;
-            query.SUDUNGQUYDINH = item.SUDUNGQUYDINH;
+            var query = db.THAMSOs.Single(i => i.Id == item.Id);
+            query.SL_NhapItNhat = item.SL_NhapItNhat;
+            query.SL_TonToiDaTruocNhap = item.SL_TonToiDaTruocNhap;
+            query.SL_TonSauToiThieu = item.SL_TonSauToiThieu;
+            query.SoTienNoToiDa = item.SoTienNoToiDa;
+            query.SuDungQuyDinh = item.SuDungQuyDinh;
 
             db.SubmitChanges();
         }

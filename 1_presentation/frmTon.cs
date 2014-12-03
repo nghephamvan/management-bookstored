@@ -2,13 +2,8 @@
 using _4_DTO;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace _1_Presentation
@@ -177,13 +172,13 @@ namespace _1_Presentation
                 {
                     if (TonBUL.checkMaTonBUL(txtKey.Text.Trim()))
                     {
-                        TON item = new TON();
-                        item.MATON = txtKey.Text;
-                        item.MASACH = cmbSach.SelectedValue.ToString();
-                        item.THANG = Convert.ToInt16(cmbThangTon.Text);
-                        item.TONDAU = Convert.ToInt16(txtTonDau.Text);
-                        item.TONPHATSINH = Convert.ToInt16(txtTonPhatSinh.Text);
-                        item.TONCUOI = Convert.ToInt16(txtTonCuoi.Text);
+                        PHIEUTON item = new PHIEUTON();
+                        item.MaTon = txtKey.Text;
+                        item.MaSach = cmbSach.SelectedValue.ToString();
+                        item.Thang = Convert.ToInt16(cmbThangTon.Text);
+                        item.TonDau = Convert.ToInt16(txtTonDau.Text);
+                        item.TonPhatSinh = Convert.ToInt16(txtTonPhatSinh.Text);
+                        item.TonCuoi = Convert.ToInt16(txtTonCuoi.Text);
 
                         //insert into database
                         TonBUL.InsertTonBUL(item);
@@ -207,13 +202,13 @@ namespace _1_Presentation
             {
                 if (txtKey.Text.Trim() != string.Empty)
                 {
-                    TON item = new TON();
-                    item.MATON = txtKey.Text;
-                    item.MASACH = cmbSach.SelectedValue.ToString();
-                    item.THANG = Convert.ToInt16(cmbThangTon.Text);
-                    item.TONDAU = Convert.ToInt16(txtTonDau.Text);
-                    item.TONPHATSINH = Convert.ToInt16(txtTonPhatSinh.Text);
-                    item.TONCUOI = Convert.ToInt16(txtTonCuoi.Text);
+                    PHIEUTON item = new PHIEUTON();
+                    item.MaTon = txtKey.Text;
+                    item.MaSach = cmbSach.SelectedValue.ToString();
+                    item.Thang = Convert.ToInt16(cmbThangTon.Text);
+                    item.TonDau = Convert.ToInt16(txtTonDau.Text);
+                    item.TonPhatSinh = Convert.ToInt16(txtTonPhatSinh.Text);
+                    item.TonCuoi = Convert.ToInt16(txtTonCuoi.Text);
 
                     //update into database
 
@@ -265,14 +260,14 @@ namespace _1_Presentation
                 //Select Sach bằng mã sách
 
 
-                TON item = TonBUL.SelectTonBUL(key);
+                PHIEUTON item = TonBUL.SelectTonBUL(key);
 
-                txtKey.Text = item.MATON;
-                cmbSach.SelectedValue = item.MASACH;
-                cmbThangTon.Text = item.THANG.ToString();
-                txtTonDau.Text = item.TONDAU.ToString();
-                txtTonPhatSinh.Text = item.TONPHATSINH.ToString();
-                txtTonCuoi.Text = item.TONCUOI.ToString();
+                txtKey.Text = item.MaTon;
+                cmbSach.SelectedValue = item.MaSach;
+                cmbThangTon.Text = item.Thang.ToString();
+                txtTonDau.Text = item.TonDau.ToString();
+                txtTonPhatSinh.Text = item.TonPhatSinh.ToString();
+                txtTonCuoi.Text = item.TonCuoi.ToString();
             }
         }
 
@@ -393,6 +388,28 @@ namespace _1_Presentation
                 }
                 catch (Exception) { }
 
+            }
+        }
+
+        private void cmbBaoCao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (chkBBaoCao.Checked)
+            {
+                DGV_Result.DataSource = TonBUL.SelectTon_MonthBUL(cmbBaoCao.Text);
+            }
+        }
+
+        private void chkBBaoCao_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkBBaoCao.Checked)
+            {
+                cmbBaoCao.Enabled = true;
+            }
+            else
+            {
+                cmbBaoCao.Enabled = false;
+
+                Reload();
             }
         }
     }

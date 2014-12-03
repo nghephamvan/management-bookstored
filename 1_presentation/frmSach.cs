@@ -184,16 +184,16 @@ namespace _1_Presentation
                     if (SachBUL.checkMaSachBUL(txtMaSach.Text.Trim()))
                     {
                         SACH sach = new SACH();
-                        sach.MASACH = txtMaSach.Text;
-                        sach.TENSACH = txtTenSach.Text;
-                        sach.THELOAI = txtTheLoai.Text;
-                        sach.TACGIA = txtTacGia.Text;
-                        sach.SL_TON = Convert.ToInt16(txtSL_Ton.Text);
-                        sach.DONGIA = Convert.ToDecimal(txtDonGia.Text);
+                        sach.MaSach = txtMaSach.Text;
+                        sach.TenSach = txtTenSach.Text;
+                        sach.TheLoai = txtTheLoai.Text;
+                        sach.TacGia = txtTacGia.Text;
+                        sach.SL_Ton = Convert.ToInt16(txtSL_Ton.Text);
+                        sach.DonGia = Convert.ToDecimal(txtDonGia.Text);
 
                         SachBUL.InsertBookBUL(sach);
 
-                        MessageBox.Show("Bạn đã thêm sách với mã [" + sach.MASACH + "] thành công", "Thông báo");
+                        MessageBox.Show("Bạn đã thêm sách với mã [" + sach.MaSach + "] thành công", "Thông báo");
 
                         txtMaSach.Text = String.Empty;
                         txtTenSach.Text = String.Empty;
@@ -213,18 +213,22 @@ namespace _1_Presentation
             {
                 if (txtMaSach.Text.Trim() != string.Empty)
                 {
-                    SACH sach = new SACH();
-                    sach.MASACH = txtMaSach.Text;
-                    sach.TENSACH = txtTenSach.Text;
-                    sach.THELOAI = txtTheLoai.Text;
-                    sach.TACGIA = txtTacGia.Text;
-                    sach.SL_TON = Convert.ToInt16(txtSL_Ton.Text);
-                    sach.DONGIA = Convert.ToDecimal(txtDonGia.Text);
+                     DialogResult dialog = MessageBox.Show("Bạn có muốn sửa thông tin sách?\nKhi xóa sách sẽ xóa các chi tiết hóa đơn và chi tiết phiếu nhập", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                     if (dialog == DialogResult.OK)
+                     {
+                         SACH sach = new SACH();
+                         sach.MaSach = txtMaSach.Text;
+                         sach.TenSach = txtTenSach.Text;
+                         sach.TheLoai = txtTheLoai.Text;
+                         sach.TacGia = txtTacGia.Text;
+                         sach.SL_Ton = Convert.ToInt16(txtSL_Ton.Text);
+                         sach.DonGia = Convert.ToDecimal(txtDonGia.Text);
 
-                    //Sửa thông tin của sách
-                    SachBUL.UpdateSachBUL(sach);
+                         //Sửa thông tin của sách
+                         SachBUL.UpdateSachBUL(sach);
 
-                    MessageBox.Show("Bạn đã cập nhật thông tin của sách [" + txtMaSach.Text + "] thành công!", "Thông báo");
+                         MessageBox.Show("Bạn đã cập nhật thông tin của sách [" + txtMaSach.Text + "] thành công!", "Thông báo");
+                     }
 
                 }
                 else
@@ -235,6 +239,20 @@ namespace _1_Presentation
             }
 
             Reload();
+            _chkAdd = false;
+
+            btnAdd.Text = "Thêm";
+            btnUpdate.Text = "Sửa";
+            btnSave.Enabled = false;
+            btnDelete.Enabled = true;
+            btnAdd.Enabled = true;
+
+            txtMaSach.Enabled = false;
+            txtTenSach.Enabled = false;
+            txtTheLoai.Enabled = false;
+            txtTacGia.Enabled = false;
+            txtSL_Ton.Enabled = false;
+            txtDonGia.Enabled = false;
         }
 
         private void btnExportExcel_Click(object sender, EventArgs e)
@@ -262,12 +280,12 @@ namespace _1_Presentation
                 //Select Sach bằng mã sách
                 SACH sc = SachBUL.SelectBookBUL(MaSach);
 
-                txtMaSach.Text = sc.MASACH;
-                txtTenSach.Text = sc.TENSACH;
-                txtTheLoai.Text = sc.THELOAI;
-                txtTacGia.Text = sc.TACGIA;
-                txtSL_Ton.Text = sc.SL_TON.ToString();
-                txtDonGia.Text = sc.DONGIA.ToString();
+                txtMaSach.Text = sc.MaSach;
+                txtTenSach.Text = sc.TenSach;
+                txtTheLoai.Text = sc.TheLoai;
+                txtTacGia.Text = sc.TacGia;
+                txtSL_Ton.Text = sc.SL_Ton.ToString();
+                txtDonGia.Text = sc.DonGia.ToString();
             }
         }
 

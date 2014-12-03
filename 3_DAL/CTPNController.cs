@@ -22,17 +22,18 @@ namespace _3_DAL
             DataTable dt = new DataTable();
 
             var query = from item in db.CTPNs
-                        join item2 in db.NHAPs on item.MAPN equals item2.MAPN
-                        join item3 in db.SACHes on item.MASACH equals item3.MASACH
+                        join item2 in db.PHIEUNHAPs on item.MaPN equals item2.MaPN
+                        join item3 in db.SACHes on item.MaSach equals item3.MaSach
+                        where item.XoaDuLieu == false
                         select new
                         {
-                            item.MACTPN,
-                            item3.TENSACH,
-                            item3.THELOAI,
-                            item3.TACGIA,
-                            item.SL_NHAP,
-                            item2.NGAYNHAP,
-                            item3.DONGIA
+                            item.MaCTPN,
+                            item3.TenSach,
+                            item3.TheLoai,
+                            item3.TacGia,
+                            item.SL_Nhap,
+                            item2.NgayNhap,
+                            item3.DonGia
                         };
             dt.Columns.Add("STT", typeof(int));
             dt.Columns.Add("Mã CTPN", typeof(string));
@@ -46,7 +47,7 @@ namespace _3_DAL
             int stt = 1;
             foreach (var item in query)
             {
-                dt.Rows.Add(stt, item.MACTPN, item.TENSACH, item.THELOAI, item.TACGIA, item.SL_NHAP, item.NGAYNHAP, item.DONGIA);
+                dt.Rows.Add(stt, item.MaCTPN, item.TenSach, item.TheLoai, item.TacGia, item.SL_Nhap, item.NgayNhap, item.DonGia);
                 stt++;
             }
 
@@ -56,20 +57,18 @@ namespace _3_DAL
         //DataGridview select KH by MaKH
         public static CTPN SelectCTPNDAL(string key)
         {
-            CTPN query = db.CTPNs.Single(i => i.MACTPN.Equals(key));
+            CTPN query = db.CTPNs.Single(i => i.MaCTPN.Equals(key));
             return query;
         }
 
-        public static void DeleteCTPNDAL(List<string> ctpns)
+        public static void DeleteCTPNDAL(List<string> keys)
         {
-            //Take ctpns in CTPNs which have mactpn
-
-            var query = from item in db.CTPNs
-                        where ctpns.Contains(item.MACTPN)
-                        select item;
 
             //Detele
-            db.CTPNs.DeleteAllOnSubmit(query);
+            db.CTPNs
+                .Where(i => keys.Contains(i.MaCTPN))
+                .ToList()
+                .ForEach(i => i.XoaDuLieu = true);
 
             //Confirm database
             db.SubmitChanges();
@@ -79,7 +78,7 @@ namespace _3_DAL
         public static bool checkMaCTPNDAL(string mactpn)
         {
             var query = from item in db.CTPNs
-                        where item.MACTPN.Equals(mactpn)
+                        where item.MaCTPN.Equals(mactpn)
                         select item;
 
             if (query.Count() <= 0)
@@ -101,9 +100,9 @@ namespace _3_DAL
             //                item.SL_TON
             //            };
 
-            SACH query = db.SACHes.Single(i => i.MASACH.Equals(key));
+            SACH query = db.SACHes.Where(i => i.XoaDuLieu == false).Single(i => i.MaSach.Equals(key));
 
-            if (query.SL_TON > ThamSoController.SelectThamSoDAL().SL_TONTOIDATRUOCNHAP)
+            if (query.SL_Ton > ThamSoController.SelectThamSoDAL().SL_TonToiDaTruocNhap)
             {
                 return false;
             }
@@ -121,10 +120,10 @@ namespace _3_DAL
         //kiểm tra lại
         public static void UpdateCTPNDAL(CTPN item)
         {
-            var query = db.CTPNs.Single(sa => sa.MACTPN == item.MACTPN);
-            query.MAPN = item.MAPN;
-            query.MASACH = item.MASACH;
-            query.SL_NHAP = item.SL_NHAP;
+            var query = db.CTPNs.Single(sa => sa.MaCTPN == item.MaCTPN);
+            query.MaPN = item.MaPN;
+            query.MaSach = item.MaSach;
+            query.SL_Nhap = item.SL_Nhap;
 
             db.SubmitChanges();
         }
@@ -132,44 +131,44 @@ namespace _3_DAL
         public static DataTable SearchCTPNDAL(string temp)
         {
             var query = from item in db.CTPNs
-                        join item2 in db.NHAPs on item.MAPN equals item2.MAPN
-                        join item3 in db.SACHes on item.MASACH equals item3.MASACH
+                        join item2 in db.PHIEUNHAPs on item.MaPN equals item2.MaPN
+                        join item3 in db.SACHes on item.MaSach equals item3.MaSach
                         where
                         (
-                           item.MACTPN.StartsWith(temp) ||
-                           item.MACTPN.EndsWith(temp) ||
-                           item.MACTPN.Contains(temp) ||
-                           item3.TENSACH.StartsWith(temp) ||
-                           item3.TENSACH.EndsWith(temp) ||
-                           item3.TENSACH.Contains(temp) ||
-                           item3.THELOAI.StartsWith(temp) ||
-                           item3.THELOAI.EndsWith(temp) ||
-                           item3.THELOAI.Contains(temp) ||
-                           item3.TACGIA.StartsWith(temp) ||
-                           item3.TACGIA.EndsWith(temp) ||
-                           item3.TACGIA.Contains(temp) ||
-                           item2.NGAYNHAP.ToString().StartsWith(temp) ||
-                           item2.NGAYNHAP.ToString().EndsWith(temp) ||
-                           item2.NGAYNHAP.ToString().Contains(temp) ||
-                           item.SL_NHAP.ToString().Contains(temp) ||
-                           item.SL_NHAP.ToString().StartsWith(temp) ||
-                           item.SL_NHAP.ToString().EndsWith(temp)||
-                           item2.NGAYNHAP.ToString().StartsWith(temp) ||
-                           item2.NGAYNHAP.ToString().EndsWith(temp) ||
-                           item2.NGAYNHAP.ToString().Contains(temp) ||
-                           item3.DONGIA.ToString().StartsWith(temp) ||
-                           item3.DONGIA.ToString().EndsWith(temp) ||
-                           item3.DONGIA.ToString().Contains(temp)
-                        )
+                           item.MaCTPN.StartsWith(temp) ||
+                           item.MaCTPN.EndsWith(temp) ||
+                           item.MaCTPN.Contains(temp) ||
+                           item3.TenSach.StartsWith(temp) ||
+                           item3.TenSach.EndsWith(temp) ||
+                           item3.TenSach.Contains(temp) ||
+                           item3.TheLoai.StartsWith(temp) ||
+                           item3.TheLoai.EndsWith(temp) ||
+                           item3.TheLoai.Contains(temp) ||
+                           item3.TacGia.StartsWith(temp) ||
+                           item3.TacGia.EndsWith(temp) ||
+                           item3.TacGia.Contains(temp) ||
+                           item2.NgayNhap.ToString().StartsWith(temp) ||
+                           item2.NgayNhap.ToString().EndsWith(temp) ||
+                           item2.NgayNhap.ToString().Contains(temp) ||
+                           item.SL_Nhap.ToString().Contains(temp) ||
+                           item.SL_Nhap.ToString().StartsWith(temp) ||
+                           item.SL_Nhap.ToString().EndsWith(temp)||
+                           item2.NgayNhap.ToString().StartsWith(temp) ||
+                           item2.NgayNhap.ToString().EndsWith(temp) ||
+                           item2.NgayNhap.ToString().Contains(temp) ||
+                           item3.DonGia.ToString().StartsWith(temp) ||
+                           item3.DonGia.ToString().EndsWith(temp) ||
+                           item3.DonGia.ToString().Contains(temp)
+                        ) && item.XoaDuLieu == false
                         select new
                         {
-                            item.MACTPN,
-                            item3.TENSACH,
-                            item3.THELOAI,
-                            item3.TACGIA,
-                            item.SL_NHAP,
-                            item2.NGAYNHAP,
-                            item3.DONGIA
+                            item.MaCTPN,
+                            item3.TenSach,
+                            item3.TheLoai,
+                            item3.TacGia,
+                            item.SL_Nhap,
+                            item2.NgayNhap,
+                            item3.DonGia
                         };
 
 
@@ -186,7 +185,7 @@ namespace _3_DAL
             int stt = 1;
             foreach (var item in query)
             {
-                dt.Rows.Add(stt, item.MACTPN, item.TENSACH, item.THELOAI, item.TACGIA, item.SL_NHAP, item.NGAYNHAP, item.DONGIA);
+                dt.Rows.Add(stt, item.MaCTPN, item.TenSach, item.TheLoai, item.TacGia, item.SL_Nhap, item.NgayNhap, item.DonGia);
                 stt++;
             }
 
@@ -195,7 +194,7 @@ namespace _3_DAL
 
         public static bool checkSL_NhapItNhat(int? key)
         {
-            if (key < ThamSoController.SelectThamSoDAL().SL_NHAPITNHAT)
+            if (key < ThamSoController.SelectThamSoDAL().SL_NhapItNhat)
             {
                 return false;
             }

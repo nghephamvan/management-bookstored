@@ -196,12 +196,12 @@ namespace _1_Presentation
             if (txtKey.Text.Trim() != string.Empty)
             {
                 THAMSO item = new THAMSO();
-                item.ID = Convert.ToInt16(txtKey.Text);
-                item.SL_NHAPITNHAT = Convert.ToInt16(txtNhapItNhat.Text);
-                item.SL_TONTOIDATRUOCNHAP = Convert.ToInt16(txtTonToiDa.Text);
-                item.SL_TONSAUTOITHIEU = Convert.ToInt16(txtTonSauToiThieu.Text);
-                item.SOTIENNOTOIDA = Convert.ToDecimal(txtNoToiDa.Text);
-                item.SUDUNGQUYDINH = chkBSuDung.Checked;
+                item.Id = Convert.ToInt16(txtKey.Text);
+                item.SL_NhapItNhat = Convert.ToInt16(txtNhapItNhat.Text);
+                item.SL_TonToiDaTruocNhap = Convert.ToInt16(txtTonToiDa.Text);
+                item.SL_TonSauToiThieu = Convert.ToInt16(txtTonSauToiThieu.Text);
+                item.SoTienNoToiDa = Convert.ToDecimal(txtNoToiDa.Text);
+                item.SuDungQuyDinh = chkBSuDung.Checked;
 
                 //update into database
 
@@ -226,12 +226,12 @@ namespace _1_Presentation
 
             THAMSO item = ThamSoBUL.SelectThamSoBUL(key);
 
-            txtKey.Text = item.ID.ToString();
-            txtNhapItNhat.Text = item.SL_NHAPITNHAT.ToString();
-            txtTonToiDa.Text = item.SL_TONTOIDATRUOCNHAP.ToString();
-            txtTonSauToiThieu.Text = item.SL_TONSAUTOITHIEU.ToString();
-            txtNoToiDa.Text = item.SOTIENNOTOIDA.ToString();
-            chkBSuDung.Checked = (bool)item.SUDUNGQUYDINH;
+            txtKey.Text = item.Id.ToString();
+            txtNhapItNhat.Text = item.SL_NhapItNhat.ToString();
+            txtTonToiDa.Text = item.SL_TonToiDaTruocNhap.ToString();
+            txtTonSauToiThieu.Text = item.SL_TonSauToiThieu.ToString();
+            txtNoToiDa.Text = item.SoTienNoToiDa.ToString();
+            chkBSuDung.Checked = (bool)item.SuDungQuyDinh;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

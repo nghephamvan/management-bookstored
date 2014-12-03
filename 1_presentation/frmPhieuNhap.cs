@@ -146,9 +146,10 @@ namespace _1_Presentation
                 {
                     if (PhieuNhapBUL.checkMaPNBUL(txtMaPN.Text.Trim()))
                     {
-                        NHAP pn = new NHAP();
-                        pn.MAPN = txtMaPN.Text;
-                        pn.NGAYNHAP = dtpicker.Value;
+
+                        PHIEUNHAP pn = new PHIEUNHAP();
+                        pn.MaPN = txtMaPN.Text;
+                        pn.NgayNhap = dtpicker.Value;
 
                         PhieuNhapBUL.InsertPNBUL(pn);
 
@@ -168,14 +169,18 @@ namespace _1_Presentation
             {
                 if (txtMaPN.Text.Trim() != string.Empty)
                 {
-                    NHAP pn = new NHAP();
-                    pn.MAPN = txtMaPN.Text;
-                    pn.NGAYNHAP = dtpicker.Value.Date;
+                    DialogResult dialog = MessageBox.Show("Bạn có muốn xóa thông tin phiếu nhập?\nKhi xóa phiếu nhập sẽ xóa các chi tiết phiếu nhập", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (dialog == DialogResult.OK)
+                    {
+                        PHIEUNHAP pn = new PHIEUNHAP();
+                        pn.MaPN = txtMaPN.Text;
+                        pn.NgayNhap = dtpicker.Value.Date;
 
-                    //Sửa thông tin của phiếu nhập
-                    PhieuNhapBUL.UpdatePNBUL(pn);
+                        //Sửa thông tin của phiếu nhập
+                        PhieuNhapBUL.UpdatePNBUL(pn);
 
-                    MessageBox.Show("Bạn đã cập nhật thông tin của phiếu nhập [" + txtMaPN.Text + "] thành công!", "Thông báo");
+                        MessageBox.Show("Bạn đã cập nhật thông tin của phiếu nhập [" + txtMaPN.Text + "] thành công!", "Thông báo");
+                    }
 
                 }
                 else
@@ -186,6 +191,16 @@ namespace _1_Presentation
             }
 
             Reload();
+            _chkAdd = false;
+
+            btnAdd.Text = "Thêm";
+            btnUpdate.Text = "Sửa";
+            btnSave.Enabled = false;
+            btnDelete.Enabled = true;
+            btnAdd.Enabled = true;
+
+            txtMaPN.Enabled = false;
+            dtpicker.Enabled = false;
         }
 
         private void chkAll_CheckedChanged(object sender, EventArgs e)
@@ -220,10 +235,10 @@ namespace _1_Presentation
             {
                 string MaPN = DGV_Result.Rows[e.RowIndex].Cells[2].Value.ToString();
 
-                NHAP pn = PhieuNhapBUL.SelectPhieuNhapBUL(MaPN);
+                PHIEUNHAP pn = PhieuNhapBUL.SelectPhieuNhapBUL(MaPN);
 
-                txtMaPN.Text = pn.MAPN;
-                dtpicker.Value = (DateTime)pn.NGAYNHAP;
+                txtMaPN.Text = pn.MaPN;
+                dtpicker.Value = (DateTime)pn.NgayNhap;
             }
         }
 

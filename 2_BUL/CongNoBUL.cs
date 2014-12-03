@@ -45,5 +45,10 @@ namespace _2_BUL
         {
             return CongNoController.SearchCongNosDAL(key);
         }
+
+        public static DataTable SelectCongNo_MonthBUL(string key)
+        {
+            return CongNoController.SelectCongNo_MonthDAL(key);
+        }
     }
 }

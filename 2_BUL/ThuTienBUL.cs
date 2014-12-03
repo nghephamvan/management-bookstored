@@ -21,12 +21,12 @@ namespace _2_BUL
             ThuTienController.DeleteThuTiensDAL(keys);
         }
 
-        public static THUTIEN SelectThuTienBUL(string key)
+        public static PHIEUTHUTIEN SelectThuTienBUL(string key)
         {
             return ThuTienController.SelectThuTienDAL(key);
         }
 
-        public static void InsertThuTienBUL(THUTIEN item)
+        public static void InsertThuTienBUL(PHIEUTHUTIEN item)
         {
             ThuTienController.InsertThuTienDAL(item);
         }
@@ -36,7 +36,7 @@ namespace _2_BUL
             return ThuTienController.checkMaThuTienDAL(key);
         }
 
-        public static void UpdateThuTienBUL(THUTIEN item)
+        public static void UpdateThuTienBUL(PHIEUTHUTIEN item)
         {
             ThuTienController.UpdateThuTienDAL(item);
         }

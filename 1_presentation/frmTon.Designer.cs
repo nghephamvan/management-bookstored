@@ -67,6 +67,8 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtTonCuoi = new System.Windows.Forms.TextBox();
             this.cmbSach = new System.Windows.Forms.ComboBox();
+            this.chkBBaoCao = new System.Windows.Forms.CheckBox();
+            this.cmbBaoCao = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Result)).BeginInit();
             this.menuS.SuspendLayout();
             this.SuspendLayout();
@@ -431,11 +433,48 @@
             this.cmbSach.Size = new System.Drawing.Size(169, 21);
             this.cmbSach.TabIndex = 2;
             // 
+            // chkBBaoCao
+            // 
+            this.chkBBaoCao.AutoSize = true;
+            this.chkBBaoCao.Location = new System.Drawing.Point(511, 203);
+            this.chkBBaoCao.Name = "chkBBaoCao";
+            this.chkBBaoCao.Size = new System.Drawing.Size(120, 17);
+            this.chkBBaoCao.TabIndex = 6;
+            this.chkBBaoCao.Text = "Báo cáo theo tháng";
+            this.chkBBaoCao.UseVisualStyleBackColor = true;
+            this.chkBBaoCao.CheckedChanged += new System.EventHandler(this.chkBBaoCao_CheckedChanged);
+            // 
+            // cmbBaoCao
+            // 
+            this.cmbBaoCao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBaoCao.Enabled = false;
+            this.cmbBaoCao.FormattingEnabled = true;
+            this.cmbBaoCao.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cmbBaoCao.Location = new System.Drawing.Point(336, 201);
+            this.cmbBaoCao.Name = "cmbBaoCao";
+            this.cmbBaoCao.Size = new System.Drawing.Size(169, 21);
+            this.cmbBaoCao.TabIndex = 6;
+            this.cmbBaoCao.SelectedIndexChanged += new System.EventHandler(this.cmbBaoCao_SelectedIndexChanged);
+            // 
             // frmTon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 729);
+            this.Controls.Add(this.chkBBaoCao);
+            this.Controls.Add(this.cmbBaoCao);
             this.Controls.Add(this.cmbThangTon);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -459,6 +498,7 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtTonCuoi);
             this.Controls.Add(this.cmbSach);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmTon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chương Trình Quản Lý Nhà Sách - [Quản Lý Tồn]";
@@ -512,5 +552,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtTonCuoi;
         private System.Windows.Forms.ComboBox cmbSach;
+        private System.Windows.Forms.CheckBox chkBBaoCao;
+        private System.Windows.Forms.ComboBox cmbBaoCao;
     }
 }

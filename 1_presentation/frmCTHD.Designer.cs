@@ -424,6 +424,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuS);
             this.Controls.Add(this.txtSearch);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCTHD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chương Trình Quản Lý Nhà Sách - [Quản Lý Chi Tiết Hóa Đơn]";

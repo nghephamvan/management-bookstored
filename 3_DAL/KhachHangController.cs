@@ -21,14 +21,15 @@ namespace _3_DAL
             DataTable dt = new DataTable();
 
             var query = from item in db.KHACHHANGs
+                        where item.XoaDuLieu == false
                         select new
                         {
-                            item.MAKH,
-                            item.HOTEN,
-                            item.DIACHI,
-                            item.DIENTHOAI,
-                            item.EMAIL,
-                            item.SOTIENNO
+                            item.MaKH,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.DienThoai,
+                            item.Email,
+                            item.SoTienNo
                         };
             dt.Columns.Add("STT", typeof(int));
             dt.Columns.Add("Mã KH", typeof(string));
@@ -40,7 +41,7 @@ namespace _3_DAL
             int stt = 1;
             foreach (var item in query)
             {
-                dt.Rows.Add(stt, item.MAKH, item.HOTEN, item.DIACHI, item.DIENTHOAI, item.EMAIL, item.SOTIENNO);
+                dt.Rows.Add(stt, item.MaKH, item.HoTen, item.DiaChi, item.DienThoai, item.Email, item.SoTienNo);
                 stt++;
             }
 
@@ -50,36 +51,46 @@ namespace _3_DAL
         //DataGridview select KH by MaKH
         public static KHACHHANG SelectCustomerDAL(string key)
         {
-            KHACHHANG query = db.KHACHHANGs.Single(i => i.MAKH.Equals(key));
+            KHACHHANG query = db.KHACHHANGs.Single(i => i.MaKH.Equals(key));
             return query;
         }
 
-        public static void DeleteCustomersDAL(List<string> customers)
+        public static void DeleteCustomersDAL(List<string> keys)
         {
             //Take custoners in KHACHHANGs which have MAKH
 
-            var query = from item in db.KHACHHANGs
-                        where customers.Contains(item.MAKH)
-                        select item;
-            //Detele MAKH in CONGNO
-            var queryCN = from item in db.CONGNOs
-                          where customers.Contains(item.MAKH)
-                          select item;
-            //Delete MAKH in HOADON 
             var queryHD = from item in db.HOADONs
-                          where customers.Contains(item.MAKH)
+                          where keys.Contains(item.MaKH)
                           select item;
             
             //Delete HOADON in CTHD
             var queryCTHD = from item in db.CTHDs
-                            join hd in queryHD on item.MAHD equals hd.MAHD
-                            select item;
+                            join hd in queryHD on item.MaHD equals hd.MaHD
+                            select new { item.MaHD};
+
+            List<string> lst = new List<string>();
+            foreach (var i in queryCTHD)
+            {
+                lst.Add(i.MaHD);
+            }
 
             //Detele
-            db.CTHDs.DeleteAllOnSubmit(queryCTHD);
-            db.HOADONs.DeleteAllOnSubmit(queryHD);
-            db.CONGNOs.DeleteAllOnSubmit(queryCN);
-            db.KHACHHANGs.DeleteAllOnSubmit(query);
+            db.CTHDs
+                .Where(i => lst.Contains(i.MaHD))
+                .ToList()
+                .ForEach(i => i.XoaDuLieu = true);
+            db.HOADONs
+                .Where(i => keys.Contains(i.MaKH))
+                .ToList()
+                .ForEach(i => i.XoaDuLieu = true);
+            db.CONGNOs
+                .Where(i => keys.Contains(i.MaKH))
+                .ToList()
+                .ForEach(i => i.XoaDuLieu = true);
+            db.KHACHHANGs
+                .Where(i => keys.Contains(i.MaKH))
+                .ToList()
+                .ForEach(i => i.XoaDuLieu = true);
 
             //Confirm database
             db.SubmitChanges();
@@ -89,7 +100,7 @@ namespace _3_DAL
         public static bool checkMaKHDAL(string makh)
         {
             var query = from item in db.KHACHHANGs
-                        where item.MAKH.Equals(makh)
+                        where item.MaKH.Equals(makh)
                         select item;
 
             if (query.Count() <= 0)
@@ -105,12 +116,12 @@ namespace _3_DAL
         //kiểm tra lại
         public static void UpdateCustomerDAL(KHACHHANG item)
         {
-            var query = db.KHACHHANGs.Single(sa => sa.MAKH == item.MAKH);
-            query.HOTEN = item.HOTEN;
-            query.DIACHI = item.DIACHI;
-            query.DIENTHOAI = item.DIENTHOAI;
-            query.EMAIL = item.EMAIL;
-            query.SOTIENNO = item.SOTIENNO;
+            var query = db.KHACHHANGs.Single(sa => sa.MaKH == item.MaKH);
+            query.HoTen = item.HoTen;
+            query.DiaChi = item.DiaChi;
+            query.DienThoai = item.DienThoai;
+            query.Email = item.Email;
+            query.SoTienNo = item.SoTienNo;
 
             db.SubmitChanges();
         }
@@ -120,33 +131,33 @@ namespace _3_DAL
             var query = from item in db.KHACHHANGs
                         where
                         (
-                           item.MAKH.StartsWith(temp) ||
-                           item.MAKH.EndsWith(temp) ||
-                           item.MAKH.Contains(temp) ||
-                           item.HOTEN.StartsWith(temp) ||
-                           item.HOTEN.EndsWith(temp) ||
-                           item.HOTEN.Contains(temp) ||
-                           item.DIACHI.StartsWith(temp) ||
-                           item.DIACHI.EndsWith(temp) ||
-                           item.DIACHI.Contains(temp) ||
-                           item.DIENTHOAI.StartsWith(temp) ||
-                           item.DIENTHOAI.EndsWith(temp) ||
-                           item.DIENTHOAI.Contains(temp) ||
-                           item.EMAIL.StartsWith(temp) ||
-                           item.EMAIL.EndsWith(temp) ||
-                           item.EMAIL.Contains(temp) ||
-                           item.SOTIENNO.ToString().Contains(temp) ||
-                           item.SOTIENNO.ToString().StartsWith(temp) ||
-                           item.SOTIENNO.ToString().EndsWith(temp)
-                        )
+                           item.MaKH.StartsWith(temp) ||
+                           item.MaKH.EndsWith(temp) ||
+                           item.MaKH.Contains(temp) ||
+                           item.HoTen.StartsWith(temp) ||
+                           item.HoTen.EndsWith(temp) ||
+                           item.HoTen.Contains(temp) ||
+                           item.DiaChi.StartsWith(temp) ||
+                           item.DiaChi.EndsWith(temp) ||
+                           item.DiaChi.Contains(temp) ||
+                           item.DienThoai.StartsWith(temp) ||
+                           item.DienThoai.EndsWith(temp) ||
+                           item.DienThoai.Contains(temp) ||
+                           item.Email.StartsWith(temp) ||
+                           item.Email.EndsWith(temp) ||
+                           item.Email.Contains(temp) ||
+                           item.SoTienNo.ToString().Contains(temp) ||
+                           item.SoTienNo.ToString().StartsWith(temp) ||
+                           item.SoTienNo.ToString().EndsWith(temp)
+                        ) && item.XoaDuLieu == false
                         select new
                         {
-                            item.MAKH,
-                            item.HOTEN,
-                            item.DIACHI,
-                            item.DIENTHOAI,
-                            item.EMAIL,
-                            item.SOTIENNO
+                            item.MaKH,
+                            item.HoTen,
+                            item.DiaChi,
+                            item.DienThoai,
+                            item.Email,
+                            item.SoTienNo
                         };
 
 
@@ -161,7 +172,7 @@ namespace _3_DAL
             int stt = 1;
             foreach (var item in query)
             {
-                dt.Rows.Add(stt, item.MAKH, item.HOTEN, item.DIACHI, item.DIENTHOAI, item.EMAIL, item.SOTIENNO);
+                dt.Rows.Add(stt, item.MaKH, item.HoTen, item.DiaChi, item.DienThoai, item.Email, item.SoTienNo);
                 stt++;
             }
 

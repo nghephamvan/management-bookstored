@@ -314,6 +314,7 @@
             this.Controls.Add(this.menuS);
             this.Controls.Add(this.txtTonSauToiThieu);
             this.Controls.Add(this.btnSave);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1024, 767);
             this.MinimumSize = new System.Drawing.Size(1022, 736);
