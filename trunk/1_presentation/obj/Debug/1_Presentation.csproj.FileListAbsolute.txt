@@ -164,3 +164,6 @@ F:\Nghe SDC\QLNS vs 1.0\1_Presentation\obj\Debug\1_Presentation.csproj.GenerateR
 F:\Nghe SDC\QLNS vs 1.0\1_Presentation\obj\Debug\_1_Presentation.frmThamSo.resources
 F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\1_Presentation\obj\Debug\_1_Presentation.frmThamSo.resources
 F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\QLNS vs 1.0\1_Presentation\obj\Debug\_1_Presentation.frmTon.resources
+F:\Nghe SDC\management-bookstored\1_Presentation\bin\Debug\1_Presentation.exe.config
+F:\Nghe SDC\management-bookstored\1_Presentation\obj\Debug\1_Presentation.exe
+F:\Nghe SDC\management-bookstored\1_Presentation\obj\Debug\1_Presentation.pdb
