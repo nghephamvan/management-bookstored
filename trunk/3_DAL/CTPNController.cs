@@ -12,6 +12,10 @@ namespace _3_DAL
 
         public static void InsertCTPNDAL(CTPN temp)
         {
+            //thay đổi số lượng tồn của sách khi thêm 1 trường chi tiết phiếu nhập
+            var query = db.SACHes.Single(i => i.MaSach == temp.MaSach);
+            query.SL_Ton = query.SL_Ton + temp.SL_Nhap;
+
             db.CTPNs.InsertOnSubmit(temp);
 
             db.SubmitChanges();
@@ -63,8 +67,21 @@ namespace _3_DAL
 
         public static void DeleteCTPNDAL(List<string> keys)
         {
+            var query = db.CTPNs
+                .Where(i => keys.Contains(i.MaCTPN))
+                .Select(i=> new {i.MaSach, i.SL_Nhap});
+
 
             //Detele
+            foreach(var i in query)
+            {
+                var temp = db.SACHes.Single(item => item.MaSach==i.MaSach);
+                temp.SL_Ton = temp.SL_Ton - i.SL_Nhap;
+                
+                db.SubmitChanges();
+            }
+
+
             db.CTPNs
                 .Where(i => keys.Contains(i.MaCTPN))
                 .ToList()
@@ -120,6 +137,12 @@ namespace _3_DAL
         //kiểm tra lại
         public static void UpdateCTPNDAL(CTPN item)
         {
+            //SL_tồn mới = sl_tồn cũ - sl_nhập cũ + sl_nhập mới
+            var querytemp = db.CTPNs.Single(i=>i.MaCTPN == item.MaCTPN);
+
+            var queryS = db.SACHes.Single(i => i.MaSach == item.MaSach);
+            queryS.SL_Ton = queryS.SL_Ton - querytemp.SL_Nhap + item.SL_Nhap;
+
             var query = db.CTPNs.Single(sa => sa.MaCTPN == item.MaCTPN);
             query.MaPN = item.MaPN;
             query.MaSach = item.MaSach;
