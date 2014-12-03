@@ -23,7 +23,14 @@ namespace _1_Presentation
 
         private void Reload()
         {
-            DGV_Result.DataSource = KhachHangBUL.SellectAllCustomerBUL();
+            try
+            {
+                DGV_Result.DataSource = KhachHangBUL.SellectAllCustomerBUL();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void frmKhachHang_Load(object sender, EventArgs e)
@@ -33,78 +40,229 @@ namespace _1_Presentation
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (btnAdd.Text.Equals("Thêm"))
+            try
             {
-                btnAdd.Text = "Hủy";
-                btnSave.Enabled = true;
-                btnDelete.Enabled = false;
-                btnUpdate.Enabled = false;
+                if (btnAdd.Text.Equals("Thêm"))
+                {
+                    btnAdd.Text = "Hủy";
+                    btnSave.Enabled = true;
+                    btnDelete.Enabled = false;
+                    btnUpdate.Enabled = false;
 
-                txtMaKH.Text = String.Empty;
-                txtTen.Text = String.Empty;
-                txtDiaChi.Text = String.Empty;
-                txtSDT.Text = String.Empty;
-                txtEmail.Text = String.Empty;
-                txtSoTienNo.Text = String.Empty;
+                    txtMaKH.Text = String.Empty;
+                    txtTen.Text = String.Empty;
+                    txtDiaChi.Text = String.Empty;
+                    txtSDT.Text = String.Empty;
+                    txtEmail.Text = String.Empty;
+                    txtSoTienNo.Text = String.Empty;
 
-                txtMaKH.Enabled = true;
-                txtTen.Enabled = true;
-                txtDiaChi.Enabled = true;
-                txtSDT.Enabled = true;
-                txtEmail.Enabled = true;
-                txtSoTienNo.Enabled = true;
+                    txtMaKH.Enabled = true;
+                    txtTen.Enabled = true;
+                    txtDiaChi.Enabled = true;
+                    txtSDT.Enabled = true;
+                    txtEmail.Enabled = true;
+                    txtSoTienNo.Enabled = true;
 
 
-                _chkAdd = true;
+                    _chkAdd = true;
 
+                }
+                else
+                {
+                    btnAdd.Text = "Thêm";
+                    btnSave.Enabled = false;
+                    btnDelete.Enabled = true;
+                    btnUpdate.Enabled = true;
+
+                    txtMaKH.Text = String.Empty;
+                    txtTen.Text = String.Empty;
+                    txtDiaChi.Text = String.Empty;
+                    txtSDT.Text = String.Empty;
+                    txtEmail.Text = String.Empty;
+                    txtSoTienNo.Text = String.Empty;
+
+                    txtMaKH.Enabled = false;
+                    txtTen.Enabled = false;
+                    txtDiaChi.Enabled = false;
+                    txtSDT.Enabled = false;
+                    txtEmail.Enabled = false;
+                    txtSoTienNo.Enabled = false;
+
+                    _chkAdd = false;
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                btnAdd.Text = "Thêm";
-                btnSave.Enabled = false;
-                btnDelete.Enabled = true;
-                btnUpdate.Enabled = true;
-
-                txtMaKH.Text = String.Empty;
-                txtTen.Text = String.Empty;
-                txtDiaChi.Text = String.Empty;
-                txtSDT.Text = String.Empty;
-                txtEmail.Text = String.Empty;
-                txtSoTienNo.Text = String.Empty;
-
-                txtMaKH.Enabled = false;
-                txtTen.Enabled = false;
-                txtDiaChi.Enabled = false;
-                txtSDT.Enabled = false;
-                txtEmail.Enabled = false;
-                txtSoTienNo.Enabled = false;
-
-                _chkAdd = false;
-
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            _chkAdd = false;
-            if (btnUpdate.Text.Equals("Sửa"))
+            try
             {
-                btnUpdate.Text = "Hủy";
-                btnSave.Enabled = true;
-                btnDelete.Enabled = false;
-                btnAdd.Enabled = false;
+                _chkAdd = false;
+                if (btnUpdate.Text.Equals("Sửa"))
+                {
+                    btnUpdate.Text = "Hủy";
+                    btnSave.Enabled = true;
+                    btnDelete.Enabled = false;
+                    btnAdd.Enabled = false;
 
 
-                txtMaKH.Enabled = false;
-                txtTen.Enabled = true;
-                txtDiaChi.Enabled = true;
-                txtSDT.Enabled = true;
-                txtEmail.Enabled = true;
-                txtSoTienNo.Enabled = true;
+                    txtMaKH.Enabled = false;
+                    txtTen.Enabled = true;
+                    txtDiaChi.Enabled = true;
+                    txtSDT.Enabled = true;
+                    txtEmail.Enabled = true;
+                    txtSoTienNo.Enabled = true;
 
+                }
+                else
+                {
+                    btnUpdate.Text = "Sửa";
+                    btnSave.Enabled = false;
+                    btnDelete.Enabled = true;
+                    btnAdd.Enabled = true;
+
+                    txtMaKH.Enabled = false;
+                    txtTen.Enabled = false;
+                    txtDiaChi.Enabled = false;
+                    txtSDT.Enabled = false;
+                    txtEmail.Enabled = false;
+                    txtSoTienNo.Enabled = false;
+
+                }
             }
-            else
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int temp = 0;
+
+                List<string> customers = new List<string>();
+                //Duyet cac dong trong DataGridView
+                foreach (DataGridViewRow row in DGV_Result.Rows)
+                {
+                    //O dau tien la checkbox se chuyen trang thai true hoac false
+                    if (Convert.ToBoolean(((DataGridViewCheckBoxCell)row.Cells[0]).Value) == true)
+                    {
+                        customers.Add(row.Cells[2].Value.ToString());
+                        temp++;
+                    }
+                }
+
+
+
+                if (temp == 0)
+                {
+                    MessageBox.Show("Hãy chọn dữ liệu trước khi xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    DialogResult dialog = MessageBox.Show("Bạn có muốn xóa thông tin khách hàng?\nKhi xóa khách hàng sẽ xóa các thông tin liên quan ở hóa đơn, chi tiết hóa đơn và công nợ!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (dialog == DialogResult.OK)
+                    {
+                        //Delete list book
+                        //Foreign Key
+                        //Delete TON, CONGNO, HOADON and CTHD
+                        KhachHangBUL.DeleteCustomersBUL(customers);
+
+                        MessageBox.Show("Bạn đã xóa khách hàng thành công!", "Thông báo");
+                    }
+
+
+                }
+
+                //Reload
+                Reload();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_chkAdd)
+                {
+                    if (txtMaKH.Text.Trim() == string.Empty)
+                    {
+                        MessageBox.Show("Bạn hãy nhập mã khách hàng muốn thêm!", "Thông báo");
+                    }
+                    else
+                    {
+                        if (KhachHangBUL.checkMaKHBUL(txtMaKH.Text.Trim()))
+                        {
+                            KHACHHANG kh = new KHACHHANG();
+                            kh.MaKH = txtMaKH.Text;
+                            kh.HoTen = txtTen.Text;
+                            kh.DiaChi = txtDiaChi.Text;
+                            kh.DienThoai = txtSDT.Text;
+                            kh.Email = txtEmail.Text;
+                            kh.SoTienNo = Convert.ToDecimal(txtSoTienNo.Text);
+
+                            KhachHangBUL.InsertCustomerBUL(kh);
+
+                            MessageBox.Show("Bạn đã thêm khách hàng với mã [" + txtMaKH.Text + "] thành công", "Thông báo");
+
+                            txtMaKH.Text = String.Empty;
+                            txtTen.Text = String.Empty;
+                            txtDiaChi.Text = String.Empty;
+                            txtSDT.Text = String.Empty;
+                            txtEmail.Text = String.Empty;
+                            txtSoTienNo.Text = String.Empty;
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Mã khách hàng đã tồn tại, bạn hãy nhâp một mã khách hàng khác!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+                else
+                {
+                    if (txtMaKH.Text.Trim() != string.Empty)
+                    {
+                        DialogResult dialog = MessageBox.Show("Bạn có muốn sửa thông tin khách hàng?\nKhi xóa khách hàng sẽ xóa các thông tin liên quan ở hóa đơn, chi tiết hóa đơn và công nợ!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                        if (dialog == DialogResult.OK)
+                        {
+                            KHACHHANG kh = new KHACHHANG();
+                            kh.MaKH = txtMaKH.Text;
+                            kh.HoTen = txtTen.Text;
+                            kh.DiaChi = txtDiaChi.Text;
+                            kh.DienThoai = txtSDT.Text;
+                            kh.Email = txtEmail.Text;
+                            kh.SoTienNo = Convert.ToDecimal(txtSoTienNo.Text);
+
+                            //Sửa thông tin của sách
+                            KhachHangBUL.UpdateCustomerBUL(kh);
+
+                            MessageBox.Show("Bạn đã cập nhật thông tin của khách hàng [" + txtMaKH.Text + "] thành công!", "Thông báo");
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm được mã khách hàng để cập nhật!", "Thông báo");
+                    }
+
+                }
+
+                Reload();
+                _chkAdd = false;
+
+                btnAdd.Text = "Thêm";
                 btnUpdate.Text = "Sửa";
                 btnSave.Enabled = false;
                 btnDelete.Enabled = true;
@@ -116,174 +274,97 @@ namespace _1_Presentation
                 txtSDT.Enabled = false;
                 txtEmail.Enabled = false;
                 txtSoTienNo.Enabled = false;
-
             }
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            int temp = 0;
-
-            List<string> customers = new List<string>();
-            //Duyet cac dong trong DataGridView
-            foreach (DataGridViewRow row in DGV_Result.Rows)
+            catch (Exception ex)
             {
-                //O dau tien la checkbox se chuyen trang thai true hoac false
-                if (Convert.ToBoolean(((DataGridViewCheckBoxCell)row.Cells[0]).Value) == true)
-                {
-                    customers.Add(row.Cells[2].Value.ToString());
-                    temp++;
-                }
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-
-            if (temp == 0)
-            {
-                MessageBox.Show("Hãy chọn dữ liệu trước khi xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                DialogResult dialog = MessageBox.Show("Bạn có muốn xóa thông tin khách hàng?\nKhi xóa khách hàng sẽ xóa các thông tin liên quan ở hóa đơn, chi tiết hóa đơn và công nợ!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (dialog == DialogResult.OK)
-                {
-                    //Delete list book
-                    //Foreign Key
-                    //Delete TON, CONGNO, HOADON and CTHD
-                    KhachHangBUL.DeleteCustomersBUL(customers);
-
-                    MessageBox.Show("Bạn đã xóa khách hàng thành công!", "Thông báo");
-                }
-
-
-            }
-
-            //Reload
-            Reload();
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (_chkAdd)
-            {
-                if (txtMaKH.Text.Trim() == string.Empty)
-                {
-                    MessageBox.Show("Bạn hãy nhập mã khách hàng muốn thêm!", "Thông báo");
-                }
-                else
-                {
-                    if (KhachHangBUL.checkMaKHBUL(txtMaKH.Text.Trim()))
-                    {
-                        KHACHHANG kh = new KHACHHANG();
-                        kh.MAKH = txtMaKH.Text;
-                        kh.HOTEN = txtTen.Text;
-                        kh.DIACHI = txtDiaChi.Text;
-                        kh.DIENTHOAI = txtSDT.Text;
-                        kh.EMAIL = txtEmail.Text;
-                        kh.SOTIENNO = Convert.ToDecimal(txtSoTienNo.Text);
-
-                        KhachHangBUL.InsertCustomerBUL(kh);
-
-                        MessageBox.Show("Bạn đã thêm khách hàng với mã [" + txtMaKH.Text + "] thành công", "Thông báo");
-
-                        txtMaKH.Text = String.Empty;
-                        txtTen.Text = String.Empty;
-                        txtDiaChi.Text = String.Empty;
-                        txtSDT.Text = String.Empty;
-                        txtEmail.Text = String.Empty;
-                        txtSoTienNo.Text = String.Empty;
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Mã khách hàng đã tồn tại, bạn hãy nhâp một mã khách hàng khác!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
-            else
-            {
-                if (txtMaKH.Text.Trim() != string.Empty)
-                {
-                    KHACHHANG kh = new KHACHHANG();
-                    kh.MAKH = txtMaKH.Text;
-                    kh.HOTEN = txtTen.Text;
-                    kh.DIACHI = txtDiaChi.Text;
-                    kh.DIENTHOAI = txtSDT.Text;
-                    kh.EMAIL = txtEmail.Text;
-                    kh.SOTIENNO = Convert.ToDecimal(txtSoTienNo.Text);
-
-                    //Sửa thông tin của sách
-                    KhachHangBUL.UpdateCustomerBUL(kh);
-
-                    MessageBox.Show("Bạn đã cập nhật thông tin của khách hàng [" + txtMaKH.Text + "] thành công!", "Thông báo");
-
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm được mã khách hàng để cập nhật!", "Thông báo");
-                }
-
-            }
-
-            Reload();
         }
 
         private void chkAll_CheckedChanged(object sender, EventArgs e)
         {
-            //Duyet cac dong trong DataGridView
-            foreach (DataGridViewRow row in DGV_Result.Rows)
+            try
             {
-                //O dau tien la checkbox se chuyen trang thai true hoac false
-                ((DataGridViewCheckBoxCell)row.Cells[0]).Value = chkAll.Checked;
+                //Duyet cac dong trong DataGridView
+                foreach (DataGridViewRow row in DGV_Result.Rows)
+                {
+                    //O dau tien la checkbox se chuyen trang thai true hoac false
+                    ((DataGridViewCheckBoxCell)row.Cells[0]).Value = chkAll.Checked;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (txtSearch.Text.Trim().Equals(string.Empty))
+            try
             {
-                txtSearch.BackColor = Color.White;
-                Reload();
+                if (txtSearch.Text.Trim().Equals(string.Empty))
+                {
+                    txtSearch.BackColor = Color.White;
+                    Reload();
+                }
+                else
+                {
+                    //Tìm sách và đổ vào DataGridView
+                    DGV_Result.DataSource = KhachHangBUL.SearchCustomersBUL(txtSearch.Text);
+                    txtSearch.BackColor = Color.LightGreen;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                //Tìm sách và đổ vào DataGridView
-                DGV_Result.DataSource = KhachHangBUL.SearchCustomersBUL(txtSearch.Text);
-                txtSearch.BackColor = Color.LightGreen;
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void DGV_Result_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (!_chkAdd)
+            try
             {
-                //Lay ma sach tren DataGridView
-                string MaKH = DGV_Result.Rows[e.RowIndex].Cells[2].Value.ToString();
-                //Select Sach bằng mã sách
-                KHACHHANG kh = KhachHangBUL.SelectCustomerBUL(MaKH);
+                if (!_chkAdd)
+                {
+                    //Lay ma sach tren DataGridView
+                    string MaKH = DGV_Result.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    //Select Sach bằng mã sách
+                    KHACHHANG kh = KhachHangBUL.SelectCustomerBUL(MaKH);
 
-                txtMaKH.Text = kh.MAKH;
-                txtTen.Text = kh.HOTEN;
-                txtDiaChi.Text = kh.DIACHI;
-                txtSDT.Text = kh.DIENTHOAI;
-                txtEmail.Text = kh.EMAIL;
-                txtSoTienNo.Text = kh.SOTIENNO.ToString();
+                    txtMaKH.Text = kh.MaKH;
+                    txtTen.Text = kh.HoTen;
+                    txtDiaChi.Text = kh.DiaChi;
+                    txtSDT.Text = kh.DienThoai;
+                    txtEmail.Text = kh.Email;
+                    txtSoTienNo.Text = kh.SoTienNo.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-            SaveFileDialog savefile = new SaveFileDialog();
-            savefile.OverwritePrompt = true;
-            savefile.DefaultExt = "*.xlsx";
-            savefile.Filter = "Execl Workbook(*.xlsx)|*.xlsx";
-            if (savefile.ShowDialog() == DialogResult.OK)
+            try
             {
-                string path = Path.GetFullPath(savefile.FileName);
-                Excelutlity exl = new Excelutlity();
-                exl.WriteDataTableToExcel(KhachHangBUL.SellectAllCustomerBUL(), "Customers", path, "Details");
+                SaveFileDialog savefile = new SaveFileDialog();
+                savefile.OverwritePrompt = true;
+                savefile.DefaultExt = "*.xlsx";
+                savefile.Filter = "Execl Workbook(*.xlsx)|*.xlsx";
+                if (savefile.ShowDialog() == DialogResult.OK)
+                {
+                    string path = Path.GetFullPath(savefile.FileName);
+                    Excelutlity exl = new Excelutlity();
+                    exl.WriteDataTableToExcel(KhachHangBUL.SellectAllCustomerBUL(), "Customers", path, "Details");
 
-                MessageBox.Show("Excel created !");
+                    MessageBox.Show("Excel created !");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

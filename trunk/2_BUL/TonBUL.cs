@@ -17,12 +17,12 @@ namespace _2_BUL
             TonController.DeleteTonsDAL(keys);
         }
 
-        public static TON SelectTonBUL(string key)
+        public static PHIEUTON SelectTonBUL(string key)
         {
             return TonController.SelectTonDAL(key);
         }
 
-        public static void InsertTonBUL(TON item)
+        public static void InsertTonBUL(PHIEUTON item)
         {
             TonController.InsertTonDAL(item);
         }
@@ -32,7 +32,7 @@ namespace _2_BUL
             return TonController.checkMaTonDAL(key);
         }
 
-        public static void UpdateTonBUL(TON item)
+        public static void UpdateTonBUL(PHIEUTON item)
         {
             TonController.UpdateTonDAL(item);
         }
@@ -40,6 +40,11 @@ namespace _2_BUL
         public static DataTable SearchTonsBUL(string key)
         {
             return TonController.SearchTonsDAL(key);
+        }
+
+        public static DataTable SelectTon_MonthBUL(string key)
+        {
+            return TonController.SelectTon_MonthDAL(key);
         }
     }
 }

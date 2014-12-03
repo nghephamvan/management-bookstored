@@ -29,87 +29,243 @@ namespace _1_Presentation
 
         private void Reload()
         {
-            cmbKH.DataSource = KhachHangBUL.SellectAllCustomerBUL();
-            cmbKH.DisplayMember = "Tên KH";
-            cmbKH.ValueMember = "Mã KH";
+            try
+            {
+                cmbKH.DataSource = KhachHangBUL.SellectAllCustomerBUL();
+                cmbKH.DisplayMember = "Tên KH";
+                cmbKH.ValueMember = "Mã KH";
 
-            DGV_Result.DataSource = CongNoBUL.SellectAllCongNosBUL();
+                DGV_Result.DataSource = CongNoBUL.SellectAllCongNosBUL();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (btnAdd.Text.Equals("Thêm"))
+            try
             {
-                btnAdd.Text = "Hủy";
-                btnSave.Enabled = true;
-                btnDelete.Enabled = false;
-                btnUpdate.Enabled = false;
+                if (btnAdd.Text.Equals("Thêm"))
+                {
+                    btnAdd.Text = "Hủy";
+                    btnSave.Enabled = true;
+                    btnDelete.Enabled = false;
+                    btnUpdate.Enabled = false;
 
-                txtKey.Text = String.Empty;
-                cmbKH.SelectedIndex = -1;
-                cmbThangNo.SelectedIndex = -1;
-                txtNoDau.Text = String.Empty;
-                txtNoPhatSinh.Text = String.Empty;
-                txtNoCuoi.Text = String.Empty;
+                    txtKey.Text = String.Empty;
+                    cmbKH.SelectedIndex = -1;
+                    cmbThangNo.SelectedIndex = -1;
+                    txtNoDau.Text = String.Empty;
+                    txtNoPhatSinh.Text = String.Empty;
+                    txtNoCuoi.Text = String.Empty;
 
-                txtKey.Enabled = true;
-                cmbKH.Enabled = true;
-                cmbThangNo.Enabled = true;
-                txtNoDau.Enabled = true;
-                txtNoPhatSinh.Enabled = true;
-                txtNoCuoi.Enabled = true;
+                    txtKey.Enabled = true;
+                    cmbKH.Enabled = true;
+                    cmbThangNo.Enabled = true;
+                    txtNoDau.Enabled = true;
+                    txtNoPhatSinh.Enabled = true;
+                    txtNoCuoi.Enabled = true;
 
-                _chkAdd = true;
+                    _chkAdd = true;
 
+                }
+                else
+                {
+                    btnAdd.Text = "Thêm";
+                    btnSave.Enabled = false;
+                    btnDelete.Enabled = true;
+                    btnUpdate.Enabled = true;
+
+
+                    txtKey.Text = String.Empty;
+                    cmbKH.SelectedIndex = -1;
+                    cmbThangNo.SelectedIndex = -1;
+                    txtNoDau.Text = String.Empty;
+                    txtNoPhatSinh.Text = String.Empty;
+                    txtNoCuoi.Text = String.Empty;
+
+                    txtKey.Enabled = false;
+                    cmbKH.Enabled = false;
+                    cmbThangNo.Enabled = false;
+                    txtNoDau.Enabled = false;
+                    txtNoPhatSinh.Enabled = false;
+                    txtNoCuoi.Enabled = false;
+
+                    _chkAdd = false;
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                btnAdd.Text = "Thêm";
-                btnSave.Enabled = false;
-                btnDelete.Enabled = true;
-                btnUpdate.Enabled = true;
-
-
-                txtKey.Text = String.Empty;
-                cmbKH.SelectedIndex = -1;
-                cmbThangNo.SelectedIndex = -1;
-                txtNoDau.Text = String.Empty;
-                txtNoPhatSinh.Text = String.Empty;
-                txtNoCuoi.Text = String.Empty;
-
-                txtKey.Enabled = false;
-                cmbKH.Enabled = false;
-                cmbThangNo.Enabled = false;
-                txtNoDau.Enabled = false;
-                txtNoPhatSinh.Enabled = false;
-                txtNoCuoi.Enabled = false;
-
-                _chkAdd = false;
-
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            _chkAdd = false;
-            if (btnUpdate.Text.Equals("Sửa"))
+            try
             {
-                btnUpdate.Text = "Hủy";
-                btnSave.Enabled = true;
-                btnDelete.Enabled = false;
-                btnAdd.Enabled = false;
+                _chkAdd = false;
+                if (btnUpdate.Text.Equals("Sửa"))
+                {
+                    btnUpdate.Text = "Hủy";
+                    btnSave.Enabled = true;
+                    btnDelete.Enabled = false;
+                    btnAdd.Enabled = false;
 
 
-                txtKey.Enabled = false;
-                cmbKH.Enabled = true;
-                cmbThangNo.Enabled = true;
-                txtNoDau.Enabled = true;
-                txtNoPhatSinh.Enabled = true;
-                txtNoCuoi.Enabled = true;
+                    txtKey.Enabled = false;
+                    cmbKH.Enabled = true;
+                    cmbThangNo.Enabled = true;
+                    txtNoDau.Enabled = true;
+                    txtNoPhatSinh.Enabled = true;
+                    txtNoCuoi.Enabled = true;
 
+                }
+                else
+                {
+                    btnUpdate.Text = "Sửa";
+                    btnSave.Enabled = false;
+                    btnDelete.Enabled = true;
+                    btnAdd.Enabled = true;
+
+                    txtKey.Enabled = false;
+                    cmbKH.Enabled = false;
+                    cmbThangNo.Enabled = false;
+                    txtNoDau.Enabled = false;
+                    txtNoPhatSinh.Enabled = false;
+                    txtNoCuoi.Enabled = false;
+
+                }
             }
-            else
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int temp = 0;
+
+                List<string> keys = new List<string>();
+                //Duyet cac dong trong DataGridView
+                foreach (DataGridViewRow row in DGV_Result.Rows)
+                {
+                    //O dau tien la checkbox se chuyen trang thai true hoac false
+                    if (Convert.ToBoolean(((DataGridViewCheckBoxCell)row.Cells[0]).Value) == true)
+                    {
+                        keys.Add(row.Cells[2].Value.ToString());
+                        temp++;
+                    }
+                }
+
+                if (temp == 0)
+                {
+                    MessageBox.Show("Hãy chọn dữ liệu trước khi xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    DialogResult dialog = MessageBox.Show("Bạn có muốn xóa công nợ?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (dialog == DialogResult.OK)
+                    {
+                        //Delete list book
+                        //Foreign Key
+                        //Delete TON, CONGNO, HOADON and CTHD
+
+                        CongNoBUL.DeleteCongNosBUL(keys);
+
+                        MessageBox.Show("Bạn đã xóa công nợ thành công!", "Thông báo");
+                    }
+
+
+                }
+
+                //Reload
+                Reload();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_chkAdd)
+                {
+                    if (txtKey.Text.Trim() == string.Empty)
+                    {
+                        MessageBox.Show("Bạn hãy nhập mã công nợ muốn thêm!", "Thông báo");
+                    }
+                    else
+                    {
+                        if (CongNoBUL.checkMaCongNoBUL(txtKey.Text.Trim()))
+                        {
+                            CONGNO item = new CONGNO();
+                            item.MaCongNo = txtKey.Text;
+                            item.MaKH = cmbKH.SelectedValue.ToString();
+                            item.Thang = Convert.ToInt16(cmbThangNo.Text);
+                            item.NoDau = Convert.ToDecimal(txtNoDau.Text);
+                            item.NoPhatSinh = Convert.ToDecimal(txtNoPhatSinh.Text);
+                            item.NoCuoi = Convert.ToDecimal(txtNoCuoi.Text);
+
+                            //insert into database
+                            CongNoBUL.InsertCongNoBUL(item);
+                            MessageBox.Show("Bạn đã thêm công nợ [" + txtKey.Text + "] thành công", "Thông báo");
+
+                            txtKey.Text = String.Empty;
+                            cmbKH.SelectedIndex = -1;
+                            cmbThangNo.SelectedIndex = -1;
+                            txtNoDau.Text = String.Empty;
+                            txtNoPhatSinh.Text = String.Empty;
+                            txtNoCuoi.Text = String.Empty;
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Mã công nợ đã tồn tại, bạn hãy nhâp một mã công nợ khác!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+                else
+                {
+                    if (txtKey.Text.Trim() != string.Empty)
+                    {
+                         DialogResult dialog = MessageBox.Show("Bạn có muốn sửa công nợ?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                         if (dialog == DialogResult.OK)
+                         {
+                             CONGNO item = new CONGNO();
+                             item.MaCongNo = txtKey.Text;
+                             item.MaKH = cmbKH.SelectedValue.ToString();
+                             item.Thang = Convert.ToInt16(cmbThangNo.Text);
+                             item.NoDau = Convert.ToDecimal(txtNoDau.Text);
+                             item.NoPhatSinh = Convert.ToDecimal(txtNoPhatSinh.Text);
+                             item.NoCuoi = Convert.ToDecimal(txtNoCuoi.Text);
+
+                             //insert into database
+                             CongNoBUL.UpdateCongNoBUL(item);
+
+                             MessageBox.Show("Bạn đã sửa [" + txtKey.Text + "] thành công", "Thông báo");
+                         }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm được mã công nợ để cập nhật!", "Thông báo");
+                    }
+
+                }
+
+                Reload();
+
+                btnAdd.Text = "Thêm";
                 btnUpdate.Text = "Sửa";
                 btnSave.Enabled = false;
                 btnDelete.Enabled = true;
@@ -122,172 +278,100 @@ namespace _1_Presentation
                 txtNoPhatSinh.Enabled = false;
                 txtNoCuoi.Enabled = false;
 
+                _chkAdd = false;
+
             }
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            int temp = 0;
-
-            List<string> keys = new List<string>();
-            //Duyet cac dong trong DataGridView
-            foreach (DataGridViewRow row in DGV_Result.Rows)
+            catch (Exception ex)
             {
-                //O dau tien la checkbox se chuyen trang thai true hoac false
-                if (Convert.ToBoolean(((DataGridViewCheckBoxCell)row.Cells[0]).Value) == true)
-                {
-                    keys.Add(row.Cells[2].Value.ToString());
-                    temp++;
-                }
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (temp == 0)
-            {
-                MessageBox.Show("Hãy chọn dữ liệu trước khi xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                DialogResult dialog = MessageBox.Show("Bạn có muốn xóa công nợ?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (dialog == DialogResult.OK)
-                {
-                    //Delete list book
-                    //Foreign Key
-                    //Delete TON, CONGNO, HOADON and CTHD
-
-                    CongNoBUL.DeleteCongNosBUL(keys);
-
-                    MessageBox.Show("Bạn đã xóa công nợ thành công!", "Thông báo");
-                }
-
-
-            }
-
-            //Reload
-            Reload();
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (_chkAdd)
-            {
-                if (txtKey.Text.Trim() == string.Empty)
-                {
-                    MessageBox.Show("Bạn hãy nhập mã công nợ muốn thêm!", "Thông báo");
-                }
-                else
-                {
-                    if (CongNoBUL.checkMaCongNoBUL(txtKey.Text.Trim()))
-                    {
-                        CONGNO item = new CONGNO();
-                        item.MACONGNO = txtKey.Text;
-                        item.MAKH = cmbKH.SelectedValue.ToString();
-                        item.THANG = Convert.ToInt16(cmbThangNo.Text);
-                        item.NODAU = Convert.ToDecimal(txtNoDau.Text);
-                        item.NOPHATSINH = Convert.ToDecimal(txtNoPhatSinh.Text);
-                        item.NOCUOI = Convert.ToDecimal(txtNoCuoi.Text);
-
-                        //insert into database
-                        CongNoBUL.InsertCongNoBUL(item);
-                        MessageBox.Show("Bạn đã thêm công nợ [" + txtKey.Text + "] thành công", "Thông báo");
-
-                        txtKey.Text = String.Empty;
-                        cmbKH.SelectedIndex = -1;
-                        cmbThangNo.SelectedIndex = -1;
-                        txtNoDau.Text = String.Empty;
-                        txtNoPhatSinh.Text = String.Empty;
-                        txtNoCuoi.Text = String.Empty;
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Mã công nợ đã tồn tại, bạn hãy nhâp một mã công nợ khác!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
-            else
-            {
-                if (txtKey.Text.Trim() != string.Empty)
-                {
-                    CONGNO item = new CONGNO();
-                    item.MACONGNO = txtKey.Text;
-                    item.MAKH = cmbKH.SelectedValue.ToString();
-                    item.THANG = Convert.ToInt16(cmbThangNo.Text);
-                    item.NODAU = Convert.ToDecimal(txtNoDau.Text);
-                    item.NOPHATSINH = Convert.ToDecimal(txtNoPhatSinh.Text);
-                    item.NOCUOI = Convert.ToDecimal(txtNoCuoi.Text);
-
-                    //insert into database
-                    CongNoBUL.UpdateCongNoBUL(item);
-                    MessageBox.Show("Bạn đã sửa [" + txtKey.Text + "] thành công", "Thông báo");
-
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm được mã công nợ để cập nhật!", "Thông báo");
-                }
-
-            }
-
-            Reload();
         }
 
         private void chkAll_CheckedChanged(object sender, EventArgs e)
         {
-            //Duyet cac dong trong DataGridView
-            foreach (DataGridViewRow row in DGV_Result.Rows)
+            try
             {
-                //O dau tien la checkbox se chuyen trang thai true hoac false
-                ((DataGridViewCheckBoxCell)row.Cells[0]).Value = chkAll.Checked;
+                //Duyet cac dong trong DataGridView
+                foreach (DataGridViewRow row in DGV_Result.Rows)
+                {
+                    //O dau tien la checkbox se chuyen trang thai true hoac false
+                    ((DataGridViewCheckBoxCell)row.Cells[0]).Value = chkAll.Checked;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (txtSearch.Text.Trim().Equals(string.Empty))
+            try
             {
-                txtSearch.BackColor = Color.White;
-                Reload();
+                if (txtSearch.Text.Trim().Equals(string.Empty))
+                {
+                    txtSearch.BackColor = Color.White;
+                    Reload();
+                }
+                else
+                {
+                    //Tìm sách và đổ vào DataGridView
+                    DGV_Result.DataSource = CongNoBUL.SearchCongNosBUL(txtSearch.Text.Trim());
+                    txtSearch.BackColor = Color.LightGreen;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                //Tìm sách và đổ vào DataGridView
-                DGV_Result.DataSource = CongNoBUL.SearchCongNosBUL(txtSearch.Text.Trim());
-                txtSearch.BackColor = Color.LightGreen;
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void DGV_Result_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (!_chkAdd)
+            try
             {
-                //Lay ma sach tren DataGridView
-                string key = DGV_Result.Rows[e.RowIndex].Cells[2].Value.ToString();
-                //Select Sach bằng mã sách
+                if (!_chkAdd)
+                {
+                    //Lay ma sach tren DataGridView
+                    string key = DGV_Result.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    //Select Sach bằng mã sách
 
-                CONGNO item = CongNoBUL.SelectCongNoBUL(key);
+                    CONGNO item = CongNoBUL.SelectCongNoBUL(key);
 
-                txtKey.Text = item.MACONGNO;
-                cmbKH.SelectedValue = item.MAKH;
-                cmbThangNo.Text = item.THANG.ToString();
-                txtNoDau.Text = item.NODAU.ToString();
-                txtNoPhatSinh.Text = item.NOPHATSINH.ToString();
-                txtNoCuoi.Text = item.NOCUOI.ToString();
+                    txtKey.Text = item.MaCongNo;
+                    cmbKH.SelectedValue = item.MaKH;
+                    cmbThangNo.Text = item.Thang.ToString();
+                    txtNoDau.Text = item.NoDau.ToString();
+                    txtNoPhatSinh.Text = item.NoPhatSinh.ToString();
+                    txtNoCuoi.Text = item.NoCuoi.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-            SaveFileDialog savefile = new SaveFileDialog();
-            savefile.OverwritePrompt = true;
-            savefile.DefaultExt = "*.xlsx";
-            savefile.Filter = "Execl Workbook(*.xlsx)|*.xlsx";
-            if (savefile.ShowDialog() == DialogResult.OK)
+            try
             {
-                string path = Path.GetFullPath(savefile.FileName);
-                Excelutlity exl = new Excelutlity();
-                exl.WriteDataTableToExcel(CongNoBUL.SellectAllCongNosBUL(), "Customers", path, "Details");
+                SaveFileDialog savefile = new SaveFileDialog();
+                savefile.OverwritePrompt = true;
+                savefile.DefaultExt = "*.xlsx";
+                savefile.Filter = "Execl Workbook(*.xlsx)|*.xlsx";
+                if (savefile.ShowDialog() == DialogResult.OK)
+                {
+                    string path = Path.GetFullPath(savefile.FileName);
+                    Excelutlity exl = new Excelutlity();
+                    exl.WriteDataTableToExcel(CongNoBUL.SellectAllCongNosBUL(), "Customers", path, "Details");
 
-                MessageBox.Show("Excel đã được tạo !");
+                    MessageBox.Show("Excel đã được tạo !");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -392,6 +476,42 @@ namespace _1_Presentation
                     T.SelectionLength = 0;
                 }
                 catch (Exception) { }
+            }
+        }
+
+        private void cmbBaoCao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkBBaoCao.Checked)
+                {
+                    DGV_Result.DataSource = CongNoBUL.SelectCongNo_MonthBUL(cmbBaoCao.Text);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void chkBBaoCao_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkBBaoCao.Checked)
+                {
+                    cmbBaoCao.Enabled = true;
+                }
+                else
+                {
+                    cmbBaoCao.Enabled = false;
+
+                    Reload();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

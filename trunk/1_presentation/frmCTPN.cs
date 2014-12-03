@@ -28,168 +28,209 @@ namespace _1_Presentation
 
         private void Reload()
         {
-            cmbMAPN.DataSource = PhieuNhapBUL.SelectAllPhieuNhapsBUL();
-            cmbMAPN.DisplayMember = "Ngày nhập";
-            cmbMAPN.ValueMember = "Mã phiếu nhập";
+            try
+            {
+                cmbMAPN.DataSource = PhieuNhapBUL.SelectAllPhieuNhapsBUL();
+                cmbMAPN.DisplayMember = "Ngày nhập";
+                cmbMAPN.ValueMember = "Mã phiếu nhập";
 
-            cmbSach.DataSource = SachBUL.SelectAllBooksBUL();
-            cmbSach.DisplayMember = "Tên Sách";
-            cmbSach.ValueMember = "Mã Sách";
+                cmbSach.DataSource = SachBUL.SelectAllBooksBUL();
+                cmbSach.DisplayMember = "Tên Sách";
+                cmbSach.ValueMember = "Mã Sách";
 
-            DGV_Result.DataSource = CTPNBUL.SellectAllCTPNBUL();
+                DGV_Result.DataSource = CTPNBUL.SellectAllCTPNBUL();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (btnAdd.Text.Equals("Thêm"))
+            try
             {
-                btnAdd.Text = "Hủy";
-                btnSave.Enabled = true;
-                btnDelete.Enabled = false;
-                btnUpdate.Enabled = false;
+                if (btnAdd.Text.Equals("Thêm"))
+                {
+                    btnAdd.Text = "Hủy";
+                    btnSave.Enabled = true;
+                    btnDelete.Enabled = false;
+                    btnUpdate.Enabled = false;
 
-                txtMaCTPN.Text = String.Empty;
-                cmbMAPN.SelectedIndex = -1;
-                cmbSach.SelectedIndex = -1;
-                txtSL_Nhap.Text = String.Empty;
+                    txtMaCTPN.Text = String.Empty;
+                    cmbMAPN.SelectedIndex = -1;
+                    cmbSach.SelectedIndex = -1;
+                    txtSL_Nhap.Text = String.Empty;
 
-                txtMaCTPN.Enabled = true;
-                cmbMAPN.Enabled = true;
-                cmbSach.Enabled = true;
-                txtSL_Nhap.Enabled = true;
+                    txtMaCTPN.Enabled = true;
+                    cmbMAPN.Enabled = true;
+                    cmbSach.Enabled = true;
+                    txtSL_Nhap.Enabled = true;
 
 
 
-                _chkAdd = true;
+                    _chkAdd = true;
 
+                }
+                else
+                {
+                    btnAdd.Text = "Thêm";
+                    btnSave.Enabled = false;
+                    btnDelete.Enabled = true;
+                    btnUpdate.Enabled = true;
+
+
+                    txtMaCTPN.Text = String.Empty;
+                    cmbMAPN.SelectedIndex = -1;
+                    cmbSach.SelectedIndex = -1;
+                    txtSL_Nhap.Text = String.Empty;
+
+                    txtMaCTPN.Enabled = false;
+                    cmbMAPN.Enabled = false;
+                    cmbSach.Enabled = false;
+                    txtSL_Nhap.Enabled = false;
+
+                    _chkAdd = false;
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                btnAdd.Text = "Thêm";
-                btnSave.Enabled = false;
-                btnDelete.Enabled = true;
-                btnUpdate.Enabled = true;
-
-
-                txtMaCTPN.Text = String.Empty;
-                cmbMAPN.SelectedIndex = -1;
-                cmbSach.SelectedIndex = -1;
-                txtSL_Nhap.Text = String.Empty;
-
-                txtMaCTPN.Enabled = false;
-                cmbMAPN.Enabled = false;
-                cmbSach.Enabled = false;
-                txtSL_Nhap.Enabled = false;
-
-                _chkAdd = false;
-
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            _chkAdd = false;
-            if (btnUpdate.Text.Equals("Sửa"))
+            try
             {
-                btnUpdate.Text = "Hủy";
-                btnSave.Enabled = true;
-                btnDelete.Enabled = false;
-                btnAdd.Enabled = false;
+                _chkAdd = false;
+                if (btnUpdate.Text.Equals("Sửa"))
+                {
+                    btnUpdate.Text = "Hủy";
+                    btnSave.Enabled = true;
+                    btnDelete.Enabled = false;
+                    btnAdd.Enabled = false;
 
 
-                txtMaCTPN.Enabled = false;
-                cmbMAPN.Enabled = true;
-                cmbSach.Enabled = true;
-                txtSL_Nhap.Enabled = true;
+                    txtMaCTPN.Enabled = false;
+                    cmbMAPN.Enabled = true;
+                    cmbSach.Enabled = true;
+                    txtSL_Nhap.Enabled = true;
 
+                }
+                else
+                {
+                    btnUpdate.Text = "Sửa";
+                    btnSave.Enabled = false;
+                    btnDelete.Enabled = true;
+                    btnAdd.Enabled = true;
+
+                    txtMaCTPN.Enabled = false;
+                    cmbMAPN.Enabled = false;
+                    cmbSach.Enabled = false;
+                    txtSL_Nhap.Enabled = false;
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                btnUpdate.Text = "Sửa";
-                btnSave.Enabled = false;
-                btnDelete.Enabled = true;
-                btnAdd.Enabled = true;
-
-                txtMaCTPN.Enabled = false;
-                cmbMAPN.Enabled = false;
-                cmbSach.Enabled = false;
-                txtSL_Nhap.Enabled = false;
-
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int temp = 0;
-
-            List<string> ctpns = new List<string>();
-            //Duyet cac dong trong DataGridView
-            foreach (DataGridViewRow row in DGV_Result.Rows)
+            try
             {
-                //O dau tien la checkbox se chuyen trang thai true hoac false
-                if (Convert.ToBoolean(((DataGridViewCheckBoxCell)row.Cells[0]).Value) == true)
+                int temp = 0;
+
+                List<string> ctpns = new List<string>();
+                //Duyet cac dong trong DataGridView
+                foreach (DataGridViewRow row in DGV_Result.Rows)
                 {
-                    ctpns.Add(row.Cells[2].Value.ToString());
-                    temp++;
-                }
-            }
-
-
-
-            if (temp == 0)
-            {
-                MessageBox.Show("Hãy chọn dữ liệu trước khi xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                DialogResult dialog = MessageBox.Show("Bạn có muốn xóa chi tiết phiếu nhập?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (dialog == DialogResult.OK)
-                {
-                    //Delete list book
-                    //Foreign Key
-                    //Delete TON, CONGNO, HOADON and CTHD
-                    CTPNBUL.DeleteCTPNBUL(ctpns);
-
-                    MessageBox.Show("Bạn đã xóa chi tiết phiếu nhập thành công!", "Thông báo");
+                    //O dau tien la checkbox se chuyen trang thai true hoac false
+                    if (Convert.ToBoolean(((DataGridViewCheckBoxCell)row.Cells[0]).Value) == true)
+                    {
+                        ctpns.Add(row.Cells[2].Value.ToString());
+                        temp++;
+                    }
                 }
 
 
-            }
 
-            //Reload
-            Reload();
+                if (temp == 0)
+                {
+                    MessageBox.Show("Hãy chọn dữ liệu trước khi xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    DialogResult dialog = MessageBox.Show("Bạn có muốn xóa chi tiết phiếu nhập?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (dialog == DialogResult.OK)
+                    {
+                        //Delete list book
+                        //Foreign Key
+                        //Delete TON, CONGNO, HOADON and CTHD
+                        CTPNBUL.DeleteCTPNBUL(ctpns);
+
+                        MessageBox.Show("Bạn đã xóa chi tiết phiếu nhập thành công!", "Thông báo");
+                    }
+
+
+                }
+
+                //Reload
+                Reload();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (_chkAdd)
+            try
             {
-                if (txtMaCTPN.Text.Trim() == string.Empty)
+                if (_chkAdd)
                 {
-                    MessageBox.Show("Bạn hãy nhập mã khách hàng muốn thêm!", "Thông báo");
-                }
-                else
-                {
-                    if (CTPNBUL.checkMaCTPNBUL(txtMaCTPN.Text.Trim()))
+                    if (txtMaCTPN.Text.Trim() == string.Empty)
                     {
-                        CTPN item = new CTPN();
-                        item.MACTPN = txtMaCTPN.Text;
-                        item.MAPN = cmbMAPN.SelectedValue.ToString();
-                        item.MASACH = cmbSach.SelectedValue.ToString();
-                        item.SL_NHAP = Convert.ToInt16(txtSL_Nhap.Text);
-
-                        //insert into database
-                        //check /*Chỉ nhập các đầu sách có sl_tồn<300*/
-                        //SL_NHAP >= 150
-                        if (ThamSoBUL.SelectThamSoBUL() != null && ThamSoBUL.SelectThamSoBUL().SUDUNGQUYDINH == true)
+                        MessageBox.Show("Bạn hãy nhập mã khách hàng muốn thêm!", "Thông báo");
+                    }
+                    else
+                    {
+                        if (CTPNBUL.checkMaCTPNBUL(txtMaCTPN.Text.Trim()))
                         {
-                            if (!CTPNBUL.checkSachSLTonBUL(item.MASACH))
+                            CTPN item = new CTPN();
+                            item.MaCTPN = txtMaCTPN.Text;
+                            item.MaPN = cmbMAPN.SelectedValue.ToString();
+                            item.MaSach = cmbSach.SelectedValue.ToString();
+                            item.SL_Nhap = Convert.ToInt16(txtSL_Nhap.Text);
+
+                            //insert into database
+                            //check /*Chỉ nhập các đầu sách có sl_tồn<300*/
+                            //SL_NHAP >= 150
+                            if (ThamSoBUL.SelectThamSoBUL() != null && ThamSoBUL.SelectThamSoBUL().SuDungQuyDinh == true)
                             {
-                                MessageBox.Show("Chỉ nhập sách có số lượng tồn nhỏ hơn hoặc bằng 300", "Thông Báo");
-                            }
-                            else if (!CTPNBUL.checkSL_NhapItNhat(item.SL_NHAP))
-                            {
-                                MessageBox.Show("Số lượng nhập phải lớn hơn 150!", "Thông Báo");
+                                if (!CTPNBUL.checkSachSLTonBUL(item.MaSach))
+                                {
+                                    MessageBox.Show("Chỉ nhập sách có số lượng tồn nhỏ hơn hoặc bằng 300", "Thông Báo");
+                                }
+                                else if (!CTPNBUL.checkSL_NhapItNhat(item.SL_Nhap))
+                                {
+                                    MessageBox.Show("Số lượng nhập phải lớn hơn 150!", "Thông Báo");
+                                }
+                                else
+                                {
+                                    CTPNBUL.InsertCTPNBUL(item);
+                                    MessageBox.Show("Bạn đã thêm chi tiết phiếu nhập [" + txtMaCTPN.Text + "] thành công", "Thông báo");
+
+                                    txtMaCTPN.Text = String.Empty;
+                                    cmbMAPN.SelectedIndex = -1;
+                                    cmbSach.SelectedIndex = -1;
+                                    txtSL_Nhap.Text = String.Empty;
+                                }
                             }
                             else
                             {
@@ -204,74 +245,91 @@ namespace _1_Presentation
                         }
                         else
                         {
-                            CTPNBUL.InsertCTPNBUL(item);
-                            MessageBox.Show("Bạn đã thêm chi tiết phiếu nhập [" + txtMaCTPN.Text + "] thành công", "Thông báo");
-
-                            txtMaCTPN.Text = String.Empty;
-                            cmbMAPN.SelectedIndex = -1;
-                            cmbSach.SelectedIndex = -1;
-                            txtSL_Nhap.Text = String.Empty;
+                            MessageBox.Show("Mã CTPN đã tồn tại, bạn hãy nhâp một mã CTPN khác!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("Mã CTPN đã tồn tại, bạn hãy nhâp một mã CTPN khác!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
-            else
-            {
-                if (txtMaCTPN.Text.Trim() != string.Empty)
-                {
-                    CTPN item = new CTPN();
-                    item.MACTPN = txtMaCTPN.Text;
-                    item.MAPN = cmbMAPN.SelectedValue.ToString();
-                    item.MASACH = cmbSach.SelectedValue.ToString();
-                    item.SL_NHAP = Convert.ToInt16(txtSL_Nhap.Text);
-
-                    //insert into database
-                    //check /*Chỉ nhập các đầu sách có sl_tồn<300*/
-                    //SL_NHAP >= 150
-                    if (ThamSoBUL.SelectThamSoBUL() != null && ThamSoBUL.SelectThamSoBUL().SUDUNGQUYDINH == true)
-                    {
-                        if (!CTPNBUL.checkSachSLTonBUL(item.MASACH))
-                        {
-                            MessageBox.Show("Chỉ nhập sách có số lượng tồn nhỏ hơn hoặc bằng 300", "Thông Báo");
-                        }
-                        else if (!CTPNBUL.checkSL_NhapItNhat(item.SL_NHAP))
-                        {
-                            MessageBox.Show("Số lượng nhập phải lớn hơn 150!", "Thông Báo");
-                        }
-                        else
-                        {
-                            CTPNBUL.UpdateCTPNBUL(item);
-                            MessageBox.Show("Bạn đã sửa chi tiết phiếu nhập [" + txtMaCTPN.Text + "] thành công", "Thông báo");
-                        }
-                    }
-                    else
-                    {
-                        CTPNBUL.UpdateCTPNBUL(item);
-                        MessageBox.Show("Bạn đã sửa chi tiết phiếu nhập [" + txtMaCTPN.Text + "] thành công", "Thông báo");
-                    }
-
                 }
                 else
                 {
-                    MessageBox.Show("Không tìm được mã CTPN để cập nhật!", "Thông báo");
+                    if (txtMaCTPN.Text.Trim() != string.Empty)
+                    {
+                         DialogResult dialog = MessageBox.Show("Bạn có muốn sửa chi tiết phiếu nhập?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                         if (dialog == DialogResult.OK)
+                         {
+                             CTPN item = new CTPN();
+                             item.MaCTPN = txtMaCTPN.Text;
+                             item.MaPN = cmbMAPN.SelectedValue.ToString();
+                             item.MaSach = cmbSach.SelectedValue.ToString();
+                             item.SL_Nhap = Convert.ToInt16(txtSL_Nhap.Text);
+
+                             //insert into database
+                             //check /*Chỉ nhập các đầu sách có sl_tồn<300*/
+                             //SL_NHAP >= 150
+                             if (ThamSoBUL.SelectThamSoBUL() != null && ThamSoBUL.SelectThamSoBUL().SuDungQuyDinh == true)
+                             {
+                                 if (!CTPNBUL.checkSachSLTonBUL(item.MaSach))
+                                 {
+                                     MessageBox.Show("Chỉ nhập sách có số lượng tồn nhỏ hơn hoặc bằng 300", "Thông Báo");
+                                 }
+                                 else if (!CTPNBUL.checkSL_NhapItNhat(item.SL_Nhap))
+                                 {
+                                     MessageBox.Show("Số lượng nhập phải lớn hơn 150!", "Thông Báo");
+                                 }
+                                 else
+                                 {
+                                     CTPNBUL.UpdateCTPNBUL(item);
+                                     MessageBox.Show("Bạn đã sửa chi tiết phiếu nhập [" + txtMaCTPN.Text + "] thành công", "Thông báo");
+                                 }
+                             }
+                             else
+                             {
+                                 CTPNBUL.UpdateCTPNBUL(item);
+                                 MessageBox.Show("Bạn đã sửa chi tiết phiếu nhập [" + txtMaCTPN.Text + "] thành công", "Thông báo");
+                             }
+                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm được mã CTPN để cập nhật!", "Thông báo");
+                    }
+
                 }
 
-            }
+                Reload();
+                _chkAdd = false;
 
-            Reload();
+                btnAdd.Text = "Thêm";
+                btnUpdate.Text = "Sửa";
+                btnSave.Enabled = false;
+                btnDelete.Enabled = true;
+                btnAdd.Enabled = true;
+
+                txtMaCTPN.Enabled = false;
+                cmbMAPN.Enabled = false;
+                cmbSach.Enabled = false;
+                txtSL_Nhap.Enabled = false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void chkAll_CheckedChanged(object sender, EventArgs e)
         {
-            //Duyet cac dong trong DataGridView
-            foreach (DataGridViewRow row in DGV_Result.Rows)
+            try
             {
-                //O dau tien la checkbox se chuyen trang thai true hoac false
-                ((DataGridViewCheckBoxCell)row.Cells[0]).Value = chkAll.Checked;
+                //Duyet cac dong trong DataGridView
+                foreach (DataGridViewRow row in DGV_Result.Rows)
+                {
+                    //O dau tien la checkbox se chuyen trang thai true hoac false
+                    ((DataGridViewCheckBoxCell)row.Cells[0]).Value = chkAll.Checked;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -310,48 +368,69 @@ namespace _1_Presentation
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (txtSearch.Text.Trim().Equals(string.Empty))
+            try
             {
-                txtSearch.BackColor = Color.White;
-                Reload();
+                if (txtSearch.Text.Trim().Equals(string.Empty))
+                {
+                    txtSearch.BackColor = Color.White;
+                    Reload();
+                }
+                else
+                {
+                    //Tìm sách và đổ vào DataGridView
+                    DGV_Result.DataSource = CTPNBUL.SearchCTPNBUL(txtSearch.Text);
+                    txtSearch.BackColor = Color.LightGreen;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                //Tìm sách và đổ vào DataGridView
-                DGV_Result.DataSource = CTPNBUL.SearchCTPNBUL(txtSearch.Text);
-                txtSearch.BackColor = Color.LightGreen;
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-            SaveFileDialog savefile = new SaveFileDialog();
-            savefile.OverwritePrompt = true;
-            savefile.DefaultExt = "*.xlsx";
-            savefile.Filter = "Execl Workbook(*.xlsx)|*.xlsx";
-            if (savefile.ShowDialog() == DialogResult.OK)
+            try
             {
-                string path = Path.GetFullPath(savefile.FileName);
-                Excelutlity exl = new Excelutlity();
-                exl.WriteDataTableToExcel(CTPNBUL.SellectAllCTPNBUL(), "Customers", path, "Details");
+                SaveFileDialog savefile = new SaveFileDialog();
+                savefile.OverwritePrompt = true;
+                savefile.DefaultExt = "*.xlsx";
+                savefile.Filter = "Execl Workbook(*.xlsx)|*.xlsx";
+                if (savefile.ShowDialog() == DialogResult.OK)
+                {
+                    string path = Path.GetFullPath(savefile.FileName);
+                    Excelutlity exl = new Excelutlity();
+                    exl.WriteDataTableToExcel(CTPNBUL.SellectAllCTPNBUL(), "Customers", path, "Details");
 
-                MessageBox.Show("Excel created !");
+                    MessageBox.Show("Excel created !");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void DGV_Result_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (!_chkAdd)
+            try
             {
-                //Lay ma sach tren DataGridView
-                string key = DGV_Result.Rows[e.RowIndex].Cells[2].Value.ToString();
-                //Select Sach bằng mã sách
-                CTPN item = CTPNBUL.SelectCTPNBUL(key);
+                if (!_chkAdd)
+                {
+                    //Lay ma sach tren DataGridView
+                    string key = DGV_Result.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    //Select Sach bằng mã sách
+                    CTPN item = CTPNBUL.SelectCTPNBUL(key);
 
-                txtMaCTPN.Text = item.MACTPN;
-                cmbMAPN.SelectedValue = item.MAPN;
-                cmbSach.SelectedValue = item.MASACH;
-                txtSL_Nhap.Text = item.SL_NHAP.ToString();
+                    txtMaCTPN.Text = item.MaCTPN;
+                    cmbMAPN.SelectedValue = item.MaPN;
+                    cmbSach.SelectedValue = item.MaSach;
+                    txtSL_Nhap.Text = item.SL_Nhap.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

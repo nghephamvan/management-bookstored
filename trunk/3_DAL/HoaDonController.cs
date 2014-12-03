@@ -22,12 +22,13 @@ namespace _3_DAL
             DataTable dt = new DataTable();
 
             var query = from item in db.HOADONs
-                        join item2 in db.KHACHHANGs on item.MAKH equals item2.MAKH
+                        join item2 in db.KHACHHANGs on item.MaKH equals item2.MaKH
+                        where item.XoaDuLieu == false
                         select new
                         {
-                            item.MAHD,
-                            item2.HOTEN,
-                            item.NGAYHD
+                            item.MaHD,
+                            item2.HoTen,
+                            item.NgayHD
                         };
             dt.Columns.Add("STT", typeof(int));
             dt.Columns.Add("Mã HD", typeof(string));
@@ -36,7 +37,7 @@ namespace _3_DAL
             int stt = 1;
             foreach (var item in query)
             {
-                dt.Rows.Add(stt, item.MAHD, item.HOTEN, item.NGAYHD);
+                dt.Rows.Add(stt, item.MaHD, item.HoTen, item.NgayHD);
                 stt++;
             }
 
@@ -45,24 +46,22 @@ namespace _3_DAL
 
         public static HOADON SelectHoaDonDAL(string key)
         {
-            HOADON query = db.HOADONs.Single(i => i.MAHD.Equals(key));
+            HOADON query = db.HOADONs.Single(i => i.MaHD.Equals(key));
             return query;
         }
 
         public static void DeleteHoaDonsDAL(List<string> keys)
         {
 
-            var query = from item in db.HOADONs
-                        where keys.Contains(item.MAHD)
-                        select item;
-            //Detele MAHD in CTHD
-            var queryCTHD = from item in db.CTHDs
-                          where keys.Contains(item.MAHD)
-                          select item;
+            db.HOADONs
+                .Where(i => keys.Contains(i.MaHD))
+                .ToList()
+                .ForEach(i => i.XoaDuLieu = true);
 
-            //Detele
-            db.CTHDs.DeleteAllOnSubmit(queryCTHD);
-            db.HOADONs.DeleteAllOnSubmit(query);
+            db.CTHDs
+                .Where(i => keys.Contains(i.MaHD))
+                .ToList()
+                .ForEach(i => i.XoaDuLieu = true);
 
             //Confirm database
             db.SubmitChanges();
@@ -72,7 +71,7 @@ namespace _3_DAL
         public static bool checkMaHDDAL(string key)
         {
             var query = from item in db.HOADONs
-                        where item.MAHD.Equals(key)
+                        where item.MaHD.Equals(key)
                         select item;
 
             if (query.Count() <= 0)
@@ -87,9 +86,9 @@ namespace _3_DAL
 
         public static void UpdateHoaDonDAL(HOADON item)
         {
-            var query = db.HOADONs.Single(i => i.MAHD == item.MAHD);
-            query.MAKH = item.MAKH;
-            query.NGAYHD = item.NGAYHD;
+            var query = db.HOADONs.Single(i => i.MaHD == item.MaHD);
+            query.MaKH = item.MaKH;
+            query.NgayHD = item.NgayHD;
 
             db.SubmitChanges();
         }
@@ -97,27 +96,27 @@ namespace _3_DAL
         public static DataTable SearchHoaDonsDAL(string key)
         {
             var query = from item in db.HOADONs
-                        join item2 in db.KHACHHANGs on item.MAKH equals item2.MAKH
+                        join item2 in db.KHACHHANGs on item.MaKH equals item2.MaKH
                         where
                         (
-                           item.MAHD.StartsWith(key) ||
-                           item.MAHD.EndsWith(key) ||
-                           item.MAHD.Contains(key) ||
-                           item.MAKH.StartsWith(key) ||
-                           item.MAKH.EndsWith(key) ||
-                           item.MAKH.Contains(key) ||
-                           item2.HOTEN.StartsWith(key) ||
-                           item2.HOTEN.EndsWith(key) ||
-                           item2.HOTEN.Contains(key) ||
-                           item.NGAYHD.ToString().StartsWith(key) ||
-                           item.NGAYHD.ToString().EndsWith(key) ||
-                           item.NGAYHD.ToString().Contains(key)
-                        )
+                           item.MaHD.StartsWith(key) ||
+                           item.MaHD.EndsWith(key) ||
+                           item.MaHD.Contains(key) ||
+                           item.MaKH.StartsWith(key) ||
+                           item.MaKH.EndsWith(key) ||
+                           item.MaKH.Contains(key) ||
+                           item2.HoTen.StartsWith(key) ||
+                           item2.HoTen.EndsWith(key) ||
+                           item2.HoTen.Contains(key) ||
+                           item.NgayHD.ToString().StartsWith(key) ||
+                           item.NgayHD.ToString().EndsWith(key) ||
+                           item.NgayHD.ToString().Contains(key)
+                        ) && item.XoaDuLieu == false
                         select new
                         {
-                            item.MAHD,
-                            item2.HOTEN,
-                            item.NGAYHD
+                            item.MaHD,
+                            item2.HoTen,
+                            item.NgayHD
                         };
 
 
@@ -129,7 +128,7 @@ namespace _3_DAL
             int stt = 1;
             foreach (var item in query)
             {
-                dt.Rows.Add(stt, item.MAHD, item.HOTEN, item.NGAYHD);
+                dt.Rows.Add(stt, item.MaHD, item.HoTen, item.NgayHD);
                 stt++;
             }
 

@@ -21,12 +21,12 @@ namespace _2_BUL
             PhieuNhapController.DeletePNsDAL(PNs);
         }
 
-        public static NHAP SelectPhieuNhapBUL(string MaPN)
+        public static PHIEUNHAP SelectPhieuNhapBUL(string MaPN)
         {
             return PhieuNhapController.SelectPhieuNhapDAL(MaPN);
         }
 
-        public static void InsertPNBUL(NHAP temp)
+        public static void InsertPNBUL(PHIEUNHAP temp)
         {
             PhieuNhapController.InsertPNDAL(temp);
         }
@@ -36,7 +36,7 @@ namespace _2_BUL
             return PhieuNhapController.checkMaPNDAL(mapn);
         }
 
-        public static void UpdatePNBUL(NHAP temp)
+        public static void UpdatePNBUL(PHIEUNHAP temp)
         {
             PhieuNhapController.UpdatePNDAL(temp);
         }

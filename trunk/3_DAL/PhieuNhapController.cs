@@ -10,9 +10,9 @@ namespace _3_DAL
     {
         static QLNSModelDataContext db = new QLNSModelDataContext();
 
-        public static void InsertPNDAL(NHAP item)
+        public static void InsertPNDAL(PHIEUNHAP item)
         {
-            db.NHAPs.InsertOnSubmit(item);
+            db.PHIEUNHAPs.InsertOnSubmit(item);
 
             db.SubmitChanges();
         }
@@ -21,11 +21,12 @@ namespace _3_DAL
         {
             DataTable dt = new DataTable();
 
-            var query = from pn in db.NHAPs
+            var query = from pn in db.PHIEUNHAPs
+                        where pn.XoaDuLieu == false
                         select new
                         {
-                            pn.MAPN,
-                            pn.NGAYNHAP
+                            pn.MaPN,
+                            pn.NgayNhap
                         };
             dt.Columns.Add("STT", typeof(int));
             dt.Columns.Add("Mã phiếu nhập", typeof(string));
@@ -33,7 +34,7 @@ namespace _3_DAL
             int stt = 1;
             foreach (var item in query)
             {
-                dt.Rows.Add(stt, item.MAPN, item.NGAYNHAP);
+                dt.Rows.Add(stt, item.MaPN, item.NgayNhap);
                 stt++;
             }
 
@@ -41,29 +42,27 @@ namespace _3_DAL
         }
 
         //Lay Phiếu nhập từ DataGridView
-        public static NHAP SelectPhieuNhapDAL(string key)
+        public static PHIEUNHAP SelectPhieuNhapDAL(string key)
         {
-            NHAP query = db.NHAPs.Single(i => i.MAPN.Equals(key));
+            PHIEUNHAP query = db.PHIEUNHAPs.Single(i => i.MaPN.Equals(key));
             return query;
         }
 
         public static void DeletePNsDAL(List<string> keys)
         {
-            //Take PNs in Nhaps which have maPN equal listPN
-            var lstPNs = from b in db.NHAPs
-                           where keys.Contains(b.MAPN)
-                           select b;
-            //Take PNs in CTPN which have maPN equal lstPNs.MAPN
-            var lstctpns = from b in db.CTPNs
-                           join ln in lstPNs on b.MAPN equals ln.MAPN
-                           select b;
 
             //Delete on CTPN
-            db.CTPNs.DeleteAllOnSubmit(lstctpns);
+            db.CTPNs
+                .Where(i => keys.Contains(i.MaPN))
+                .ToList()
+                .ForEach(i => i.XoaDuLieu = true);
 
 
             //Delete on NHAP
-            db.NHAPs.DeleteAllOnSubmit(lstPNs);
+            db.PHIEUNHAPs
+                .Where(i => keys.Contains(i.MaPN))
+                .ToList()
+                .ForEach(i => i.XoaDuLieu = true);
 
             //Confirm database
             db.SubmitChanges();
@@ -72,8 +71,8 @@ namespace _3_DAL
 
         public static bool checkMaPNDAL(string key)
         {
-            var query = from sc in db.NHAPs
-                        where sc.MAPN.Equals(key)
+            var query = from sc in db.PHIEUNHAPs
+                        where sc.MaPN.Equals(key)
                         select sc;
 
             if (query.Count() <= 0)
@@ -87,29 +86,29 @@ namespace _3_DAL
         }
 
         //kiểm tra lại
-        public static void UpdatePNDAL(NHAP item)
+        public static void UpdatePNDAL(PHIEUNHAP item)
         {
-            var query = db.NHAPs.Single(sa => sa.MAPN == item.MAPN);
-            query.NGAYNHAP = item.NGAYNHAP;
+            var query = db.PHIEUNHAPs.Single(sa => sa.MaPN == item.MaPN);
+            query.NgayNhap = item.NgayNhap;
             db.SubmitChanges();
         }
 
         public static DataTable SearchPNsDAL(string key)
         {
-            var query = from pn in db.NHAPs
+            var query = from pn in db.PHIEUNHAPs
                         where
                         (
-                           pn.MAPN.StartsWith(key) ||
-                           pn.MAPN.EndsWith(key) ||
-                           pn.MAPN.Contains(key) ||
-                           pn.NGAYNHAP.ToString().StartsWith(key) ||
-                           pn.NGAYNHAP.ToString().EndsWith(key) ||
-                           pn.NGAYNHAP.ToString().Contains(key)
-                        )
+                           pn.MaPN.StartsWith(key) ||
+                           pn.MaPN.EndsWith(key) ||
+                           pn.MaPN.Contains(key) ||
+                           pn.NgayNhap.ToString().StartsWith(key) ||
+                           pn.NgayNhap.ToString().EndsWith(key) ||
+                           pn.NgayNhap.ToString().Contains(key)
+                        ) && pn.XoaDuLieu == false
                         select new
                         {
-                            pn.MAPN,
-                            pn.NGAYNHAP,
+                            pn.MaPN,
+                            pn.NgayNhap,
                         };
 
 
@@ -120,7 +119,7 @@ namespace _3_DAL
             int stt = 1;
             foreach (var item in query)
             {
-                dt.Rows.Add(stt, item.MAPN, item.NGAYNHAP);
+                dt.Rows.Add(stt, item.MaPN, item.NgayNhap);
                 stt++;
             }
 

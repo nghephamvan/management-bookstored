@@ -443,6 +443,7 @@
             this.Controls.Add(this.txtMaSach);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuS);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuS;
             this.Name = "frmSach";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -37,14 +37,14 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.exportToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmbKH = new System.Windows.Forms.ComboBox();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +57,6 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtNoDau = new System.Windows.Forms.TextBox();
             this.txtKey = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.DGV_Result = new System.Windows.Forms.DataGridView();
             this.chkRow = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,6 +66,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtNoCuoi = new System.Windows.Forms.TextBox();
             this.cmbThangNo = new System.Windows.Forms.ComboBox();
+            this.cmbBaoCao = new System.Windows.Forms.ComboBox();
+            this.chkBBaoCao = new System.Windows.Forms.CheckBox();
+            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Result)).BeginInit();
             this.menuS.SuspendLayout();
             this.SuspendLayout();
@@ -144,64 +146,15 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(210, 6);
             // 
-            // exportToExcelToolStripMenuItem
-            // 
-            this.exportToExcelToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportToExcelToolStripMenuItem.Image")));
-            this.exportToExcelToolStripMenuItem.Name = "exportToExcelToolStripMenuItem";
-            this.exportToExcelToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.S)));
-            this.exportToExcelToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.exportToExcelToolStripMenuItem.Text = "Export to Excel";
-            this.exportToExcelToolStripMenuItem.Click += new System.EventHandler(this.btnExportExcel_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(210, 6);
             // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
-            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.saveToolStripMenuItem.Text = "&Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
             this.toolStripSeparator.Size = new System.Drawing.Size(210, 6);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Image = global::_1_Presentation.Properties.Resources.Config;
-            this.editToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.editToolStripMenuItem.Text = "&Sửa";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem.Image")));
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.deleteToolStripMenuItem.Text = "Xóa";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
-            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.newToolStripMenuItem.Text = "&Thêm";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // fileToolStripMenuItem
             // 
@@ -218,6 +171,55 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
+            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.newToolStripMenuItem.Text = "&Thêm";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem.Image")));
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.deleteToolStripMenuItem.Text = "Xóa";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Image = global::_1_Presentation.Properties.Resources.Config;
+            this.editToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.editToolStripMenuItem.Text = "&Sửa";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
+            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // exportToExcelToolStripMenuItem
+            // 
+            this.exportToExcelToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportToExcelToolStripMenuItem.Image")));
+            this.exportToExcelToolStripMenuItem.Name = "exportToExcelToolStripMenuItem";
+            this.exportToExcelToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.S)));
+            this.exportToExcelToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.exportToExcelToolStripMenuItem.Text = "Export to Excel";
+            this.exportToExcelToolStripMenuItem.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // cmbKH
             // 
@@ -319,16 +321,6 @@
             this.txtKey.Size = new System.Drawing.Size(169, 20);
             this.txtKey.TabIndex = 0;
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 254);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 6;
-            this.btnAdd.Text = "Thêm";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
             // DGV_Result
             // 
             this.DGV_Result.AllowUserToAddRows = false;
@@ -412,6 +404,7 @@
             // cmbThangNo
             // 
             this.cmbThangNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbThangNo.Enabled = false;
             this.cmbThangNo.FormattingEnabled = true;
             this.cmbThangNo.Items.AddRange(new object[] {
             "1",
@@ -431,11 +424,58 @@
             this.cmbThangNo.Size = new System.Drawing.Size(169, 21);
             this.cmbThangNo.TabIndex = 2;
             // 
+            // cmbBaoCao
+            // 
+            this.cmbBaoCao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBaoCao.Enabled = false;
+            this.cmbBaoCao.FormattingEnabled = true;
+            this.cmbBaoCao.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cmbBaoCao.Location = new System.Drawing.Point(404, 201);
+            this.cmbBaoCao.Name = "cmbBaoCao";
+            this.cmbBaoCao.Size = new System.Drawing.Size(169, 21);
+            this.cmbBaoCao.TabIndex = 6;
+            this.cmbBaoCao.SelectedIndexChanged += new System.EventHandler(this.cmbBaoCao_SelectedIndexChanged);
+            // 
+            // chkBBaoCao
+            // 
+            this.chkBBaoCao.AutoSize = true;
+            this.chkBBaoCao.Location = new System.Drawing.Point(579, 203);
+            this.chkBBaoCao.Name = "chkBBaoCao";
+            this.chkBBaoCao.Size = new System.Drawing.Size(120, 17);
+            this.chkBBaoCao.TabIndex = 6;
+            this.chkBBaoCao.Text = "Báo cáo theo tháng";
+            this.chkBBaoCao.UseVisualStyleBackColor = true;
+            this.chkBBaoCao.CheckedChanged += new System.EventHandler(this.chkBBaoCao_CheckedChanged);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(12, 254);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 6;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // frmCongNo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 729);
+            this.Controls.Add(this.chkBBaoCao);
+            this.Controls.Add(this.cmbBaoCao);
             this.Controls.Add(this.cmbThangNo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtNoCuoi);
@@ -512,5 +552,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNoCuoi;
         private System.Windows.Forms.ComboBox cmbThangNo;
+        private System.Windows.Forms.ComboBox cmbBaoCao;
+        private System.Windows.Forms.CheckBox chkBBaoCao;
     }
 }

@@ -32,10 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CollectionPager, Version=0.0.0.0, Culture=neutral">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\CollectionPager.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -177,24 +173,56 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Config.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Vintage-Twitter-Backgrounds-Photo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background-form.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vanban02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Price_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invoice_budget-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customers_customer_user_male_man_people_light_client-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1410502904_money_bag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inventorymanagement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Debt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_gears.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Symbol-Add.png" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\2_BUL\2_BUL.csproj">
       <Project>{9c0bfa12-74db-4deb-9ec3-2e75082da412}</Project>
       <Name>2_BUL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\3_DAL\3_DAL.csproj">
-      <Project>{8531eecf-60e0-4f65-9e22-47dc0cb4932d}</Project>
-      <Name>3_DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\4_DTO\4_DTO.csproj">
       <Project>{09b69a8a-07bd-493e-838b-b902de588eb3}</Project>
       <Name>4_DTO</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Config.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Vintage-Twitter-Backgrounds-Photo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

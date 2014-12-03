@@ -10,9 +10,9 @@ namespace _3_DAL
     {
         static QLNSModelDataContext db = new QLNSModelDataContext();
         
-        public static void InsertThuTienDAL(THUTIEN item)
+        public static void InsertThuTienDAL(PHIEUTHUTIEN item)
         {
-            db.THUTIENs.InsertOnSubmit(item);
+            db.PHIEUTHUTIENs.InsertOnSubmit(item);
             db.SubmitChanges();
         }
 
@@ -20,17 +20,18 @@ namespace _3_DAL
         {
             DataTable dt = new DataTable();
 
-            var query = from item in db.THUTIENs
-                        join item1 in db.KHACHHANGs on item.MAKH equals item1.MAKH
+            var query = from item in db.PHIEUTHUTIENs
+                        join item1 in db.KHACHHANGs on item.MaKH equals item1.MaKH
+                        where item.XoaDuLieu == false
                         select new
                         {
-                            item.MATHU,
-                            item1.HOTEN,
-                            item1.DIACHI,
-                            item1.DIENTHOAI,
-                            item1.EMAIL,
-                            item.NGAYTHU,
-                            item.SOTIENTHU
+                            item.MaThuTien,
+                            item1.HoTen,
+                            item1.DiaChi,
+                            item1.DienThoai,
+                            item1.Email,
+                            item.NgayThu,
+                            item.SoTienThu
                         };
             dt.Columns.Add("STT", typeof(int));
             dt.Columns.Add("Mã Thu", typeof(string));
@@ -43,28 +44,28 @@ namespace _3_DAL
             int stt = 1;
             foreach (var item in query)
             {
-                dt.Rows.Add(stt, item.MATHU, item.HOTEN, item.DIACHI, item.DIENTHOAI, item.EMAIL, item.NGAYTHU, item.SOTIENTHU);
+                dt.Rows.Add(stt, item.MaThuTien, item.HoTen, item.DiaChi, item.DienThoai, item.Email, item.NgayThu, item.SoTienThu);
                 stt++;
             }
 
             return dt;
         }
 
-        public static THUTIEN SelectThuTienDAL(string key)
+        public static PHIEUTHUTIEN SelectThuTienDAL(string key)
         {
-            THUTIEN query = db.THUTIENs.Single(i => i.MATHU.Equals(key));
+            PHIEUTHUTIEN query = db.PHIEUTHUTIENs.Single(i => i.MaThuTien.Equals(key));
             return query;
         }
 
         public static void DeleteThuTiensDAL(List<string> keys)
         {
 
-            var query = from item in db.THUTIENs
-                        where keys.Contains(item.MATHU)
-                        select item;
 
             //Detele
-            db.THUTIENs.DeleteAllOnSubmit(query);
+            db.PHIEUTHUTIENs
+                .Where(i => keys.Contains(i.MaThuTien))
+                .ToList()
+                .ForEach(i => i.XoaDuLieu = true);
 
             //Confirm database
             db.SubmitChanges();
@@ -73,8 +74,8 @@ namespace _3_DAL
 
         public static bool checkMaThuTienDAL(string key)
         {
-            var query = from item in db.THUTIENs
-                        where item.MATHU.Equals(key)
+            var query = from item in db.PHIEUTHUTIENs
+                        where item.MaThuTien.Equals(key)
                         select item;
 
             if (query.Count() <= 0)
@@ -87,53 +88,53 @@ namespace _3_DAL
             }
         }
 
-        public static void UpdateThuTienDAL(THUTIEN item)
+        public static void UpdateThuTienDAL(PHIEUTHUTIEN item)
         {
-            var query = db.THUTIENs.Single(i => i.MATHU == item.MATHU);
-            query.MAKH = item.MAKH;
-            query.NGAYTHU = item.NGAYTHU;
-            query.SOTIENTHU = item.SOTIENTHU;
+            var query = db.PHIEUTHUTIENs.Single(i => i.MaThuTien == item.MaThuTien);
+            query.MaKH = item.MaKH;
+            query.NgayThu = item.NgayThu;
+            query.SoTienThu = item.SoTienThu;
 
             db.SubmitChanges();
         }
 
         public static DataTable SearchThuTiensDAL(string key)
         {
-            var query = from item in db.THUTIENs
-                        join item1 in db.KHACHHANGs on item.MAKH equals item1.MAKH
+            var query = from item in db.PHIEUTHUTIENs
+                        join item1 in db.KHACHHANGs on item.MaKH equals item1.MaKH
                         where
                         (
-                           item.MATHU.StartsWith(key) ||
-                           item.MATHU.EndsWith(key) ||
-                           item.MATHU.Contains(key) ||
-                           item1.HOTEN.StartsWith(key) ||
-                           item1.HOTEN.EndsWith(key) ||
-                           item1.HOTEN.Contains(key) ||
-                           item1.DIACHI.StartsWith(key) ||
-                           item1.DIACHI.EndsWith(key) ||
-                           item1.DIACHI.Contains(key) ||
-                           item1.DIENTHOAI.StartsWith(key) ||
-                           item1.DIENTHOAI.EndsWith(key) ||
-                           item1.DIENTHOAI.Contains(key) ||
-                           item1.EMAIL.StartsWith(key) ||
-                           item1.EMAIL.EndsWith(key) ||
-                           item1.EMAIL.Contains(key) ||
-                           item.NGAYTHU.ToString().StartsWith(key) ||
-                           item.NGAYTHU.ToString().EndsWith(key) ||
-                           item.NGAYTHU.ToString().Contains(key) ||
-                           item.SOTIENTHU.ToString().StartsWith(key) ||
-                           item.SOTIENTHU.ToString().EndsWith(key) ||
-                           item.SOTIENTHU.ToString().Contains(key)
-                        )
+                           item.MaThuTien.StartsWith(key) ||
+                           item.MaThuTien.EndsWith(key) ||
+                           item.MaThuTien.Contains(key) ||
+                           item1.HoTen.StartsWith(key) ||
+                           item1.HoTen.EndsWith(key) ||
+                           item1.HoTen.Contains(key) ||
+                           item1.DiaChi.StartsWith(key) ||
+                           item1.DiaChi.EndsWith(key) ||
+                           item1.DiaChi.Contains(key) ||
+                           item1.DienThoai.StartsWith(key) ||
+                           item1.DienThoai.EndsWith(key) ||
+                           item1.DienThoai.Contains(key) ||
+                           item1.Email.StartsWith(key) ||
+                           item1.Email.EndsWith(key) ||
+                           item1.Email.Contains(key) ||
+                           item.NgayThu.ToString().StartsWith(key) ||
+                           item.NgayThu.ToString().EndsWith(key) ||
+                           item.NgayThu.ToString().Contains(key) ||
+                           item.SoTienThu.ToString().StartsWith(key) ||
+                           item.SoTienThu.ToString().EndsWith(key) ||
+                           item.SoTienThu.ToString().Contains(key)
+                        ) && item.XoaDuLieu == false
                         select new
                         {
-                            item.MATHU,
-                            item1.HOTEN,
-                            item1.DIACHI,
-                            item1.DIENTHOAI,
-                            item1.EMAIL,
-                            item.NGAYTHU,
-                            item.SOTIENTHU
+                            item.MaThuTien,
+                            item1.HoTen,
+                            item1.DiaChi,
+                            item1.DienThoai,
+                            item1.Email,
+                            item.NgayThu,
+                            item.SoTienThu
                         };
 
 
@@ -149,7 +150,7 @@ namespace _3_DAL
             int stt = 1;
             foreach (var item in query)
             {
-                dt.Rows.Add(stt, item.MATHU, item.HOTEN, item.DIACHI, item.DIENTHOAI, item.EMAIL, item.NGAYTHU, item.SOTIENTHU);
+                dt.Rows.Add(stt, item.MaThuTien, item.HoTen, item.DiaChi, item.DienThoai, item.Email, item.NgayThu, item.SoTienThu);
                 stt++;
             }
 
@@ -158,13 +159,14 @@ namespace _3_DAL
 
         public static bool checkKH_ThuTienDAL(string key)
         {
-            var queryTT = db.THUTIENs.Single(i => i.MAKH == key);
-            var queryKH = db.KHACHHANGs.Single(i => i.MAKH == key);
+            var queryTT = db.PHIEUTHUTIENs.Single(i => i.MaKH == key);
+            var queryKH = db.KHACHHANGs.Single(i => i.MaKH == key);
 
-            if (queryTT.SOTIENTHU <= queryKH.SOTIENNO)
+            if (queryTT.SoTienThu <= queryKH.SoTienNo)
             {
                 return true;
             }
+
 
             return false;
         }

@@ -169,16 +169,16 @@ namespace _1_Presentation
                 {
                     if (ThuTienBUL.checkMaThuTienBUL(txtKey.Text.Trim()))
                     {
-                        THUTIEN item = new THUTIEN();
-                        item.MATHU = txtKey.Text;
-                        item.MAKH = cmbKH.SelectedValue.ToString();
-                        item.NGAYTHU = dtpNgayThu.Value.Date;
-                        item.SOTIENTHU = Convert.ToDecimal(txtTienThu.Text);
+                        PHIEUTHUTIEN item = new PHIEUTHUTIEN();
+                        item.MaThuTien = txtKey.Text;
+                        item.MaKH = cmbKH.SelectedValue.ToString();
+                        item.NgayThu = dtpNgayThu.Value.Date;
+                        item.SoTienThu = Convert.ToDecimal(txtTienThu.Text);
 
                         //insert into database
                         //Chỉ bán cho khách có số nợ dưới 20000
                         //SL_Ton sau >= 20
-                        if (!ThuTienBUL.checkKH_ThuTienBUL(item.MAKH))
+                        if (!ThuTienBUL.checkKH_ThuTienBUL(item.MaKH))
                         {
                             MessageBox.Show("Số tiền thu phải nhỏ hơn số tiền khách nợ", "Thông Báo");
                         }
@@ -203,25 +203,29 @@ namespace _1_Presentation
             {
                 if (txtKey.Text.Trim() != string.Empty)
                 {
-                    THUTIEN item = new THUTIEN();
-                    item.MATHU = txtKey.Text;
-                    item.MAKH = cmbKH.ValueMember;
-                    item.NGAYTHU = dtpNgayThu.Value.Date;
-                    item.SOTIENTHU = Convert.ToDecimal(txtTienThu.Text);
+                     DialogResult dialog = MessageBox.Show("Bạn có muốn xóa thu tiền?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                     if (dialog == DialogResult.OK)
+                     {
+                         PHIEUTHUTIEN item = new PHIEUTHUTIEN();
+                         item.MaThuTien = txtKey.Text;
+                         item.MaKH = cmbKH.ValueMember;
+                         item.NgayThu = dtpNgayThu.Value.Date;
+                         item.SoTienThu = Convert.ToDecimal(txtTienThu.Text);
 
-                    //insert into database
-                    //Chỉ bán cho khách có số nợ dưới 20000
-                    //SL_Ton sau >= 20
-                    if (!ThuTienBUL.checkKH_ThuTienBUL(item.MAKH))
-                    {
-                        MessageBox.Show("Số tiền thu phải nhỏ hơn số tiền khách nợ", "Thông Báo");
-                    }
-                    else
-                    {
-                        ThuTienBUL.UpdateThuTienBUL(item);
-                        MessageBox.Show("Bạn đã sửa [" + txtKey.Text + "] thành công", "Thông báo");
+                         //insert into database
+                         //Chỉ bán cho khách có số nợ dưới 20000
+                         //SL_Ton sau >= 20
+                         if (!ThuTienBUL.checkKH_ThuTienBUL(item.MaKH))
+                         {
+                             MessageBox.Show("Số tiền thu phải nhỏ hơn số tiền khách nợ", "Thông Báo");
+                         }
+                         else
+                         {
+                             ThuTienBUL.UpdateThuTienBUL(item);
+                             MessageBox.Show("Bạn đã sửa [" + txtKey.Text + "] thành công", "Thông báo");
 
-                    }
+                         }
+                     }
 
                 }
                 else
@@ -232,6 +236,18 @@ namespace _1_Presentation
             }
 
             Reload();
+            _chkAdd = false;
+
+            btnAdd.Text = "Thêm";
+            btnUpdate.Text = "Sửa";
+            btnSave.Enabled = false;
+            btnDelete.Enabled = true;
+            btnAdd.Enabled = true;
+
+            txtKey.Enabled = false;
+            cmbKH.Enabled = false;
+            dtpNgayThu.Enabled = false;
+            txtTienThu.Enabled = false;
         }
 
         private void chkAll_CheckedChanged(object sender, EventArgs e)
@@ -267,12 +283,12 @@ namespace _1_Presentation
                 string key = DGV_Result.Rows[e.RowIndex].Cells[2].Value.ToString();
                 //Select Sach bằng mã sách
 
-                THUTIEN item = ThuTienBUL.SelectThuTienBUL(key);
+                PHIEUTHUTIEN item = ThuTienBUL.SelectThuTienBUL(key);
 
-                txtKey.Text = item.MATHU;
-                cmbKH.SelectedValue = item.MAKH;
-                dtpNgayThu.Value = Convert.ToDateTime(item.NGAYTHU);
-                txtTienThu.Text = item.SOTIENTHU.ToString();
+                txtKey.Text = item.MaThuTien;
+                cmbKH.SelectedValue = item.MaKH;
+                dtpNgayThu.Value = Convert.ToDateTime(item.NgayThu);
+                txtTienThu.Text = item.SoTienThu.ToString();
             }
         }
 
