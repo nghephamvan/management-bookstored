@@ -84,3 +84,11 @@ F:\Nghe SDC\management-bookstored\3_DAL\bin\Debug\4_DTO.pdb
 F:\Nghe SDC\management-bookstored\3_DAL\obj\Debug\3_DAL.csprojResolveAssemblyReference.cache
 F:\Nghe SDC\management-bookstored\3_DAL\obj\Debug\3_DAL.dll
 F:\Nghe SDC\management-bookstored\3_DAL\obj\Debug\3_DAL.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\3_DAL\bin\Debug\3_DAL.dll.config
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\3_DAL\bin\Debug\3_DAL.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\3_DAL\bin\Debug\3_DAL.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\3_DAL\bin\Debug\4_DTO.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\3_DAL\bin\Debug\4_DTO.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\3_DAL\obj\Debug\3_DAL.csprojResolveAssemblyReference.cache
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\3_DAL\obj\Debug\3_DAL.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\3_DAL\obj\Debug\3_DAL.pdb
