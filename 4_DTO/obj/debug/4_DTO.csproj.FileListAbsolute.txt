@@ -22,3 +22,9 @@ F:\Nghe SDC\management-bookstored\4_DTO\bin\Debug\4_DTO.pdb
 F:\Nghe SDC\management-bookstored\4_DTO\obj\Debug\4_DTO.csprojResolveAssemblyReference.cache
 F:\Nghe SDC\management-bookstored\4_DTO\obj\Debug\4_DTO.dll
 F:\Nghe SDC\management-bookstored\4_DTO\obj\Debug\4_DTO.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\4_DTO\bin\Debug\4_DTO.dll.config
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\4_DTO\bin\Debug\4_DTO.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\4_DTO\bin\Debug\4_DTO.pdb
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\4_DTO\obj\Debug\4_DTO.csprojResolveAssemblyReference.cache
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\4_DTO\obj\Debug\4_DTO.dll
+F:\Learn\Dropbox\Learn\9-HKI\NM CNPM\Đồ Án QLNS\Source code\management-bookstored\4_DTO\obj\Debug\4_DTO.pdb
