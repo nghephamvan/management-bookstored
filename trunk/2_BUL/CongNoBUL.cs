@@ -16,34 +16,9 @@ namespace _2_BUL
             return CongNoController.SellectAllCongNosDAL();
         }
 
-        public static void DeleteCongNosBUL(List<string> keys)
-        {
-            CongNoController.DeleteCongNosDAL(keys);
-        }
-
         public static CONGNO SelectCongNoBUL(string key)
         {
             return CongNoController.SelectCongNoDAL(key);
-        }
-
-        public static void InsertCongNoBUL(CONGNO item)
-        {
-            CongNoController.InsertCongNoDAL(item);
-        }
-
-        public static bool checkMaCongNoBUL(string key)
-        {
-            return CongNoController.checkMaCongNoDAL(key);
-        }
-
-        public static void UpdateCongNoBUL(CONGNO item)
-        {
-            CongNoController.UpdateCongNoDAL(item);
-        }
-
-        public static DataTable SearchCongNosBUL(string key)
-        {
-            return CongNoController.SearchCongNosDAL(key);
         }
 
         public static DataTable SelectCongNo_MonthBUL(string key)
