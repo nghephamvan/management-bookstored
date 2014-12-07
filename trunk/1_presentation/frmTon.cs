@@ -25,10 +25,10 @@ namespace _1_Presentation
 
         private void Reload()
         {
-            //var query2 = from i in query
-            //             join j in query1 on i.MaSach
+           
+
             DGV_Result.DataSource = TonBUL.SellectAllTonsBUL();
-            //DGV_Result.DataSource = query2;
+            //DGV_Result.DataSource = temp2;
         }
 
         private void btnExportExcel_Click(object sender, EventArgs e)
