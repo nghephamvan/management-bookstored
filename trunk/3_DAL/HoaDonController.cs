@@ -12,6 +12,7 @@ namespace _3_DAL
 
         public static void InsertHoaDonDAL(HOADON item)
         {
+            item.XoaDuLieu = false;
             db.HOADONs.InsertOnSubmit(item);
 
             db.SubmitChanges();

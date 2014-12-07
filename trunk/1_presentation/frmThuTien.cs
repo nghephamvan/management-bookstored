@@ -203,12 +203,12 @@ namespace _1_Presentation
             {
                 if (txtKey.Text.Trim() != string.Empty)
                 {
-                     DialogResult dialog = MessageBox.Show("Bạn có muốn xóa thu tiền?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                     DialogResult dialog = MessageBox.Show("Bạn có muốn sửa thu tiền?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                      if (dialog == DialogResult.OK)
                      {
                          PHIEUTHUTIEN item = new PHIEUTHUTIEN();
                          item.MaThuTien = txtKey.Text;
-                         item.MaKH = cmbKH.ValueMember;
+                         item.MaKH = cmbKH.SelectedValue.ToString();
                          item.NgayThu = dtpNgayThu.Value.Date;
                          item.SoTienThu = Convert.ToDecimal(txtTienThu.Text);
 
