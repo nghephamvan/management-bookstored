@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using _2_BUL;
 using System.IO;
@@ -279,6 +274,20 @@ namespace _1_Presentation
                                  {
                                      CTPNBUL.UpdateCTPNBUL(item);
                                      MessageBox.Show("Bạn đã sửa chi tiết phiếu nhập [" + txtMaCTPN.Text + "] thành công", "Thông báo");
+
+                                     _chkAdd = false;
+
+                                     btnAdd.Text = "Thêm";
+                                     btnUpdate.Text = "Sửa";
+                                     btnSave.Enabled = false;
+                                     btnDelete.Enabled = true;
+                                     btnAdd.Enabled = true;
+
+                                     txtMaCTPN.Enabled = false;
+                                     cmbMAPN.Enabled = false;
+                                     cmbSach.Enabled = false;
+                                     txtSL_Nhap.Enabled = false;
+
                                  }
                              }
                              else
@@ -294,26 +303,13 @@ namespace _1_Presentation
                     }
 
                 }
-
-                Reload();
-                _chkAdd = false;
-
-                btnAdd.Text = "Thêm";
-                btnUpdate.Text = "Sửa";
-                btnSave.Enabled = false;
-                btnDelete.Enabled = true;
-                btnAdd.Enabled = true;
-
-                txtMaCTPN.Enabled = false;
-                cmbMAPN.Enabled = false;
-                cmbSach.Enabled = false;
-                txtSL_Nhap.Enabled = false;
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            Reload();
         }
 
         private void chkAll_CheckedChanged(object sender, EventArgs e)

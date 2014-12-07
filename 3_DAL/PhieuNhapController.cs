@@ -12,6 +12,7 @@ namespace _3_DAL
 
         public static void InsertPNDAL(PHIEUNHAP item)
         {
+            item.XoaDuLieu = false;
             db.PHIEUNHAPs.InsertOnSubmit(item);
 
             db.SubmitChanges();

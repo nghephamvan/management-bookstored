@@ -13,6 +13,7 @@ namespace _3_DAL
 
          public static void InsertBookDAL(SACH item) 
          {
+             item.XoaDuLieu = false;
              db.SACHes.InsertOnSubmit(item);
 
              db.SubmitChanges();

@@ -11,6 +11,7 @@ namespace _3_DAL
 
         public static void InsertCustomerDAL(KHACHHANG temp)
         {
+            temp.XoaDuLieu = false;
             db.KHACHHANGs.InsertOnSubmit(temp);
 
             db.SubmitChanges();

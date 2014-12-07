@@ -15,6 +15,7 @@ namespace _3_DAL
             var query = db.KHACHHANGs.Single(i => i.MaKH == item.MaKH);
             query.SoTienNo = query.SoTienNo - item.SoTienThu;
 
+            item.XoaDuLieu = false;
             db.PHIEUTHUTIENs.InsertOnSubmit(item);
             db.SubmitChanges();
         }

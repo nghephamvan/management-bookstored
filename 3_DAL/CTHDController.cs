@@ -19,7 +19,7 @@ namespace _3_DAL
 
             queryS.SL_Ton = queryS.SL_Ton - item.SL_BAN;
 
-
+            item.XoaDuLieu = false;
             db.CTHDs.InsertOnSubmit(item);
 
             db.SubmitChanges();

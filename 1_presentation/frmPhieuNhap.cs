@@ -169,7 +169,7 @@ namespace _1_Presentation
             {
                 if (txtMaPN.Text.Trim() != string.Empty)
                 {
-                    DialogResult dialog = MessageBox.Show("Bạn có muốn xóa thông tin phiếu nhập?\nKhi xóa phiếu nhập sẽ xóa các chi tiết phiếu nhập", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    DialogResult dialog = MessageBox.Show("Bạn có muốn sửa thông tin phiếu nhập?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                     if (dialog == DialogResult.OK)
                     {
                         PHIEUNHAP pn = new PHIEUNHAP();

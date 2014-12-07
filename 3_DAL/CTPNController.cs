@@ -16,6 +16,8 @@ namespace _3_DAL
             var query = db.SACHes.Single(i => i.MaSach == temp.MaSach);
             query.SL_Ton = query.SL_Ton + temp.SL_Nhap;
 
+            temp.XoaDuLieu = false;
+
             db.CTPNs.InsertOnSubmit(temp);
 
             db.SubmitChanges();
@@ -28,7 +30,7 @@ namespace _3_DAL
             var query = from item in db.CTPNs
                         join item2 in db.PHIEUNHAPs on item.MaPN equals item2.MaPN
                         join item3 in db.SACHes on item.MaSach equals item3.MaSach
-                        where item.XoaDuLieu == false
+                        where item.XoaDuLieu !=true
                         select new
                         {
                             item.MaCTPN,
@@ -117,7 +119,7 @@ namespace _3_DAL
             //                item.SL_TON
             //            };
 
-            SACH query = db.SACHes.Where(i => i.XoaDuLieu == false).Single(i => i.MaSach.Equals(key));
+            SACH query = db.SACHes.Where(i => i.XoaDuLieu != true).Single(i => i.MaSach.Equals(key));
 
             if (query.SL_Ton > ThamSoController.SelectThamSoDAL().SL_TonToiDaTruocNhap)
             {
@@ -182,7 +184,7 @@ namespace _3_DAL
                            item3.DonGia.ToString().StartsWith(temp) ||
                            item3.DonGia.ToString().EndsWith(temp) ||
                            item3.DonGia.ToString().Contains(temp)
-                        ) && item.XoaDuLieu == false
+                        ) && item.XoaDuLieu ==false || item.XoaDuLieu == null
                         select new
                         {
                             item.MaCTPN,
