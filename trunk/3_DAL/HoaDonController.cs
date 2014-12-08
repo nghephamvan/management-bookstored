@@ -135,5 +135,10 @@ namespace _3_DAL
 
             return dt;
         }
+
+        public static KHACHHANG SelectHoaDon_KHDAL(string p)
+        {
+            return db.KHACHHANGs.Single(i => i.MaKH == p);
+        }
     }
 }
