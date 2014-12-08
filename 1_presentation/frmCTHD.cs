@@ -67,12 +67,12 @@ namespace _1_Presentation
                     btnUpdate.Enabled = false;
 
                     txtKey.Text = String.Empty;
-                    cmbNgayHD.SelectedIndex = -1;
+                    cmbHD.SelectedIndex = -1;
                     cmbSach.SelectedIndex = -1;
                     txtSL_Ban.Text = String.Empty;
 
                     txtKey.Enabled = true;
-                    cmbNgayHD.Enabled = true;
+                    cmbHD.Enabled = true;
                     cmbSach.Enabled = true;
                     txtSL_Ban.Enabled = true;
 
@@ -90,12 +90,12 @@ namespace _1_Presentation
 
 
                     txtKey.Text = String.Empty;
-                    cmbNgayHD.SelectedIndex = -1;
+                    cmbHD.SelectedIndex = -1;
                     cmbSach.SelectedIndex = -1;
                     txtSL_Ban.Text = String.Empty;
 
                     txtKey.Enabled = false;
-                    cmbNgayHD.Enabled = false;
+                    cmbHD.Enabled = false;
                     cmbSach.Enabled = false;
                     txtSL_Ban.Enabled = false;
 
@@ -123,7 +123,7 @@ namespace _1_Presentation
 
 
                     txtKey.Enabled = false;
-                    cmbNgayHD.Enabled = true;
+                    cmbHD.Enabled = true;
                     cmbSach.Enabled = true;
                     txtSL_Ban.Enabled = true;
 
@@ -136,7 +136,7 @@ namespace _1_Presentation
                     btnAdd.Enabled = true;
 
                     txtKey.Enabled = false;
-                    cmbNgayHD.Enabled = false;
+                    cmbHD.Enabled = false;
                     cmbSach.Enabled = false;
                     txtSL_Ban.Enabled = false;
 
@@ -212,7 +212,7 @@ namespace _1_Presentation
                             CTHD item = new CTHD();
                             item.MACTHD = txtKey.Text;
                             item.MaSach = cmbSach.SelectedValue.ToString();
-                            item.MaHD = cmbNgayHD.SelectedValue.ToString();
+                            item.MaHD = cmbHD.SelectedValue.ToString();
                             item.SL_BAN = Convert.ToInt16(txtSL_Ban.Text);
 
                             //insert into database
@@ -235,7 +235,7 @@ namespace _1_Presentation
                                     MessageBox.Show("Bạn đã thêm chi tiết hóa đơn [" + txtKey.Text + "] thành công", "Thông báo");
 
                                     txtKey.Text = String.Empty;
-                                    cmbNgayHD.SelectedIndex = -1;
+                                    cmbHD.SelectedIndex = -1;
                                     cmbSach.SelectedIndex = -1;
                                     txtSL_Ban.Text = String.Empty;
                                 }
@@ -246,7 +246,7 @@ namespace _1_Presentation
                                 MessageBox.Show("Bạn đã thêm chi tiết hóa đơn [" + txtKey.Text + "] thành công", "Thông báo");
 
                                 txtKey.Text = String.Empty;
-                                cmbNgayHD.SelectedIndex = -1;
+                                cmbHD.SelectedIndex = -1;
                                 cmbSach.SelectedIndex = -1;
                                 txtSL_Ban.Text = String.Empty;
                             }
@@ -267,7 +267,7 @@ namespace _1_Presentation
                             CTHD item = new CTHD();
                             item.MACTHD = txtKey.Text;
                             item.MaSach = cmbSach.ValueMember;
-                            item.MaHD = cmbNgayHD.ValueMember;
+                            item.MaHD = cmbHD.ValueMember;
                             item.SL_BAN = Convert.ToInt16(txtSL_Ban.Text);
 
                             //insert into database
@@ -315,7 +315,7 @@ namespace _1_Presentation
                 btnAdd.Enabled = true;
 
                 txtKey.Enabled = false;
-                cmbNgayHD.Enabled = false;
+                cmbHD.Enabled = false;
                 cmbSach.Enabled = false;
                 txtSL_Ban.Enabled = false;
 
@@ -380,9 +380,9 @@ namespace _1_Presentation
 
                     txtKey.Text = item.MACTHD;
                     cmbSach.SelectedValue = item.MaSach;
-                    cmbNgayHD.SelectedValue = item.MaHD;
+                    cmbHD.SelectedValue = item.MaHD;
                     txtSL_Ban.Text = item.SL_BAN.ToString();
-                    txtTenKH.Text = DGV_Result.Rows[e.RowIndex].Cells[7].Value.ToString();
+                    //txtTenKH.Text = DGV_Result.Rows[e.RowIndex].Cells[7].Value.ToString();
                 }
             }
             catch (Exception ex)
@@ -432,10 +432,10 @@ namespace _1_Presentation
                 cmbSach.DisplayMember = "Tên Sách";
                 cmbSach.ValueMember = "Mã Sách";
 
-                cmbNgayHD.DataSource = HoaDonBUL.SellectAllHoaDonBUL();
-                cmbNgayHD.DisplayMember = "Ngày Hóa Đơn";
-                cmbNgayHD.ValueMember = "Mã HD";
-
+                cmbHD.DataSource = HoaDonBUL.SellectAllHoaDonBUL();
+                cmbHD.DisplayMember = "Mã HD";
+                cmbHD.ValueMember = "Mã HD";
+                cmbHD.SelectedIndex = -1;
 
                 DGV_Result.DataSource = CTHDBUL.SellectAllCTHDsBUL();
             }
@@ -443,6 +443,19 @@ namespace _1_Presentation
             {
                 MessageBox.Show(ex.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cmbHD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbHD.SelectedIndex >= 0 && cmbHD.SelectedValue.ToString() != "System.Data.DataRowView")
+            {
+                HOADON temp = HoaDonBUL.SelectHoaDonBUL(cmbHD.SelectedValue.ToString());
+                dtpNgayHD.Value= Convert.ToDateTime(temp.NgayHD);
+                KHACHHANG kh = HoaDonBUL.SelectHoaDon_KHBUL(temp.MaKH);
+
+                txtTenKH.Text = kh.HoTen;
+            }
+           
         }
     }
 }

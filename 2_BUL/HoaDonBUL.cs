@@ -45,5 +45,10 @@ namespace _2_BUL
         {
             return HoaDonController.SearchHoaDonsDAL(key);
         }
+
+        public static KHACHHANG SelectHoaDon_KHBUL(string p)
+        {
+            return HoaDonController.SelectHoaDon_KHDAL(p);
+        }
     }
 }
